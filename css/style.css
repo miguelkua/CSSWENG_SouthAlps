@@ -139,14 +139,14 @@
 
 .container2 {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
     margin-left: 4%;
     margin-right: 4%;
     margin-top: 5%;
-    z-index: 1;
 }
 
 .image-card {
+    flex: 1;
     margin: 20px; /* Add space between image cards */
     width: 47.5%; /* Set a width for each image card */
 }
@@ -180,7 +180,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 2.5% 2.5%;
+    margin-top: 10px;
 }
 
 .image-container img{
@@ -284,6 +284,14 @@ h1 {
     width: 100px;
     height: 100px;
     margin: 20px; /* Add space between the boxes */
+}
+
+.group-accreditation-box {
+    width: 100px;
+    height: 50px;
+    margin-top: 50px; /* Add space between the boxes */
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .line {

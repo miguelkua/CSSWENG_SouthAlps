@@ -350,103 +350,64 @@ h1 {
     margin: 50px; /* Add space between the boxes */
 }
 
+/* Style the container */
 .form-container {
+    width: 99%;
+    margin: 0 auto;
     background-color: #ffffff;
-    max-width: 100%;
-    margin: 10px;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px #aaa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
+/* Style the form heading */
 .form-container h2 {
-    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.name-fields {
+/* Style form rows */
+.form-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
 }
 
-.name-field {
-    flex: 45%;
+/* Adjust the width of the form groups within the row */
+.form-row .form-group {
+    width: 48%; /* Adjust as needed */
+    margin: 1%;
 }
 
-.email-company {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.email-field {
-    flex: 45%;
-}
-
-.company-field {
-    flex: 45%;
-}
-
-.company-address-group {
-    margin-bottom: 15px; /* Adjust margin or styling for Company Address */
-}
-
-.company-address-group label {
-    font-weight: bold;
+/* Style form groups */
+.form-group label {
     display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.form-group input{
-    width: 90%;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-/* Set a custom width for the Company Address input */
-.company-address-group input {
-    width: 95%; /* Adjust the width to your preferred value, e.g., 75% */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-group textarea {
-    width: 95%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-
-.select-group {
-    margin-bottom: 15px;
-}
-
-.select-group select{
-    width: 95%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-group button {
-    background-color: #18A0FB;
-    color: white;
+/* Style the submit button */
+.submit-button {
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    border-radius: 4px;
     padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    margin: 0 auto; /* Center horizontally */
-    display: block; /* Make it a block element to center */
+    width: 100%;
 }
 
-.form-group button:hover {
-    background-color: #1b6daf;
+.submit-button:hover {
+    background-color: #0056b3;
 }
 
 .header {

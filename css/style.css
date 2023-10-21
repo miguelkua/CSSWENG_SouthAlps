@@ -353,12 +353,12 @@ h1 {
 /* Style the container */
 .form-container {
     width: 99%;
-    margin: 0 auto;
+    margin: 10px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
 }
 
 /* Style the form heading */
@@ -371,21 +371,23 @@ h1 {
 .form-row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px; /* Reduced spacing between rows */
 }
 
-/* Adjust the width of the form groups within the row */
+/* Adjust the margin between the "First Name" and "Last Name" fields */
 .form-row .form-group {
-    width: 48%; /* Adjust as needed */
-    margin: 1%;
+    width: 48%;
+    margin: 0; /* Remove margin to move them closer */
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /* Style form groups */
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -396,14 +398,18 @@ h1 {
 }
 
 /* Style the submit button */
+.center {
+    text-align: center;
+}
+
 .submit-button {
     background-color: #007BFF;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 30px; /* Adjust the padding to make it shorter */
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
+    display: inline-block; /* Make it inline-block to adjust its width */
 }
 
 .submit-button:hover {

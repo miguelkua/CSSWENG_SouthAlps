@@ -1,0 +1,50 @@
+{{#if isAdminMode}}
+<div class="admin-hotbar">
+    <button class="edit-text" id="edit-text">Edit Text</button>
+    <button class="edit-img" id="edit-img">Edit Images</button>
+    {{!-- <button id="add">Add</button> --}}
+    {{!-- <button id="delete">Delete</button> --}}
+</div>
+{{/if}}
+
+<style>
+.admin-hotbar {
+    position: sticky; /* Use 'fixed' instead of 'sticky' */
+    bottom: 0;
+    background-color: lightblue;
+    color: #000;
+    padding: 10px;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center; /* Adjust this according to your layout preference */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow if desired */
+}
+
+.admin-hotbar button {
+    width: 130px; 
+    height: 40px; 
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.edit-text.active{
+    background-color: gray;
+}
+
+.edit-img.active{
+    background-color: gray;
+}
+
+.admin-hotbar button:hover {
+    background-color: #2980b9;
+}
+
+
+</style>

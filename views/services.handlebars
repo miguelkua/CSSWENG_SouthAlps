@@ -102,6 +102,18 @@
                     </ul>
             </div>
         </div>
+
+        <button id="add">Add Service</button>
+
+        <div id="form-overlay" class="form-overlay">
+            <div class="form-container">
+                <form id="postForm" name="postForm">
+                    <textarea id="nameInput" name="nameInput" class="form-text-input" rows="4" cols="50" placeholder="Name of Service?"></textarea>
+                    <textarea id="descriptionInput" name="descriptionInput" class="form-text-input" rows="4" cols="50" placeholder="Description?"></textarea>
+                    <button id="submit-item" class="form-submit" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
         {{> adminhotbar}}
         <script src="/javascript/adminhotbar.js"></script>
     </body>

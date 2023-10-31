@@ -1,20 +1,30 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
 const path = require("path");
-const passport = require("passport");
-const session = require("express-session");
+const Handlebars = require('handlebars');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+
+// Functions from Packages
+const { engine } = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Initializing the passport
 const initializePassport = require('./passport-config.js');
-initializePassport(passport);
+const Admins = require('./database/schemas/admin.js');
+initializePassport(
+    passport,
+    name => { return Admins.findOne({username: name}) },
+    id => { return Admins.findOne({_id: id}) }
+);
 
 // enables the use of sessions & user authentication
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: "sikret", // TEMPORARY (until dotenv is setup)
+    secret: "sikret", // TODO: TEMPORARY (until dotenv is setup)
     resave: false,
     saveUninitialized: false
 }));
@@ -25,7 +35,10 @@ app.use(passport.session());
 app.use(express.json());
 
 // View engine setup
-app.engine('handlebars', exphbs.engine());
+app.engine('handlebars', engine({
+    helpers: require('./views/handlebars-helpers').helpers,
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); // views is the folder name
 
@@ -51,9 +64,11 @@ let isAdminMode = true;
 // enables the routers exported from './routes'
 const quoteRouter = require('./routes/quotes.js');
 const adminRouter = require('./routes/admin.js');
+const serviceRouter = require('./routes/services.js');
 
 app.use('/quotes', quoteRouter);
 app.use('/admin', adminRouter);
+app.use('/services', serviceRouter);
 
 // the rest of the pages interacting with each other
 app.get('/home', (req, res) => {
@@ -72,9 +87,9 @@ app.get('/index', (req, res) => {
     res.render('index', {layout: false, isAdminMode});
 });
 
-app.get('/services', (req, res) => {
-    res.render('services', {layout: false, isAdminMode});
-});
+// app.get('/services', (req, res) => {
+//     res.render('services', {layout: false, isAdminMode});
+// });
 
 app.get('/careers', (req, res) => {
     res.render('careers', {layout: false, isAdminMode});
@@ -84,6 +99,10 @@ app.get('/careers', (req, res) => {
 //     res.render('login', {layout: false, isAdminMode});
 // });
 
-app.listen(port, () => {
+app.listen(port, () => 
+{
     console.log(`Server is running on port ${port}`);
+    // TODO: replace the URI with dotenv
+    mongoose.connect('mongodb://127.0.0.1:27017/southalps');
+    console.log("Connected to database.");
 });

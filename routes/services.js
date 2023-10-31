@@ -1,19 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const services = require('../database/schemas/services')
+const Services = require('../database/schemas/services');
 
-router.get('/', (req, res) =>
+router.get('/', async (req, res) =>
 {
-    var isAdminMode = req.user ?? 'none';
-    res.render('services', 
-    {
-        layout: false, 
-        isAdminMode: (isAdminMode == 'none') 
-    });
-});
+  const services = await Services.find({}).exec();
+  var isAdminMode = req.user ?? 'none';
 
-Handlebars.registerHelper('isEven', function(index) {
-  return index % 2 === 0;
+  res.render('services', 
+  {
+      layout: false, 
+      isAdminMode: (isAdminMode == 'none'),
+      services: services
+  });
 });
 
 module.exports = router;

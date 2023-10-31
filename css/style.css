@@ -222,7 +222,7 @@ h1 {
 }
 
 .box {
-    width: 600px;
+    width: 550px;
     height: 200px;
     margin-right: 15%; /* Add space between the box and the content */
 }
@@ -245,7 +245,9 @@ h1 {
 }
 
 .content-2 {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
     text-align: left; /* Align content to the left */
     width: 100%;
     margin-bottom: 4%;

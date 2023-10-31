@@ -2,6 +2,8 @@ const addButton = document.getElementById('add');
 const overlay = document.getElementById('form-overlay');
 const addItem = document.getElementById('add-item');
 
+const postForm = document.forms.postForm;
+
 function showOverlay() {
   overlay.style.display = 'block';
 }
@@ -18,11 +20,33 @@ addButton.addEventListener('click', showOverlay);
     }
   });
 
-  document.addEventListener("DOMContentLoaded",() => {
-    document.querySelector("#submit-item")?.addEventListener("click", function(e){
+  document.addEventListener("DOMContentLoaded",() => 
+  {
+    document.querySelector("#submit-item")?.addEventListener("click", function(e)
+    {
       e.preventDefault();  // Prevents page refresh
-      hideOverlay();
+
+      const url = window.location.href;
+      fetch(url + '/add', 
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify
+        ({
+          name:  postForm.name.value,
+          description: postForm.description.value
+        })
+      })
+      .then((res) => 
+      {
+          if (res.status == 200) 
+          { 
+            hideOverlay(); 
+            window.location.href = url; 
+          }
+          else { console.log("Error in service registration"); }
+      });
+
     });
 
-   
   });

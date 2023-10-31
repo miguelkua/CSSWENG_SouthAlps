@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Services = require('../database/schemas/services');
+const Services = require('../database/schemas/services.js');
 
 router.get('/', async (req, res) =>
 {
@@ -15,17 +15,19 @@ router.get('/', async (req, res) =>
   });
 });
 
-router.post('/submit', async function(req,res){
-  
-  try{
-  
-  let service = new Services({
-      name: req.body.nameInput,
-      description: req.body.descriptionInput
-  });
-      await Services.create(service);
-      res.sendStatus(200);
-  }catch(error){
+router.post('/add', async function(req,res)
+{
+  try
+  {
+    let service = new Services({
+        name: req.body.name,
+        description: req.body.description
+    });
+    await Services.create(service);
+    res.sendStatus(200);
+  }
+  catch(error)
+  {
       console.log(error);
       res.sendStatus(500);
   }

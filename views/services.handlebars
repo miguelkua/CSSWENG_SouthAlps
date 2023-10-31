@@ -33,30 +33,15 @@
         <div class="container9">
             <div class="title">Value Added Services</div>
             <div class="content-2">
-                    <div class="text-left left-align">
-                        <div class="box">
-                            <p class="heading-text">Consolidation</p>
-                            <p class="subtext-2">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+                {{#each services}}
+                <div class="{{#if (isEven @index)}}text-left left-align{{else}}text-right right-align{{/if}}">
+                    <div class="box">
+                            <p class="heading-text">{{this.name}}</p>
+                            <p class="subtext-2">{{this.description}}</p>
                             <button class="see-more">See More</button>
-                        </div>
-                        <div class="box">
-                            <p class="heading-text">Stripping and Stuffing</p>
-                            <p class="subtext-2">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
-                            <button class="see-more">See More</button>
-                        </div>
                     </div>
-                    <div class="text-right right-align">
-                        <div class="box">
-                            <p class="heading-text">Order/Case Picking</p>
-                            <p class="subtext-2">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
-                            <button class="see-more">See More</button>
-                        </div>
-                        <div class="box">
-                            <p class="heading-text">Dock Charging</p>
-                            <p class="subtext-2">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
-                            <button class="see-more">See More</button>
-                        </div>
-                    </div>
+                </div>
+                {{/each}}
             </div>
             <div class="centered-box">
                 <p class="heading-text">Re-packing (boxing or sacking) and labelling</p>

@@ -1,11 +1,27 @@
 {{#if isAdminMode}}
+{{> navbar}}
 <div class="admin-hotbar">
-    <button class="edit-text" id="edit-text">Edit Text</button>
-    <button class="edit-img" id="edit-img">Edit Images</button>
-    {{!-- <button id="add">Add</button> --}}
-    {{!-- <button id="delete">Delete</button> --}}
+    <div id="gear-icon" class="icon">
+        <img src="../../assets/icons/gear.png">
+    </div>
+</div>
+<div id="options" class="options">
+        <button id="edit-text">Edit Text</button>
+        <button id="edit-img">Edit Image</button>
+        <!-- Add other options here -->
 </div>
 {{/if}}
+
+<script>
+    function toggleOptions() {
+        var options = document.getElementById("options");
+        if (options.style.display === "none" || options.style.display === "") {
+            options.style.display = "block";
+        } else {
+            options.style.display = "none";
+        }
+    }
+</script>
 
 <style>
 .admin-hotbar {
@@ -33,6 +49,52 @@
     cursor: pointer;
 }
 
+#gear-icon img {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px;
+}
+
+#admin-hotbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+.icon {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.options {
+    display: none;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: sticky;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1;
+    right: 0;
+    top: 0;
+}
+
+.options button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.options button:hover {
+    background-color: #0056b3;
+}
 
 .edit-text.active{
     background-color: gray;

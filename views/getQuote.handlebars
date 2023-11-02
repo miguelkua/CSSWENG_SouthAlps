@@ -14,7 +14,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     </head>
     <body>
-        {{> navbar }} 
+        <!--Navbar-->
+        <div class="custom-navbar">
+            <ul>
+                <a href="/home"><img class="company-logo" src="../assets/logo/South Alps Logo 3 v2.png"></a>
+                <li><a href="/facility">Facility</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/careers">Careers</a></li>
+                <li><a href="/getQuote">Contact Us</a></li>
+            </ul>
+        </div>
 
         <!---Picture and Title of Page-->
         <div class="container11">
@@ -28,7 +37,7 @@
         <!--Get Quote Form-->
         <div class="form-container">
             <h2>Contact Us</h2>
-            <form action="/quotes/send" method="post">
+            <form action="#" method="post">
                 <div class="form-row">
                     <div class="form-group">
                         <input type="text" id="last-name" name="last_name" placeholder="Last Name" required>
@@ -138,9 +147,7 @@
                     </ul>
             </div>
         </div>
-        {{#if isAdminMode}}    
-            {{> adminhotbar}}
-        {{/if}}
+        {{> adminhotbar}}
         <script src="/javascript/adminhotbar.js"></script>
     </body>
 </html>

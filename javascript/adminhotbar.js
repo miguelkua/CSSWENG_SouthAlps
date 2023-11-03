@@ -90,21 +90,12 @@ function toggleMode(action){
 
 function selectEntry(event) {
     const clickedElement = event.target;
-    let contentToDisplay = '';
 
     if(isEditText == true){
-        contentToDisplay = clickedElement.textContent;
-    }
-    else if(isEditImage == true){
-        contentToDisplay = clickedElement.alt;
+        alert(clickedElement.textContent);
     }
 
-    let userResponse = prompt(`You selected: ${contentToDisplay}. \n\nDo you want to add changes? (yes/no)`);
-    
-    if (userResponse && userResponse.toLowerCase() === 'yes') {
-        // Add your logic to apply changes here. For now, just alerting.
-        alert('Changes will be applied.');
-    } else {
-        alert('No changes applied.');
+    else if(isEditImage == true){
+        alert(clickedElement.alt)
     }
 }

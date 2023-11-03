@@ -1,5 +1,6 @@
 const mongoose = require('mongoose') //install mongodb first along side node.js, then npm i mongoose
 const Services = require('./schemas/services')
+const Contacts = require('/./schemas/contactinfo')
 
 mongoose 
   .connect('mongodb://127.0.0.1:27017/mco2')//connects to database, for some reason localhost:27017 doesnt work, but 127.0.0.1 does??
@@ -50,4 +51,32 @@ async function switcher(){
     } catch(e){
         console.log(e.message)
     }
+}
+
+async function contacts_populate(){
+  try{
+    //Adding contact information
+    Contacts.insertMany([
+      {type:"E-mail", description:"Placeholder", icon:"bi bi-envelope-fill icon-heading"},
+      {type:"ContactNumber", description:"Placeholder", icon:"bi bi-telephone-fill icon-heading"},
+      {type:"SocialMedia", description:"Placeholder", icon:"bi bi-globe icon-heading"}
+    ])
+    
+  }catch(e){
+    console.log(e.message)
+  }
+}
+
+async function contacts_delete(){
+  try{
+      Contacts.deleteMany({})
+      .then((result) => {
+      console.log(`Refreshed ${result.deletedCount} documents`);
+    })
+      .catch((error) => {
+      console.error("Error deleting documents:", error);
+    })
+  } catch(e){
+      console.log(e.message)
+  }
 }

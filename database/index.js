@@ -58,8 +58,8 @@ async function contacts_populate(){
     //Adding contact information
     Contacts.insertMany([
       {type:"E-mail", description:"Placeholder", icon:"bi bi-envelope-fill icon-heading"},
-      {type:"ContactNumber", description:"Placeholder", icon:"bi bi-telephone-fill icon-heading"},
-      {type:"SocialMedia", description:"Placeholder", icon:"bi bi-globe icon-heading"}
+      {type:"Contact Number", description:"Placeholder", icon:"bi bi-telephone-fill icon-heading"},
+      {type:"Social Media", description:"Placeholder", icon:"bi bi-globe icon-heading"}
     ])
     
   }catch(e){
@@ -80,3 +80,5 @@ async function contacts_delete(){
       console.log(e.message)
   }
 }
+
+module.exports = contacts_populate

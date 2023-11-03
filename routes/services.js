@@ -6,6 +6,7 @@ router.get('/', async (req, res) =>
 {
   const services = await Services.find({}).exec();
   var isAdminMode = req.user ?? 'none';
+  console.log(services);
 
   res.render('services', 
   {

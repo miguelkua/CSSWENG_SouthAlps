@@ -62,18 +62,20 @@ app.get('/', (req, res) => {
 let isAdminMode = true;
 
 // enables the routers exported from './routes'
+const homeRouter = require('./routes/home.js');
 const quoteRouter = require('./routes/quotes.js');
 const adminRouter = require('./routes/admin.js');
 const serviceRouter = require('./routes/services.js');
 
+app.use('/home', homeRouter);
 app.use('/quotes', quoteRouter);
 app.use('/admin', adminRouter);
 app.use('/services', serviceRouter);
 
 // the rest of the pages interacting with each other
-app.get('/home', (req, res) => {
-    res.render('home', {layout: false, isAdminMode});
-});
+// app.get('/home', (req, res) => {
+//     res.render('home', {layout: false, isAdminMode});
+// });
 
 app.get('/facility', (req, res) => {
     res.render('facility', {layout: false, isAdminMode});

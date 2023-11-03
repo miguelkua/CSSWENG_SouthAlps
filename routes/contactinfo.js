@@ -1,16 +1,22 @@
-const express = require('express');
-const router = express.Router();
+/**
+ * When required, this code retrieves all entries 
+ * in the Contact Info Collection.
+ */
+
 const Contacts = require('../database/schemas/contactinfo.js');
+const Services = require('../database/schemas/services.js');
 
-router.get('/', async (req, res) =>
+var getContacts = async function ()
 {
-  const contacts = await Contacts.find({}).exec();
-  var isAdminMode = req.user ?? 'none';
+  await Contacts.find({}).exec()
+  .then((res) => res);
+};
 
-  res.render('contactus', 
-  {
-      layout: false, 
-      isAdminMode: (isAdminMode == 'none'),
-      contacts: contacts
-  });
-});
+var getServices = async function ()
+{
+  await Services.find({}).exec()
+  .then((res) => res);
+};
+
+module.exports.getContacts = getContacts;
+module.exports.getServices = getServices;

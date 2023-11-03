@@ -40,6 +40,9 @@ app.use('/css', express.static('css'));
 // enables the use of the javascript folder
 app.use('/javascript', express.static('javascript'));
 
+// enables the use of the models folder
+app.use('/models', express.static('models'));
+
 // Defaults to home in the views folder
 app.get('/', (req, res) => {
     res.redirect('/home');

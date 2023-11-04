@@ -15,6 +15,15 @@
         <button class="admin" id="text-cancel">Cancel</button>
     </div>
 </div>
+
+<div class="modal" id="image-space">
+    <div class="modal-content" id="image-box">
+        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+        <img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
+        <button class="admin" id="image-change">Change</button>
+        <button class="admin" id="image-cancel">Cancel</button>
+    </div>
+</div>
 {{/if}}
 
 <style>
@@ -74,8 +83,7 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    width: 30%; /* Make the content fill the available width */
+    max-width: 30%; 
+    max-height: 70%;
 }
-
-
 </style>

@@ -67,17 +67,25 @@ db.once('open', () => console.log("Successfully Connected to Database"))
 
 // the rest of the pages interacting with each other
 const TextEntry = require('./models/textEntry.js');
+const ImageEntry = require('./models/imageEntry.js');
 
 app.get('/home', async (req, res) => {
     try {
-        const data = await TextEntry.find({ page: 'home' }); 
-        const textMappings = {};
+        const textData = await TextEntry.find({ page: 'home' }); 
+        const imageData = await ImageEntry.find({ page: 'home' }); 
 
-        data.forEach(entry => {
-            textMappings[entry.id] = entry.text; 
+        const textMappings = {};
+        const imageMappings = {};
+
+        textData.forEach(entry => {
+            textMappings[entry.id] = entry.text;
         });
 
-        res.render('home', { layout: false, isAdminMode, textMappings });
+        imageData.forEach(entry => {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('home', { layout: false, isAdminMode, textMappings, imageMappings });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
@@ -88,14 +96,21 @@ app.get('/home', async (req, res) => {
   
 app.get('/facility', async (req, res) => {
     try {
-        const data = await TextEntry.find({ page: 'facility' }); 
-        const textMappings = {};
+        const textData = await TextEntry.find({ page: 'facility' }); 
+        const imageData = await ImageEntry.find({ page: 'facility' }); 
 
-        data.forEach(entry => {
-            textMappings[entry.id] = entry.text; 
+        const textMappings = {};
+        const imageMappings = {};
+
+        textData.forEach(entry => {
+            textMappings[entry.id] = entry.text;
         });
 
-        res.render('facility', { layout: false, isAdminMode, textMappings });
+        imageData.forEach(entry => {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('facility', { layout: false, isAdminMode, textMappings, imageMappings });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
@@ -108,14 +123,21 @@ app.get('/facility', async (req, res) => {
 
 app.get('/index', async (req, res) => {
     try {
-        const data = await TextEntry.find({ page: 'index' }); 
-        const textMappings = {};
+        const textData = await TextEntry.find({ page: 'index' }); 
+        const imageData = await ImageEntry.find({ page: 'index' }); 
 
-        data.forEach(entry => {
-            textMappings[entry.id] = entry.text; 
+        const textMappings = {};
+        const imageMappings = {};
+
+        textData.forEach(entry => {
+            textMappings[entry.id] = entry.text;
         });
 
-        res.render('index', { layout: false, isAdminMode, textMappings });
+        imageData.forEach(entry => {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('index', { layout: false, isAdminMode, textMappings, imageMappings });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
@@ -124,14 +146,21 @@ app.get('/index', async (req, res) => {
 
 app.get('/services', async (req, res) => {
     try {
-        const data = await TextEntry.find({ page: 'services' }); 
-        const textMappings = {};
+        const textData = await TextEntry.find({ page: 'services' }); 
+        const imageData = await ImageEntry.find({ page: 'services' }); 
 
-        data.forEach(entry => {
-            textMappings[entry.id] = entry.text; 
+        const textMappings = {};
+        const imageMappings = {};
+
+        textData.forEach(entry => {
+            textMappings[entry.id] = entry.text;
         });
 
-        res.render('services', { layout: false, isAdminMode, textMappings });
+        imageData.forEach(entry => {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('services', { layout: false, isAdminMode, textMappings, imageMappings });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
@@ -140,14 +169,21 @@ app.get('/services', async (req, res) => {
 
 app.get('/careers', async (req, res) => {
     try {
-        const data = await TextEntry.find({ page: 'careers' }); 
-        const textMappings = {};
+        const textData = await TextEntry.find({ page: 'careers' }); 
+        const imageData = await ImageEntry.find({ page: 'careers' }); 
 
-        data.forEach(entry => {
-            textMappings[entry.id] = entry.text; 
+        const textMappings = {};
+        const imageMappings = {};
+
+        textData.forEach(entry => {
+            textMappings[entry.id] = entry.text;
         });
 
-        res.render('careers', { layout: false, isAdminMode, textMappings });
+        imageData.forEach(entry => {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('careers', { layout: false, isAdminMode, textMappings, imageMappings });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');

@@ -8,12 +8,19 @@ const editImgButton = document.getElementById('edit-img');
 // const deleteButton = document.getElementById('delete');
 
 let elementID = '';
+let fileName = '';
 
 //text edit functions
 const textSpace = document.getElementById('text-space');
 const textArea = document.getElementById('text-area');
 const textChange = document.getElementById('text-change');
 const textCancel = document.getElementById('text-cancel');
+
+const imageSpace = document.getElementById('image-space'); 
+const imageUpload = document.getElementById('image-upload'); 
+const imageChange = document.getElementById('image-change'); 
+const imageCancel = document.getElementById('image-cancel');
+const uploadedImage = document.getElementById('uploaded-image');
 
 document.addEventListener('DOMContentLoaded', function () {
     editTextButton.addEventListener('click', function () {
@@ -52,6 +59,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    //this previews the image
+    imageUpload.addEventListener('change', function() {
+        const file = imageUpload.files[0];
+        if (file) {
+            fileName = file.name;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    imageCancel.addEventListener('click', function () { 
+        imageSpace.style.visibility = 'hidden';
+    });
+
+    imageChange.addEventListener('click', async function () {
+        const updatedContent = fileName;
+        
+        const imageUploadInput = document.getElementById('image-upload');
+        const imageFile = imageUploadInput.files[0]; // get the selected file
+        const formData = new FormData();
+        formData.append('updatedContent', updatedContent);
+        formData.append('elementID', elementID);
+        formData.append('image-upload', imageFile); // use the actual file, not a URL
+    
+        try {
+            const response = await fetch('/editImage', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.error('Update request failed:', response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error('Error during update:', error);
+        }
+    });
+    
     
     // addButton.addEventListener('click', function () {
     //     alert('Add button clicked');
@@ -126,18 +176,22 @@ function toggleMode(action){
 
 function selectEntry(event) {
     const clickedElement = event.target;
-    let contentToDisplay = '';
     if(isEditText == true){
         //if its not one of the admin buttons
         if (!clickedElement.classList.contains('admin')) {
             elementID = clickedElement.id;
-            contentToDisplay = clickedElement.textContent;
-            textArea.value  = contentToDisplay;
+            textArea.value  = clickedElement.textContent;
             textSpace.style.visibility = 'visible';
         }
     }
 
     else if(isEditImage == true){
-        contentToDisplay = clickedElement.alt;
+        if (!clickedElement.classList.contains('admin')) {
+            fileName = clickedElement.alt; // default in case no file is uploaded
+            elementID = clickedElement.id;
+            imageUpload.value = '';
+            uploadedImage.src = clickedElement.src; //just for preview
+            imageSpace.style.visibility = 'visible';
+        }
     }
 }

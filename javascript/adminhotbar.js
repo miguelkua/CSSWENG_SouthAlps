@@ -7,6 +7,8 @@ const editImgButton = document.getElementById('edit-img');
 // const addButton = document.getElementById('add');
 // const deleteButton = document.getElementById('delete');
 
+let elementID = '';
+
 //text edit functions
 const textSpace = document.getElementById('text-space');
 const textArea = document.getElementById('text-area');
@@ -26,6 +28,31 @@ document.addEventListener('DOMContentLoaded', function () {
         textSpace.style.visibility = 'hidden';
     });
 
+    textChange.addEventListener('click', function () {
+        const updatedContent = textArea.value;
+
+        try {
+            fetch('/editText', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ updatedContent, elementID }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Reload the page if the fetch operation is successful
+                    location.reload();
+                } else {
+                    console.error('Update request failed:', response.status, response.statusText);
+                }
+            });
+        } catch (error) {
+            console.error('Error during update:', error);
+        }
+    });
+
+    
     // addButton.addEventListener('click', function () {
     //     alert('Add button clicked');
     // });
@@ -36,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function toggleMode(action){
-    const textEntries = document.querySelectorAll('p'); //perhaps add more elements onto this to change them
+    const textEntries = document.querySelectorAll('p, ul, ol, li, a, h1, h2, h3, h4, h5, h6, button'); //perhaps add more elements onto this to change them
     const imageEntries = document.querySelectorAll('img');
 
     if(action === 'edit-text'){
@@ -100,21 +127,17 @@ function toggleMode(action){
 function selectEntry(event) {
     const clickedElement = event.target;
     let contentToDisplay = '';
-
     if(isEditText == true){
-        contentToDisplay = clickedElement.textContent;
-        textArea.value  = contentToDisplay;
-        textSpace.style.visibility = 'visible';
+        //if its not one of the admin buttons
+        if (!clickedElement.classList.contains('admin')) {
+            elementID = clickedElement.id;
+            contentToDisplay = clickedElement.textContent;
+            textArea.value  = contentToDisplay;
+            textSpace.style.visibility = 'visible';
+        }
     }
 
     else if(isEditImage == true){
         contentToDisplay = clickedElement.alt;
     }
-    
-    // if (userResponse && userResponse.toLowerCase() === 'yes') {
-    //     // Add your logic to apply changes here. For now, just alerting.
-    //     alert('Changes will be applied.');
-    // } else {
-    //     alert('No changes applied.');
-    // }
 }

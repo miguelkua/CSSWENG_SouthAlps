@@ -50,10 +50,11 @@ app.get('/', (req, res) => {
 let isAdminMode = true;
 
 // enables the routers exported from './routes'
-
+const editRouter = require('./routes/edit.js');
 const quoteRouter = require('./routes/quotes.js');
 const adminRouter = require('./routes/admin.js');
 
+app.use(editRouter); //this works
 app.use('/quotes', quoteRouter);
 app.use('/admin', adminRouter);
 
@@ -65,9 +66,6 @@ db.on('error', () => console.log("Failed to Connect to Database"))
 db.once('open', () => console.log("Successfully Connected to Database"))
 
 // the rest of the pages interacting with each other
-// app.get('/home', (req, res) => {
-//     res.render('home', {layout: false, isAdminMode});
-// });
 const TextEntry = require('./models/textEntry.js');
 
 app.get('/home', async (req, res) => {
@@ -88,24 +86,72 @@ app.get('/home', async (req, res) => {
 
   
   
-app.get('/facility', (req, res) => {
-    res.render('facility', {layout: false, isAdminMode});
+app.get('/facility', async (req, res) => {
+    try {
+        const data = await TextEntry.find({ page: 'facility' }); 
+        const textMappings = {};
+
+        data.forEach(entry => {
+            textMappings[entry.id] = entry.text; 
+        });
+
+        res.render('facility', { layout: false, isAdminMode, textMappings });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 // app.get('/getQuote', (req, res) => {
 //     res.render('getQuote', {layout: false, isAdminMode});
 // });
 
-app.get('/index', (req, res) => {
-    res.render('index', {layout: false, isAdminMode});
+app.get('/index', async (req, res) => {
+    try {
+        const data = await TextEntry.find({ page: 'index' }); 
+        const textMappings = {};
+
+        data.forEach(entry => {
+            textMappings[entry.id] = entry.text; 
+        });
+
+        res.render('index', { layout: false, isAdminMode, textMappings });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-app.get('/services', (req, res) => {
-    res.render('services', {layout: false, isAdminMode});
+app.get('/services', async (req, res) => {
+    try {
+        const data = await TextEntry.find({ page: 'services' }); 
+        const textMappings = {};
+
+        data.forEach(entry => {
+            textMappings[entry.id] = entry.text; 
+        });
+
+        res.render('services', { layout: false, isAdminMode, textMappings });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-app.get('/careers', (req, res) => {
-    res.render('careers', {layout: false, isAdminMode});
+app.get('/careers', async (req, res) => {
+    try {
+        const data = await TextEntry.find({ page: 'careers' }); 
+        const textMappings = {};
+
+        data.forEach(entry => {
+            textMappings[entry.id] = entry.text; 
+        });
+
+        res.render('careers', { layout: false, isAdminMode, textMappings });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 // app.get('/login', (req, res) => {

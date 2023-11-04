@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require("path");
 const passport = require("passport");
 const session = require("express-session");
+const mongoose = require("mongoose")
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -40,9 +41,6 @@ app.use('/css', express.static('css'));
 // enables the use of the javascript folder
 app.use('/javascript', express.static('javascript'));
 
-// enables the use of the models folder
-app.use('/models', express.static('models'));
-
 // Defaults to home in the views folder
 app.get('/', (req, res) => {
     res.redirect('/home');
@@ -52,17 +50,44 @@ app.get('/', (req, res) => {
 let isAdminMode = true;
 
 // enables the routers exported from './routes'
+
 const quoteRouter = require('./routes/quotes.js');
 const adminRouter = require('./routes/admin.js');
 
 app.use('/quotes', quoteRouter);
 app.use('/admin', adminRouter);
 
+//database stuff
+mongoose.connect('mongodb://127.0.0.1:27017/SouthAlps_DB')
+const db = mongoose.connection
+
+db.on('error', () => console.log("Failed to Connect to Database"))
+db.once('open', () => console.log("Successfully Connected to Database"))
+
 // the rest of the pages interacting with each other
-app.get('/home', (req, res) => {
-    res.render('home', {layout: false, isAdminMode});
+// app.get('/home', (req, res) => {
+//     res.render('home', {layout: false, isAdminMode});
+// });
+const TextEntry = require('./models/textEntry.js');
+
+app.get('/home', async (req, res) => {
+    try {
+        const data = await TextEntry.find({ page: 'home' }); 
+        const textMappings = {};
+
+        data.forEach(entry => {
+            textMappings[entry.id] = entry.text; 
+        });
+
+        res.render('home', { layout: false, isAdminMode, textMappings });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
+  
+  
 app.get('/facility', (req, res) => {
     res.render('facility', {layout: false, isAdminMode});
 });

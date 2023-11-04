@@ -5,6 +5,15 @@
     {{!-- <button id="add">Add</button> --}}
     {{!-- <button id="delete">Delete</button> --}}
 </div>
+
+<!-- The hidden modal -->
+<div class="modal" id="text-space">
+    <div class="modal-content" id="text-box">
+        <textarea id="text-area" rows="4" cols="50"></textarea>
+        <button id="text-change">Change</button>
+        <button id="text-cancel">Cancel</button>
+    </div>
+</div>
 {{/if}}
 
 <style>
@@ -44,6 +53,27 @@
 
 .admin-hotbar button:hover {
     background-color: #2980b9;
+}
+
+.modal {
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 105; /* for some reason, its still beneath the upper content bar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #962f2f;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%; /* Make the content fill the available width */
 }
 
 

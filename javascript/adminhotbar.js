@@ -1,20 +1,29 @@
 let isEditText = false;
 let isEditImage = false;
 
+//admin buttons
 const editTextButton = document.getElementById('edit-text');
 const editImgButton = document.getElementById('edit-img');
 // const addButton = document.getElementById('add');
 // const deleteButton = document.getElementById('delete');
 
+//text edit functions
+const textSpace = document.getElementById('text-space');
+const textArea = document.getElementById('text-area');
+const textChange = document.getElementById('text-change');
+const textCancel = document.getElementById('text-cancel');
+
 document.addEventListener('DOMContentLoaded', function () {
     editTextButton.addEventListener('click', function () {
-        // alert('Edit text button clicked');
         toggleMode('edit-text');
     });
 
     editImgButton.addEventListener('click', function () {
-        // alert('Edit text image clicked');
         toggleMode('edit-img');
+    });
+
+    textCancel.addEventListener('click', function () {
+        textSpace.style.visibility = 'hidden';
     });
 
     // addButton.addEventListener('click', function () {
@@ -94,18 +103,18 @@ function selectEntry(event) {
 
     if(isEditText == true){
         contentToDisplay = clickedElement.textContent;
+        textArea.value  = contentToDisplay;
+        textSpace.style.visibility = 'visible';
     }
 
     else if(isEditImage == true){
         contentToDisplay = clickedElement.alt;
     }
-
-    let userResponse = prompt(`You selected: ${contentToDisplay}. \n\nDo you want to add changes? (yes/no)`);
     
-    if (userResponse && userResponse.toLowerCase() === 'yes') {
-        // Add your logic to apply changes here. For now, just alerting.
-        alert('Changes will be applied.');
-    } else {
-        alert('No changes applied.');
-    }
+    // if (userResponse && userResponse.toLowerCase() === 'yes') {
+    //     // Add your logic to apply changes here. For now, just alerting.
+    //     alert('Changes will be applied.');
+    // } else {
+    //     alert('No changes applied.');
+    // }
 }

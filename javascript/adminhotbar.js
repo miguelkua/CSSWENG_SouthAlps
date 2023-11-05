@@ -2,6 +2,8 @@ let isEditText = false;
 let isEditImage = false;
 
 //admin buttons
+const gearIcon = document.getElementById('gear-icon');
+const options = document.getElementById('options');
 const editTextButton = document.getElementById('edit-text');
 const editImgButton = document.getElementById('edit-img');
 // const addButton = document.getElementById('add');
@@ -21,6 +23,22 @@ const imageUpload = document.getElementById('image-upload');
 const imageChange = document.getElementById('image-change'); 
 const imageCancel = document.getElementById('image-cancel');
 const uploadedImage = document.getElementById('uploaded-image');
+
+gearIcon.addEventListener('click', function () {
+  if (options.style.display === 'none' || options.style.display === '') {
+    options.style.display = 'block';
+  } else {
+    options.style.display = 'none';
+  }
+});
+
+editTextButton.addEventListener('click', function () {
+  toggleMode('edit-text');
+});
+
+editImgButton.addEventListener('click', function () {
+  toggleMode('edit-img');
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     editTextButton.addEventListener('click', function () {

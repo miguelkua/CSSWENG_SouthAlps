@@ -1,0 +1,89 @@
+{{#if isAdminMode}}
+<div class="admin-hotbar">
+    <button class="edit-text" id="edit-text">Edit Text</button>
+    <button class="edit-img" id="edit-img">Edit Images</button>
+    {{!-- <button id="add">Add</button> --}}
+    {{!-- <button id="delete">Delete</button> --}}
+</div>
+
+<!-- The hidden modal -->
+{{!-- class admin removes it from being selected by the edit --}}
+<div class="modal" id="text-space">
+    <div class="modal-content" id="text-box">
+        <textarea id="text-area" rows="4" cols="50"></textarea>
+        <button class="admin" id="text-change">Change</button>
+        <button class="admin" id="text-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="image-space">
+    <div class="modal-content" id="image-box">
+        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+        <img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
+        <button class="admin" id="image-change">Change</button>
+        <button class="admin" id="image-cancel">Cancel</button>
+    </div>
+</div>
+{{/if}}
+
+<style>
+.admin-hotbar {
+    position: sticky; /* Use 'fixed' instead of 'sticky' */
+    bottom: 0;
+    background-color: lightblue;
+    color: #000;
+    padding: 10px;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center; /* Adjust this according to your layout preference */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow if desired */
+}
+
+.admin-hotbar button {
+    width: 130px; 
+    height: 40px; 
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.edit-text.active{
+    background-color: gray;
+}
+
+.edit-img.active{
+    background-color: gray;
+}
+
+.admin-hotbar button:hover {
+    background-color: #2980b9;
+}
+
+.modal {
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 105; /* for some reason, its still beneath the upper content bar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #962f2f;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 30%; 
+    max-height: 70%;
+}
+</style>

@@ -6,12 +6,11 @@ const router = express.Router();
 
 router.get('/', (req, res) =>
 {
-    const isAdminMode = req.user ?? false;
-    console.log(isAdminMode);
+    var isAdminMode = req.user ?? 'none';
     res.render('getQuote', 
     {
         layout: false, 
-        isAdminMode: (isAdminMode? isAdminMode.username : false)
+        isAdminMode: (isAdminMode == 'none') 
     });
 });
   

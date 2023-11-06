@@ -1,45 +1,33 @@
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const LocalStrategy = require('passport-local').Strategy
+// const bcrypt = require('bcrypt')
 
-function initialize(passport, getUserByName, getUserById) {
+// TODO: Find a way to replace this hard-coding
+const admin_account = { _id: 0, username: 'admin', password: 'admin' };
+
+function initialize(passport) {
     const authenticateUser = async (username, password, done) => 
     {
-        const user = await getUserByName(username);
-
-        if (user == null)
+        if (username != admin_account.username)
         {
             return done(null, false, { message: 'Username does not exist.' });
         }
-
-        try 
+        if (password == admin_account.password)
         {
-            if (await bcrypt.compare(password, user.password)) 
-            {
-                return done(null, user);
-            } 
-            else 
-            {
-                return done(null, false, { message: 'Password does not match' });
-            }
-        } 
-        catch (error) 
+            return done(null, admin_account);
+        }
+        else
         {
-            return done(error);
+            return done(null, false, { message: 'Password does not match.' });
         }
     }
 
-    passport.use(new LocalStrategy(
-    {
+    passport.use(new LocalStrategy({
         usernameField: 'username'
         // passwordField is 'password' by default
     }, authenticateUser));
 
     passport.serializeUser((user, done) => done(null, user._id));
-    passport.deserializeUser(async (_id, done) => 
-    { 
-        let user_id = await getUserById(_id)
-        return done(null, user_id)
-    });
+    passport.deserializeUser((_id, done) => done(null, admin_account));
 }
 
 module.exports = initialize

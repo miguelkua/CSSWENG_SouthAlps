@@ -133,8 +133,27 @@ app.get('/facility', async (req, res) => {
     }
 });
 
-// app.get('/getQuote', (req, res) => {
-//     res.render('getQuote', {layout: false, isAdminMode});
+// app.get('/quotes', async (req, res) => {
+//     try {
+//         const textData = await TextEntry.find({ page: 'quotes' }); 
+//         const imageData = await ImageEntry.find({ page: 'quotes' }); 
+
+//         const textMappings = {};
+//         const imageMappings = {};
+
+//         textData.forEach(entry => {
+//             textMappings[entry.id] = entry.text;
+//         });
+
+//         imageData.forEach(entry => {
+//             imageMappings[entry.id] = entry.imageName;
+//         });
+
+//         res.render('quotes', { layout: false, isAdminMode, textMappings, imageMappings });
+//     } catch (error) {
+//         console.error('Error:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
 // });
 
 app.get('/index', async (req, res) => {

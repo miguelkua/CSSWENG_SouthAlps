@@ -51,12 +51,37 @@
 {
   "page": "home",
   "id": "text11",
-  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
+  "text": "South Alps Cold Storage and Logistics Inc. operates a modern and efficiently designed cold storage facility that is strategically located at Southwoods Industrial Park, Brgy. Mabuhay, Carmona, Cavite (3kms away from Carmona Exit) - a perfect converging point of distribution and service to the Metro Manila and Southern Luzon segments."
 },
 {
   "page": "home",
   "id": "text12",
-  "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore."
+  "text": "The company caters blast freezing, cold storage warehousing, temperature controlled transportation, inventory management, and other value added services."
+},
+{
+  "page": "getQuote",
+  "id": "text10",
+  "text": "Map and Locations"
+},
+{
+  "page": "getQuote",
+  "id": "text11",
+  "text": "South Alps Cold Storage and Logistics Inc. operates a modern and efficiently designed cold storage facility that is strategically located at Southwoods Industrial Park, Brgy. Mabuhay, Carmona, Cavite (3kms away from Carmona Exit) - a perfect converging point of distribution and service to the Metro Manila and Southern Luzon segments."
+},
+{
+  "page": "getQuote",
+  "id": "text12",
+  "text": "The company caters blast freezing, cold storage warehousing, temperature controlled transportation, inventory management, and other value added services."
+},
+{
+  "page": "facility",
+  "id": "text11",
+  "text": "South Alps Cold Storage and Logistics Inc. operates a modern and efficiently designed cold storage facility that is strategically located at Southwoods Industrial Park, Brgy. Mabuhay, Carmona, Cavite (3kms away from Carmona Exit) - a perfect converging point of distribution and service to the Metro Manila and Southern Luzon segments."
+},
+{
+  "page": "facility",
+  "id": "text12",
+  "text": "The company caters blast freezing, cold storage warehousing, temperature controlled transportation, inventory management, and other value added services."
 },
 {
   "page": "facility",
@@ -86,7 +111,7 @@
 {
   "page": "facility",
   "id": "text18",
-  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
+  "text": "southalps01@gmail.com"
 },
 {
   "page": "facility",
@@ -96,7 +121,7 @@
 {
   "page": "facility",
   "id": "text20",
-  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
+  "text": "0917 651 5214"
 },
 {
   "page": "facility",
@@ -106,17 +131,97 @@
 {
   "page": "facility",
   "id": "text22",
-  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
+  "text": "Facebook: South Alps Cold Storage\\nLinkedIn:South Alps Cold Storage"
 },
 {
-  "page": "get_quote",
+  "page": "getQuote",
   "id": "text23",
   "text": "Get Quote"
 },
 {
-  "page": "get_quote",
+  "page": "getQuote",
   "id": "text24",
-  "text": "Inquireies? Pricing? We got you covered."
+  "text": "Inquiries? Pricing? We got you covered."
+},
+{
+  "page": "services",
+  "id": "text15",
+  "text": "Contact Us"
+},
+{
+  "page": "services",
+  "id": "text16",
+  "text": "Business Hours: Mon-Fri, 9:00 AM - 5:00 PM"
+},
+{
+  "page": "services",
+  "id": "text17",
+  "text": "Email"
+},
+{
+  "page": "services",
+  "id": "text18",
+  "text": "southalps01@gmail.com"
+},
+{
+  "page": "services",
+  "id": "text19",
+  "text": "Contact Number"
+},
+{
+  "page": "services",
+  "id": "text20",
+  "text": "0917 651 5214"
+},
+{
+  "page": "services",
+  "id": "text21",
+  "text": "Social Media"
+},
+{
+  "page": "services",
+  "id": "text22",
+  "text": "Facebook: South Alps Cold Storage"
+},
+{
+  "page": "careers",
+  "id": "text15",
+  "text": "Contact Us"
+},
+{
+  "page": "careers",
+  "id": "text16",
+  "text": "Business Hours: Mon-Fri, 9:00 AM - 5:00 PM"
+},
+{
+  "page": "careers",
+  "id": "text17",
+  "text": "Email"
+},
+{
+  "page": "careers",
+  "id": "text18",
+  "text": "southalps01@gmail.com"
+},
+{
+  "page": "careers",
+  "id": "text19",
+  "text": "Contact Number"
+},
+{
+  "page": "careers",
+  "id": "text20",
+  "text": "0917 651 5214"
+},
+{
+  "page": "careers",
+  "id": "text21",
+  "text": "Social Media"
+},
+{
+  "page": "careers",
+  "id": "text22",
+  "text": "Facebook: South Alps Cold Storage"
 },
 {
   "page": "services",
@@ -253,4 +358,4 @@
   "id": "text51",
   "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
 }
-]
+  ]

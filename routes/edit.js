@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require("path");
 const multer = require('multer'); // for the image URLs
 const fs = require('fs'); // files
-const TextEntry = require('../models/textEntry');
+const TextEntry = require('../models/textEntry.js');
 const ImageEntry = require('../models/imageEntry.js');
 
 

@@ -1,21 +1,29 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const hbs = require('handlebars');
 const path = require("path");
 const passport = require("passport");
 const session = require("express-session");
 const mongoose = require("mongoose")
+const { allowInsecurePrototypeAccess }  = require('@handlebars/allow-prototype-access');
+const { engine } = require('express-handlebars');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Initializing the passport
 const initializePassport = require('./passport-config.js');
-initializePassport(passport);
+const Admins = require('./models/admin.js');
+initializePassport(
+    passport,
+    name => { return Admins.findOne({username: name}) },
+    id => { return Admins.findOne({_id: id}) }
+);
 
 // enables the use of sessions & user authentication
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: "sikret", // TEMPORARY (until dotenv is setup)
+    secret: "sikret", // TODO: TEMPORARY (until dotenv is setup)
     resave: false,
     saveUninitialized: false
 }));
@@ -26,7 +34,11 @@ app.use(passport.session());
 app.use(express.json());
 
 // View engine setup
-app.engine('handlebars', exphbs.engine());
+// app.engine('handlebars', exphbs.engine());
+app.engine('handlebars', engine({
+    helpers: require('./views/handlebars-helpers').helpers,
+    handlebars: allowInsecurePrototypeAccess(hbs)
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); // views is the folder name
 
@@ -51,12 +63,16 @@ let isAdminMode = true;
 
 // enables the routers exported from './routes'
 const editRouter = require('./routes/edit.js');
+// const homeRouter = require('./routes/home.js');
 const quoteRouter = require('./routes/quotes.js');
 const adminRouter = require('./routes/admin.js');
+const serviceRouter = require('./routes/services.js');
 
 app.use(editRouter); //this works
+// app.use('/home', homeRouter);
 app.use('/quotes', quoteRouter);
 app.use('/admin', adminRouter);
+app.use('/services', serviceRouter);
 
 //database stuff
 mongoose.connect('mongodb://127.0.0.1:27017/SouthAlps_DB')

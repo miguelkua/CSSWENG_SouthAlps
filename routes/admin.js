@@ -9,15 +9,10 @@ router.get('/', checkNotAuthenticated, (req, res) =>
     res.render('login', {layout: false});
 });
 
-router.get('/home', checkAuthenticated, (req, res) => 
-{
-    res.render('home', {layout: false});
-});
-
 router.post('/', checkNotAuthenticated, passport.authenticate('local', 
 {
     successRedirect: '/home',
-    failureRedirect: '/',
+    failureRedirect: '/admin',
     failureFlash: false
 }));
 

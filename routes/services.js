@@ -1,18 +1,46 @@
 const express = require('express');
 const router = express.Router();
-const Services = require('../models/services.js');
+const controller = require('../database/controller.js');
+const { collection } = require('../database/schemas/admin.js');
 
-router.get('/', async (req, res) =>
+
+router.get('/', async (req, res) => 
 {
-  const services = await Services.find({}).exec();
-  var isAdminMode = req.user ?? false;
+    try 
+    {
+        const textData = await controller.getText('services'); 
+        const imageData = await controller.getImages('services'); 
+        const services = await controller.getAll('services');
 
-  res.render('services', 
-  {
-      layout: false, 
-      isAdminMode: (isAdminMode? req.user.username : false),
-      services: services
-  });
+        const textMappings = {};
+        const imageMappings = {};
+
+        const isAdminMode = req.user ?? false;
+
+        textData.forEach(entry => 
+        {
+            textMappings[entry.id] = entry.text;
+        });
+
+        imageData.forEach(entry => 
+        {
+            imageMappings[entry.id] = entry.imageName;
+        });
+
+        res.render('services', 
+        { 
+            layout: false,
+            isAdminMode: (isAdminMode? req.user.username : false),
+            textMappings,
+            imageMappings,
+            services: services
+        });
+    } 
+    catch (error) 
+    {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 router.post('/add', async function(req,res)
@@ -23,7 +51,7 @@ router.post('/add', async function(req,res)
         name: req.body.name,
         description: req.body.description
     });
-    await Services.create(service);
+    await controller.addDocument('services', service);
     res.sendStatus(200);
   }
   catch(error)

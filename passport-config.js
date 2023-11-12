@@ -37,9 +37,9 @@ function initialize(passport, getUserByName, getUserById) {
     passport.serializeUser((user, done) => done(null, user._id));
     passport.deserializeUser(async (_id, done) => 
     { 
-        let user_id = await getUserById(_id)
-        return done(null, user_id)
+        let user_id = await getUserById(_id);
+        return done(null, user_id);
     });
 }
-
+    
 module.exports = initialize

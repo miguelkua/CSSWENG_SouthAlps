@@ -32,69 +32,20 @@
         
         <!--Value Added Services-->
         <div class="container9">
-            <div class="title" id="text27">{{textMappings.text27}}</div>
+            <div class="title">Value Added Services</div>
             <div class="content-2">
-                    <div class="text-left left-align">
-                        <div class="box">
-                            <p class="heading-text" id="text28">{{textMappings.text28}}</p>
-                            <p class="subtext-2" id="text29">{{textMappings.text29}}</p>
+                {{#each services}}
+                <div class="{{#if (isEven @index)}}text-left left-align{{else}}text-right right-align{{/if}}">
+                    <div class="box">
+                            <p class="heading-text">{{this.name}}</p>
+                            <p class="subtext-2">{{this.description}}</p>
                             <button class="see-more">See More</button>
-                        </div>
-                        <div class="box">
-                            <p class="heading-text" id="text30">{{textMappings.text30}}</p>
-                            <p class="subtext-2" id="text31">{{textMappings.text31}}</p>
-                            <button class="see-more">See More</button>
-                        </div>
                     </div>
-                    <div class="text-right right-align">
-                        <div class="box">
-                            <p class="heading-text" id="text32">{{textMappings.text32}}</p>
-                            <p class="subtext-2" ud="text33">{{textMappings.text33}}</p>
-                            <button class="see-more">See More</button>
-                        </div>
-                        <div class="box">
-                            <p class="heading-text" id="text34">{{textMappings.text34}}</p>
-                            <p class="subtext-2" id="text35">{{textMappings.text35}}</p>
-                            <button class="see-more">See More</button>
-                        </div>
-                    </div>
+                </div>
+                {{/each}}
             </div>
-            <div class="centered-box">
-                <p class="heading-text" id="text36">{{textMappings.text36}}</p>
-                <p class="subtext-2" id="text37">{{textMappings.text37}}</p>
-            </div>
-            <button class="see-more">See More</button>
         </div>   
         
-        <!--Contact Us-->
-        <div class="contact-us">
-            <div class="header">
-                <div class="header-content">
-                    <p class="heading-text" id="text15">{{textMappings.text15}}</p>
-                    <p class="subtext" id="text16">{{textMappings.text16}}</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Dedicated Links -->
-        <div class="social-links">
-            <div class="email-1">
-                <p class="heading-text" id="text17">{{textMappings.text17}}<i class="bi bi-envelope-fill icon-heading"></i></p>
-                <p class="subtext" id="text18">{{textMappings.text18}}</p>
-                <a href="#" class="link-simple">Learn More</a>
-            </div>
-            <div class="contact-num">
-                <p class="heading-text" id="text19">{{textMappings.text19}}<i class="bi bi-telephone-fill icon-heading"></i></p>
-                <p class="subtext" id="text20">{{textMappings.text20}}</p>
-                <a href="#" class="link-simple">Learn More</a>
-            </div>
-            <div class="social-media-1">
-                <p class="heading-text" id="text21">{{textMappings.text21}}<i class="bi bi-globe icon-heading"></i></p>
-                <p class="subtext" id="text22">{{textMappings.text22}}</p>
-                <a href="#" class="link-simple">Learn More</a>
-            </div>
-        </div>
-
         <!--Accreditation-->
         <div class="container6">
             <p class="heading-text">Accreditation</p>

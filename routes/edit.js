@@ -3,8 +3,7 @@ const router = express.Router();
 const path = require("path");
 const multer = require('multer'); // for the image URLs
 const fs = require('fs'); // files
-const TextEntry = require('../models/textEntry.js');
-const ImageEntry = require('../models/imageEntry.js');
+const controller = require('../database/controller.js');
 
 
 //needed multer stuff
@@ -27,7 +26,7 @@ router.post('/editText', async (req, res) => {
     console.log('Request Data:', { updatedContent, elementID });
 
     try {
-        const existingEntry = await TextEntry.findOne({ id: elementID}).exec();
+        const existingEntry = await controller.findTextByID(elementID);
         
         if (!existingEntry) {
             return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
@@ -48,7 +47,7 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
     console.log('Request Data:', { updatedContent, elementID });
 
     try {
-        const existingEntry = await ImageEntry.findOne({ id: elementID}).exec();
+        const existingEntry = await controller.findImageByID(elementID);
 
         if (!existingEntry) {
             return res.status(404).json({ error: `Entry with ID ${elementID} not found` });

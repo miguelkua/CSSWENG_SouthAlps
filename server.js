@@ -1,19 +1,16 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const hbs = require('handlebars');
 const path = require("path");
 const passport = require("passport");
 const session = require("express-session");
 const mongoose = require("mongoose")
-const { allowInsecurePrototypeAccess }  = require('@handlebars/allow-prototype-access');
-const { engine } = require('express-handlebars');
-
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Initializing the passport
 const initializePassport = require('./passport-config.js');
-const Admins = require('./models/admin.js');
+const Admins = require('./database/schemas/admin.js');
 initializePassport(
     passport,
     name => { return Admins.findOne({username: name}) },
@@ -23,7 +20,7 @@ initializePassport(
 // enables the use of sessions & user authentication
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: "sikret", // TODO: TEMPORARY (until dotenv is setup)
+    secret: "sikret", // TEMPORARY (until dotenv is setup)
     resave: false,
     saveUninitialized: false
 }));
@@ -34,10 +31,11 @@ app.use(passport.session());
 app.use(express.json());
 
 // View engine setup
-// app.engine('handlebars', exphbs.engine());
-app.engine('handlebars', engine({
-    helpers: require('./views/handlebars-helpers').helpers,
-    handlebars: allowInsecurePrototypeAccess(hbs)
+const Handlebars = require('handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+app.engine('handlebars', exphbs.engine({
+    helpers: require('./views/handlebars-helper.js').helpers,
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); // views is the folder name
@@ -58,85 +56,22 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-// partial code
-let isAdminMode = true;
-
-// enables the routers exported from './routes'
-const editRouter = require('./routes/edit.js');
-// const homeRouter = require('./routes/home.js');
-const quoteRouter = require('./routes/quotes.js');
-const adminRouter = require('./routes/admin.js');
-const serviceRouter = require('./routes/services.js');
-
-app.use(editRouter); //this works
-// app.use('/home', homeRouter);
-app.use('/quotes', quoteRouter);
-app.use('/admin', adminRouter);
-app.use('/services', serviceRouter);
+// Using a main router to create smaller routes to different endpoints
+const router = require('./routes/router.js');
+app.use('/', router);
 
 //database stuff
-mongoose.connect('mongodb://127.0.0.1:27017/SouthAlps_DB')
-const db = mongoose.connection
+mongoose.connect('mongodb://127.0.0.1:27017/SouthAlps_DB');
+const db = mongoose.connection;
 
-db.on('error', () => console.log("Failed to Connect to Database"))
-db.once('open', () => console.log("Successfully Connected to Database"))
+db.on('error', () => console.log("Failed to Connect to Database"));
+db.once('open', () => console.log("Successfully Connected to Database"));
 
-// the rest of the pages interacting with each other
-const TextEntry = require('./models/textEntry.js');
-const ImageEntry = require('./models/imageEntry.js');
-
-app.get('/home', async (req, res) => {
-    try {
-        const textData = await TextEntry.find({ page: 'home' }); 
-        const imageData = await ImageEntry.find({ page: 'home' }); 
-
-        const textMappings = {};
-        const imageMappings = {};
-
-        textData.forEach(entry => {
-            textMappings[entry.id] = entry.text;
-        });
-
-        imageData.forEach(entry => {
-            imageMappings[entry.id] = entry.imageName;
-        });
-
-        res.render('home', { layout: false, isAdminMode, textMappings, imageMappings });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-  
-  
-app.get('/facility', async (req, res) => {
-    try {
-        const textData = await TextEntry.find({ page: 'facility' }); 
-        const imageData = await ImageEntry.find({ page: 'facility' }); 
-
-        const textMappings = {};
-        const imageMappings = {};
-
-        textData.forEach(entry => {
-            textMappings[entry.id] = entry.text;
-        });
-
-        imageData.forEach(entry => {
-            imageMappings[entry.id] = entry.imageName;
-        });
-
-        res.render('facility', { layout: false, isAdminMode, textMappings, imageMappings });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-// app.get('/quotes', async (req, res) => {
+// not sure what purpose this route serves, the file 'index.handlebars' has no content.
+// app.get('/index', async (req, res) => {
 //     try {
-//         const textData = await TextEntry.find({ page: 'quotes' }); 
-//         const imageData = await ImageEntry.find({ page: 'quotes' }); 
+//         const textData = await TextEntry.find({ page: 'index' }); 
+//         const imageData = await ImageEntry.find({ page: 'index' }); 
 
 //         const textMappings = {};
 //         const imageMappings = {};
@@ -149,84 +84,11 @@ app.get('/facility', async (req, res) => {
 //             imageMappings[entry.id] = entry.imageName;
 //         });
 
-//         res.render('quotes', { layout: false, isAdminMode, textMappings, imageMappings });
+//         res.render('index', { layout: false, isAdminMode, textMappings, imageMappings });
 //     } catch (error) {
 //         console.error('Error:', error);
 //         res.status(500).send('Internal Server Error');
 //     }
-// });
-
-app.get('/index', async (req, res) => {
-    try {
-        const textData = await TextEntry.find({ page: 'index' }); 
-        const imageData = await ImageEntry.find({ page: 'index' }); 
-
-        const textMappings = {};
-        const imageMappings = {};
-
-        textData.forEach(entry => {
-            textMappings[entry.id] = entry.text;
-        });
-
-        imageData.forEach(entry => {
-            imageMappings[entry.id] = entry.imageName;
-        });
-
-        res.render('index', { layout: false, isAdminMode, textMappings, imageMappings });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-app.get('/services', async (req, res) => {
-    try {
-        const textData = await TextEntry.find({ page: 'services' }); 
-        const imageData = await ImageEntry.find({ page: 'services' }); 
-
-        const textMappings = {};
-        const imageMappings = {};
-
-        textData.forEach(entry => {
-            textMappings[entry.id] = entry.text;
-        });
-
-        imageData.forEach(entry => {
-            imageMappings[entry.id] = entry.imageName;
-        });
-
-        res.render('services', { layout: false, isAdminMode, textMappings, imageMappings });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-app.get('/careers', async (req, res) => {
-    try {
-        const textData = await TextEntry.find({ page: 'careers' }); 
-        const imageData = await ImageEntry.find({ page: 'careers' }); 
-
-        const textMappings = {};
-        const imageMappings = {};
-
-        textData.forEach(entry => {
-            textMappings[entry.id] = entry.text;
-        });
-
-        imageData.forEach(entry => {
-            imageMappings[entry.id] = entry.imageName;
-        });
-
-        res.render('careers', { layout: false, isAdminMode, textMappings, imageMappings });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-// app.get('/login', (req, res) => {
-//     res.render('login', {layout: false, isAdminMode});
 // });
 
 app.listen(port, () => {

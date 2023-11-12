@@ -7,8 +7,8 @@ router.get('/', async (req, res) =>
 {
     try 
     {
-        const textData = await controller.getText('home'); 
-        const imageData = await controller.getImages('home'); 
+        const textData = await controller.getText('facility'); 
+        const imageData = await controller.getImages('facility'); 
 
         const textMappings = {};
         const imageMappings = {};

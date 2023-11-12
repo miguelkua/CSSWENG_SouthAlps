@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6540bbb20cc757f10ff89f89"
+  },
+  "name": "Order/Case Picking",
+  "description": "Placeholder"
+},
+{
+  "_id": {
+    "$oid": "6540bc0f0cc757f10ff89f8b"
+  },
+  "name": "Consolidation",
+  "description": "Placeholder"
+},
+{
+  "_id": {
+    "$oid": "6540bc2d0cc757f10ff89f8d"
+  },
+  "name": "Stripping and Stuffing",
+  "description": "Placeholder"
+},
+{
+  "_id": {
+    "$oid": "6540bc3b0cc757f10ff89f8f"
+  },
+  "name": "Dock Charging",
+  "description": "Placeholder"
+},
+{
+  "_id": {
+    "$oid": "6540bc4f0cc757f10ff89f91"
+  },
+  "name": "Re-packing and Labelling",
+  "description": "Placeholder"
+}]

@@ -1,0 +1,72 @@
+[{
+    "page": "home",
+    "id": "image1",
+    "imageName": "image1.jpg"
+},
+{
+    "page": "home",
+    "id": "image2",
+    "imageName": "image2.jpg"
+
+},
+{
+    "page": "facility",
+    "id": "image3",
+    "imageName": "facilitymain.jpg"
+
+},
+{
+    "page": "services",
+    "id": "image4",
+    "imageName": "servicesmain.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image5",
+    "imageName": "careersmain.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image6",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image7",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image8",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image9",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image10",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "careers",
+    "id": "image11",
+    "imageName": "image1.jpg"
+
+},
+{
+    "page": "quotes",
+    "id": "image12",
+    "imageName": "quotemain.jpg"
+
+}
+]

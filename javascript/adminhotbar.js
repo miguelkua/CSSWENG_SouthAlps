@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function toggleMode(action){
-    const textEntries = document.querySelectorAll('p, ul, ol, li, a, h1, h2, h3, h4, h5, h6, button'); //perhaps add more elements onto this to change them
+    const textEntries = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6'); //perhaps add more elements onto this to change them
     const imageEntries = document.querySelectorAll('img');
 
     if(action === 'edit-text'){
@@ -121,6 +121,7 @@ function toggleMode(action){
         isEditImage = false;
         editImgButton.classList.remove('active');
         imageEntries.forEach((entry) => {
+            entry.classList.remove('img-highlight');
             entry.removeEventListener('click', selectEntry);
         });
 
@@ -131,6 +132,7 @@ function toggleMode(action){
 
             //what removes the ability
             textEntries.forEach((entry) => {
+                entry.classList.remove('text-highlight');
                 entry.removeEventListener('click', selectEntry);
             });
         }
@@ -141,6 +143,9 @@ function toggleMode(action){
 
             //what allows to select text stuff
             textEntries.forEach((entry) => {
+                if (!entry.classList.contains('admin')) {
+                    entry.classList.add('text-highlight'); //its in style.css
+                }
                 entry.addEventListener('click', selectEntry);
             });
         }
@@ -150,6 +155,7 @@ function toggleMode(action){
         isEditText = false;
         editTextButton.classList.remove('active');
         textEntries.forEach((entry) => {
+            entry.classList.remove('text-highlight');
             entry.removeEventListener('click', selectEntry);
         });
 
@@ -158,6 +164,7 @@ function toggleMode(action){
             isEditImage = false;
 
             imageEntries.forEach((entry) => {
+                entry.classList.remove('img-highlight');
                 entry.removeEventListener('click', selectEntry);
             });
         }
@@ -167,6 +174,9 @@ function toggleMode(action){
             editImgButton.classList.add('active');
 
             imageEntries.forEach((entry) => {
+                if (!entry.classList.contains('admin')) {
+                    entry.classList.add('img-highlight');
+                }
                 entry.addEventListener('click', selectEntry);
             });
         }

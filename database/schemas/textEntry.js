@@ -12,8 +12,7 @@ const textSchema = new Schema({
   },
 
   text:{
-      type: String,
-      required: true,
+      type: String
   },
 });
 

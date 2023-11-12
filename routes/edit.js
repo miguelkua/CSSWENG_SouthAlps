@@ -4,6 +4,7 @@ const path = require("path");
 const multer = require('multer'); // for the image URLs
 const fs = require('fs'); // files
 const controller = require('../database/controller.js');
+const TextEntry = require('../database/schemas/textEntry.js');
 
 
 //needed multer stuff
@@ -34,7 +35,22 @@ router.post('/editText', async (req, res) => {
 
         existingEntry.text = updatedContent;
         await existingEntry.save();
-        console.log('Entry Updated Successfully.');
+
+        // this is for the partial stuff that share the same id, but different page values
+        const possibleEntries = await TextEntry.find({ id: elementID });
+
+        if (possibleEntries.length > 1) {
+            for (const entry of possibleEntries) {
+                entry.text = updatedContent;
+                await entry.save();
+            }
+            console.log('All Entries Updated Successfully.');
+        }
+
+        else{
+            console.log('Entry Updated Successfully.');
+        }
+
         res.json({ message: 'Entry update successful' });
     } catch (error) {
         console.error('Error updating entry:', error);

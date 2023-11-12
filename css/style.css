@@ -692,3 +692,15 @@ input[type="password"] {
 .login-button:hover {
     background-color: #0056b3;
 }
+
+.text-highlight {
+    border: 2px solid yellow; 
+    box-shadow: 0 0 5px yellow; 
+    outline: none;
+}
+
+.img-highlight {
+    border: 2px solid purple; 
+    box-shadow: 0 0 5px purple; 
+    outline: none;
+}

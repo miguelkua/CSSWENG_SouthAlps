@@ -14,6 +14,8 @@ router.get('/', async (req, res) =>
         const textMappings = {};
         const imageMappings = {};
 
+        const isAdminMode = req.user ?? false;
+
         textData.forEach(entry => 
         {
             textMappings[entry.id] = entry.text;
@@ -28,6 +30,7 @@ router.get('/', async (req, res) =>
         { 
             layout: false,
             textMappings,
+            isAdminMode: (isAdminMode? req.user.username : false),
             imageMappings
         });
     } 

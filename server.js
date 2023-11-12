@@ -67,30 +67,6 @@ const db = mongoose.connection;
 db.on('error', () => console.log("Failed to Connect to Database"));
 db.once('open', () => console.log("Successfully Connected to Database"));
 
-// not sure what purpose this route serves, the file 'index.handlebars' has no content.
-// app.get('/index', async (req, res) => {
-//     try {
-//         const textData = await TextEntry.find({ page: 'index' }); 
-//         const imageData = await ImageEntry.find({ page: 'index' }); 
-
-//         const textMappings = {};
-//         const imageMappings = {};
-
-//         textData.forEach(entry => {
-//             textMappings[entry.id] = entry.text;
-//         });
-
-//         imageData.forEach(entry => {
-//             imageMappings[entry.id] = entry.imageName;
-//         });
-
-//         res.render('index', { layout: false, isAdminMode, textMappings, imageMappings });
-//     } catch (error) {
-//         console.error('Error:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

@@ -5,7 +5,7 @@ const multer = require('multer'); // for the image URLs
 const fs = require('fs'); // files
 const controller = require('../database/controller.js');
 const TextEntry = require('../database/schemas/textEntry.js');
-
+const ImageEntry = require('../database/schemas/imageEntry.js');
 
 //needed multer stuff
 const storage = multer.diskStorage({
@@ -76,8 +76,11 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
         }
 
         const oldImage = existingEntry.imageName
+        const possibleEntries = await ImageEntry.find({ imageName: oldImage });
+        console.log('Number of Entries:', possibleEntries);
 
-        if(oldImage != updatedContent){
+        //only deletes when there a new image name is introduced and that there is only 1 existing entry using it
+        if(oldImage != updatedContent && possibleEntries.length == 1){
             console.log('Old Image Name:', oldImage);
             fs.unlinkSync(path.join('./assets', oldImage));
         }

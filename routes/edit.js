@@ -6,6 +6,7 @@ const fs = require('fs'); // files
 const controller = require('../database/controller.js');
 const TextEntry = require('../database/schemas/textEntry.js');
 const ImageEntry = require('../database/schemas/imageEntry.js');
+const Services = require('../database/schemas/services.js');
 
 //needed multer stuff
 const storage = multer.diskStorage({
@@ -51,6 +52,34 @@ router.post('/editText', async (req, res) => {
             console.log('Entry Updated Successfully.');
         }
 
+        res.json({ message: 'Entry update successful' });
+    } catch (error) {
+        console.error('Error updating entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.post('/editServices', async (req, res) => {
+    const { updatedContent, elementID, isServiceName, isServiceDesc } = req.body;
+    console.log('Request Data:', { updatedContent, elementID, isServiceName, isServiceDesc });
+
+    try {
+        const existingEntry = await Services.findOne({ _id: elementID });
+        
+        if (!existingEntry) {
+            return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
+        }
+
+        if(isServiceName == true){
+            existingEntry.name = updatedContent;
+        }
+
+        else if(isServiceDesc == true){
+            existingEntry.description = updatedContent;
+        }
+
+        await existingEntry.save();
+        console.log('Entry Updated Successfully.');
         res.json({ message: 'Entry update successful' });
     } catch (error) {
         console.error('Error updating entry:', error);

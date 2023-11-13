@@ -10,17 +10,22 @@ const editImgButton = document.getElementById('edit-img');
 let elementID = '';
 let fileName = '';
 
-//text edit functions
+//text edit 
 const textSpace = document.getElementById('text-space');
 const textArea = document.getElementById('text-area');
 const textChange = document.getElementById('text-change');
 const textCancel = document.getElementById('text-cancel');
 
+//image edit 
 const imageSpace = document.getElementById('image-space'); 
 const imageUpload = document.getElementById('image-upload'); 
 const imageChange = document.getElementById('image-change'); 
 const imageCancel = document.getElementById('image-cancel');
 const uploadedImage = document.getElementById('uploaded-image');
+
+//service edit
+let isServiceName = '';
+let isServiceDesc = '';
 
 document.addEventListener('DOMContentLoaded', function () {
     editTextButton.addEventListener('click', function () {
@@ -38,24 +43,48 @@ document.addEventListener('DOMContentLoaded', function () {
     textChange.addEventListener('click', function () {
         const updatedContent = textArea.value;
 
-        try {
-            fetch('/editText', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ updatedContent, elementID }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Reload the page if the fetch operation is successful
-                    location.reload();
-                } else {
-                    console.error('Update request failed:', response.status, response.statusText);
-                }
-            });
-        } catch (error) {
-            console.error('Error during update:', error);
+        if(isServiceName == true || isServiceDesc == true){
+            try {
+                fetch('/editServices', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ updatedContent, elementID, isServiceName, isServiceDesc }),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Reload the page if the fetch operation is successful
+                        location.reload();
+                    } else {
+                        console.error('Update service request failed:', response.status, response.statusText);
+                    }
+                });
+            } catch (error) {
+                console.error('Error during updating services:', error);
+            }
+        }
+
+        else{
+            try {
+                fetch('/editText', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ updatedContent, elementID }),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Reload the page if the fetch operation is successful
+                        location.reload();
+                    } else {
+                        console.error('Update request failed:', response.status, response.statusText);
+                    }
+                });
+            } catch (error) {
+                console.error('Error during update:', error);
+            }
         }
     });
 
@@ -186,12 +215,27 @@ function toggleMode(action){
 
 function selectEntry(event) {
     const clickedElement = event.target;
+    isServiceName = false;
+    isServiceDesc = false;
+
     if(isEditText == true){
         //if its not one of the admin buttons
         if (!clickedElement.classList.contains('admin')) {
+            //general edit text 
             elementID = clickedElement.id;
             textArea.value  = clickedElement.textContent;
             textSpace.style.visibility = 'visible';
+
+            //edit services
+            const classes = Array.from(clickedElement.classList);
+
+            if(classes.includes('serviceName') == true){
+                isServiceName = true;
+            }
+
+            else if(classes.includes('serviceDesc') == true){
+                isServiceDesc = true;
+            }
         }
     }
 

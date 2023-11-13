@@ -1,7 +1,19 @@
 {{#if isAdminMode}}
+<script>
+    const currentURL = window.location.href;
+    console.log(currentURL);
+
+    if(currentURL == "http://localhost:3000/services"){
+         document.addEventListener('DOMContentLoaded', function () {
+            // Show the "Add" button
+            document.getElementById('add').style.display = 'block';
+        });
+    }
+</script>
 <div class="admin-hotbar">
     <button class="edit-text" id="edit-text">Edit Text</button>
     <button class="edit-img" id="edit-img">Edit Images</button>
+    <button id="add" style="display: none;">Add Service</button>
     {{!-- <button id="add">Add</button> --}}
     {{!-- <button id="delete">Delete</button> --}}
 </div>

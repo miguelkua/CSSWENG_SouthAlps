@@ -1,7 +1,6 @@
 const addButton = document.getElementById('add');
 const overlay = document.getElementById('form-overlay');
 const addItem = document.getElementById('add-item');
-
 const postForm = document.forms.postForm;
 
 function showOverlay() {

@@ -35,17 +35,15 @@
             <div class="title">Value Added Services</div>
             <div class="content-2">
                 {{#each services}}
-                <div class="{{#if (isEven @index)}}text-left left-align{{else}}text-right right-align{{/if}}">
+                <div class="left-align">
                     <div class="box">
                             <p id="{{this._id}}" class="heading-text serviceName">{{this.name}}</p>
                             <p id="{{this._id}}" class="subtext-2 serviceDesc">{{this.description}}</p>
-                            <button class="see-more">See More</button>
                     </div>
                 </div>
                 {{/each}}
             </div>
         </div>   
-        
 
         {{> contactus}}
 

@@ -246,6 +246,7 @@ h1 {
 }
 
 .content-2 {
+    margin-left: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;

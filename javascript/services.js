@@ -1,3 +1,5 @@
+// import { log } from "handlebars/runtime";
+
 const addButton = document.getElementById('add');
 const overlay = document.getElementById('form-overlay');
 const addItem = document.getElementById('add-item');
@@ -13,39 +15,39 @@ function hideOverlay() {
 
 addButton.addEventListener('click', showOverlay);
 
-  overlay.addEventListener('click', function(event) {
-    if (event.target === overlay) {
-      hideOverlay();
-    }
-  });
+overlay.addEventListener('click', function(event) {
+  if (event.target === overlay) {
+    hideOverlay();
+  }
+});
 
-  document.addEventListener("DOMContentLoaded",() => 
+document.addEventListener("DOMContentLoaded",() => 
+{
+  document.querySelector("#submit-item")?.addEventListener("click", function(e)
   {
-    document.querySelector("#submit-item")?.addEventListener("click", function(e)
+    e.preventDefault();  // Prevents page refresh
+
+    const url = window.location.href;
+    fetch(url + '/add', 
     {
-      e.preventDefault();  // Prevents page refresh
-
-      const url = window.location.href;
-      fetch(url + '/add', 
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify
-        ({
-          name:  postForm.name.value,
-          description: postForm.description.value
-        })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify
+      ({
+        name:  postForm.name.value,
+        description: postForm.description.value
       })
-      .then((res) => 
-      {
-          if (res.status == 200) 
-          { 
-            hideOverlay(); 
-            window.location.href = url; 
-          }
-          else { console.log("Error in service registration"); }
-      });
-
+    })
+    .then((res) => 
+    {
+        if (res.status == 200) 
+        { 
+          hideOverlay(); 
+          window.location.href = url; 
+        }
+        else { console.log("Error in service registration"); }
     });
 
   });
+
+});

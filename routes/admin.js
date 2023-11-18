@@ -1,12 +1,17 @@
 const express = require('express');
 const passport = require('passport');
-
-
+const controller = require('../database/controller.js');
 const router = express.Router();
 
-router.get('/', checkNotAuthenticated, (req, res) => 
+router.get('/', checkNotAuthenticated, async (req, res) => 
 {
-    res.render('login', {layout: false});
+    const accreditations = await controller.getAll('accreditations');
+
+    res.render('login', 
+    {
+        layout: false,
+        accreditations: accreditations
+    });
 });
 
 router.post('/', checkNotAuthenticated, passport.authenticate('local', 

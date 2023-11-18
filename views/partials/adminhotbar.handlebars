@@ -1,18 +1,9 @@
 {{#if isAdminMode}}
-<script>
-    const currentURL = window.location.href;
-    console.log(currentURL);
-
-    if(currentURL == "http://localhost:3000/services"){
-         document.addEventListener('DOMContentLoaded', function () {
-            // Show the "Add" button
-            document.getElementById('add').style.display = 'block';
-        });
-    }
-</script>
 <div class="admin-hotbar">
     <button class="edit-text" id="edit-text">Edit Text</button>
     <button class="edit-img" id="edit-img">Edit Images</button>
+    <button class="add-acr" id="add-acr" style="display: none;">Add Accreditations</button>
+    <button class="del-acr" id="del-acr" style="display: none;">Delete Accreditations</button>
     <button id="add" style="display: none;">Add Service</button>
     {{!-- <button id="add">Add</button> --}}
     {{!-- <button id="delete">Delete</button> --}}
@@ -30,13 +21,44 @@
 
 <div class="modal" id="image-space">
     <div class="modal-content" id="image-box">
-        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+        <input type="file" id="image-upload" name="image-upload" style="display: none;" accept="image/*">
+        <label for="image-upload" id="image-label">Edit Image</label>
         <img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
         <button class="admin" id="image-change">Change</button>
         <button class="admin" id="image-cancel">Cancel</button>
     </div>
 </div>
+
+<div class="modal" id="acr-space">
+    <div class="modal-content" id="acr-box">
+        <input type="file" id="acr-upload" name="acr-upload" style="display: none;" accept="image/*">
+        <label for="acr-upload" id="acr-label">Upload Image</label>
+        <img class="admin" id="acr-uploaded-image" style="max-width: 50%;">
+        <button class="admin" id="acr-submit" style="display: none;">Submit</button>
+        <button class="admin" id="acr-submit-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="acrdel-space">
+    <div class="modal-content" id="text-box">
+        <h1 class="admin">Delete Accreditation?</h1>
+        <button class="admin" id="acr-del">Proceed</button>
+        <button class="admin" id="acr-del-cancel">Cancel</button>
+    </div>
+</div>
 {{/if}}
+
+<script>
+    const currentURL = window.location.href;
+    console.log(currentURL);
+
+    if(currentURL == "http://localhost:3000/services"){
+         document.addEventListener('DOMContentLoaded', function () {
+            // Show the "Add" button
+            document.getElementById('add').style.display = 'block';
+        });
+    }    
+</script>
 
 <style>
 .admin-hotbar {
@@ -53,7 +75,7 @@
 }
 
 .admin-hotbar button {
-    width: 130px; 
+    width: 220px; 
     height: 40px; 
     background-color: #3498db;
     color: #fff;
@@ -70,6 +92,14 @@
 }
 
 .edit-img.active{
+    background-color: gray;
+}
+
+.add-acr.active{
+    background-color: gray;
+}
+
+.del-acr.active{
     background-color: gray;
 }
 

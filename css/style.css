@@ -706,6 +706,12 @@ input[type="password"] {
     outline: none;
 }
 
+.del-highlight {
+    border: 2px solid red; 
+    box-shadow: 0 0 5px red; 
+    outline: none;
+}
+
 .form-overlay{
     position: fixed;
     top: 0;
@@ -767,3 +773,22 @@ input[type="password"] {
   .delete:active{
     opacity: 70%;
   }
+
+ label {
+    font-family: "Work Sans";
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4285f4;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #4285f4;
+}
+  
+label:hover {
+    background-color: #3c78d8;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}

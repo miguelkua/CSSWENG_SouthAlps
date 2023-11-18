@@ -376,7 +376,11 @@ document.addEventListener('DOMContentLoaded', function () {
         //show the buttons when acrSection is visible
         if (smartDisplay.top >= 0 && smartDisplay.bottom <= window.innerHeight) {
             addAcrButton.style.display = 'block';
-            delAcrButton.style.display = 'block';
+
+            //only display if there are entries
+            if (accreditationsEntries.length !== 0) {
+                delAcrButton.style.display = 'block';
+            }
         } 
         else {
             //prevents certain smart display buttons from disappearing when a prompt is on the screen
@@ -386,6 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
                getComputedStyle(acrSpace).visibility === 'hidden'){
 
                 addAcrButton.style.display = 'none';
+
                 delAcrButton.style.display = 'none';
                 isDelAcr = false;
                 delAcrButton.classList.remove('active');

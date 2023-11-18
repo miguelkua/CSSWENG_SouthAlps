@@ -68,7 +68,13 @@ const controller =
         switch (db) 
         {
             case 'accreditations': return Accreditations.create(doc);
-            case 'services': return Services.create(doc);
+            case 'services': 
+                let service = new Services({
+                    name: doc.name,
+                    description: doc.description
+                });
+                Services.create(service); 
+                break;
             default: return null;
         }
     }

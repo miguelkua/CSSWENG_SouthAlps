@@ -1,6 +1,7 @@
 const TextEntry = require('./schemas/textEntry.js');
 const ImageEntry = require('./schemas/imageEntry.js');
 const Services = require('./schemas/services.js');
+const Accreditations = require('./schemas/accreditations.js');
 
 
 const controller = 
@@ -49,6 +50,7 @@ const controller =
          */
         switch (db) 
         {
+            case 'accreditations': return Accreditations.find({});
             case 'services': return Services.find({});
             case 'text': return TextEntry.find({});
             case 'images': return ImageEntry.find({});
@@ -65,6 +67,7 @@ const controller =
          */
         switch (db) 
         {
+            case 'accreditations': return Accreditations.create(doc);
             case 'services': 
                 let service = new Services({
                     name: doc.name,

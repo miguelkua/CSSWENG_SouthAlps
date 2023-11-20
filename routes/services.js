@@ -11,6 +11,7 @@ router.get('/', async (req, res) =>
         const textData = await controller.getText('services'); 
         const imageData = await controller.getImages('services'); 
         const services = await controller.getAll('services');
+        const accreditations = await controller.getAll('accreditations');
 
         const textMappings = {};
         const imageMappings = {};
@@ -33,7 +34,8 @@ router.get('/', async (req, res) =>
             isAdminMode: (isAdminMode? req.user.username : false),
             textMappings,
             imageMappings,
-            services: services
+            services: services,
+            accreditations: accreditations
         });
     } 
     catch (error) 

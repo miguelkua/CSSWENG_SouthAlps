@@ -8,7 +8,8 @@ router.get('/', async (req, res) =>
     try 
     {
         const textData = await controller.getText('careers'); 
-        const imageData = await controller.getImages('careers'); 
+        const imageData = await controller.getImages('careers');
+        const accreditations = await controller.getAll('accreditations'); 
 
         const textMappings = {};
         const imageMappings = {};
@@ -30,7 +31,8 @@ router.get('/', async (req, res) =>
             layout: false,
             isAdminMode: (isAdminMode? req.user.username : false), 
             textMappings, 
-            imageMappings 
+            imageMappings,
+            accreditations: accreditations
         });
     } 
     catch (error) 

@@ -6,7 +6,8 @@ describe('Admin/Login Page Load Time and Content Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
     });
 
     it('should load the Admin/Login page within acceptable time', async () => {
@@ -36,8 +37,6 @@ describe('Admin/Login Page Load Time and Content Tests', function() {
         let loginButton = await driver.findElement(By.css('.login-button'));
         assert(await loginButton.isDisplayed());
     });
-
-    // Add tests for other elements like accreditation, footer links, etc.
 
     after(async () => {
         await driver.quit();

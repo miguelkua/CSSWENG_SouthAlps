@@ -6,7 +6,8 @@ describe('Contact Us Page Load Time and Content Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
     });
 
     it('should load the Contact Us page within acceptable time', async () => {

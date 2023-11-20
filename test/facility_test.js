@@ -6,7 +6,8 @@ describe('Facility Page Content Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
         await driver.get('http://localhost:3000/facility');
     });
 

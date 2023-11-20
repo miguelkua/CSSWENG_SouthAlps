@@ -7,7 +7,8 @@ describe('Careers Page Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
     });
 
     it('should load careers page successfully', async () => {
@@ -31,7 +32,6 @@ describe('Careers Page Tests', function() {
         assert(await image.isDisplayed());
     });
 
-        // Testing additional image sections
     it('should display the first image in the image section correctly', async () => {
         let image = await driver.findElement(By.css('.image-section .image-box:nth-child(1) img'));
         assert(await image.isDisplayed());
@@ -42,13 +42,11 @@ describe('Careers Page Tests', function() {
         assert.strictEqual(text, 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.'); // Replace with actual expected text
     });
 
-    // Testing the Contact Us section
     it('should display the Contact Us header correctly', async () => {
         let contactUsHeader = await driver.findElement(By.css('.contact-us .heading-text')).getText();
         assert.strictEqual(contactUsHeader, 'Contact Us');
     });
 
-    // Testing social links
     it('should display the email section in social links', async () => {
         let emailSection = await driver.findElement(By.css('.social-links .email-1'));
         assert(await emailSection.isDisplayed());

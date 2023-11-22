@@ -45,21 +45,21 @@ router.get('/', async (req, res) =>
     }
 });
 
-router.post('/add', async function(req,res)
-{
-    try
-    {
-        let service = {
-            name: req.body.name,
-            description: req.body.description
-        }
-        await controller.addDocument('services', service);
-        res.sendStatus(200);
+router.post('/add', async function(req, res) {
+    const { name, description } = req.body;
+
+    // Input Validation
+    if (!name || !description) {
+        // Respond with a 400 Bad Request if either field is missing
+        return res.status(400).json({ error: 'Both name and description are required.' });
     }
-    catch(error)
-    {
-        console.log(error);
-        res.sendStatus(500);
+    try {
+        let service = { name, description };
+        await controller.addDocument('services', service);
+        res.sendStatus(200); // OK
+    } catch (error) {
+        console.error(error);
+        res.sendStatus(500); // Internal Server Error
     }
 });
 

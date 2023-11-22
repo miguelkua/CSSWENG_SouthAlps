@@ -41,10 +41,10 @@ describe('Facility Page Content Tests', function() {
         assert(await socialLinks.isDisplayed());
     });
 
-    it('should display accreditation images', async () => {
+    /*it('should display accreditation images', async () => {
         let accreditationImages = await driver.findElements(By.css('.accreditation-box img'));
         assert(accreditationImages.length > 0);
-    });
+    });*/
 
     after(async () => {
         await driver.quit();

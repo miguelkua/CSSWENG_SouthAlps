@@ -1,4 +1,4 @@
-const { Builder, By } = require('selenium-webdriver');
+const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
 const path = require('path');
 
@@ -50,6 +50,50 @@ describe('Careers Page Tests', function() {
     it('should display the email section in social links', async () => {
         let emailSection = await driver.findElement(By.css('.social-links .email-1'));
         assert(await emailSection.isDisplayed());
+    });
+
+    //Navbar Testing
+    it('should navigate to the Services page when clicked', async () => {
+        let servicesLink = await driver.findElement(By.linkText('Services'));
+        await servicesLink.click();
+        await driver.wait(until.urlContains('/services'), 10000); 
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/services');
+    
+        await driver.get('http://localhost:3000/careers'); 
+    });
+
+    it('should navigate to the Home page when clicked', async () => {
+        let homeButton = await driver.findElement(By.css('.company-logo')); // Adjust the selector
+        await homeButton.click();
+        await driver.wait(until.urlContains('/home'), 10000);
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/home');
+    
+        await driver.get('http://localhost:3000/careers'); 
+    });
+
+    it('should navigate to the Facility page when clicked', async () => {
+        let facilityLink = await driver.findElement(By.linkText('Facility'));
+        await facilityLink.click();
+        await driver.wait(until.urlContains('/facility'), 10000);
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/facility');
+    
+        await driver.get('http://localhost:3000/careers');
+    });
+
+    it('should navigate to the Contact Us page when clicked', async () => {
+        let quotesLink = await driver.findElement(By.linkText('Contact Us'));
+        await quotesLink.click();
+        await driver.wait(until.urlContains('/quotes'), 10000);
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/quotes');
+    
+        await driver.get('http://localhost:3000/careers');
     });
 
     after(async () => {

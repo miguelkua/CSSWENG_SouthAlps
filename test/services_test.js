@@ -37,6 +37,50 @@ describe('Services Page Load Time and Content Tests', function() {
         assert(await valueAddedServices.isDisplayed());
     });
 
+    //Navbar Testing
+    it('should navigate to the Facility page when clicked', async () => {
+        let facilityLink = await driver.findElement(By.linkText('Facility'));
+        await facilityLink.click();
+        await driver.wait(until.urlContains('/facility'), 10000); 
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/facility');
+    
+        await driver.get('http://localhost:3000/services'); 
+    });
+
+    it('should navigate to the Home page when clicked', async () => {
+        let homeButton = await driver.findElement(By.css('.company-logo')); // Adjust the selector
+        await homeButton.click();
+        await driver.wait(until.urlContains('/home'), 10000);
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/home');
+    
+        await driver.get('http://localhost:3000/services'); 
+    });
+
+    it('should navigate to the Careers page when clicked', async () => {
+        let careersLink = await driver.findElement(By.linkText('Careers'));
+        await careersLink.click();
+        await driver.wait(until.urlContains('/career'), 10000);
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/careers');
+    
+        await driver.get('http://localhost:3000/services');
+    });
+
+    it('should navigate to the Contact Us page when clicked', async () => {
+        let quotesLink = await driver.findElement(By.linkText('Contact Us'));
+        await quotesLink.click();
+        await driver.wait(until.urlContains('/quotes'), 10000);
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/quotes');
+    
+        await driver.get('http://localhost:3000/services');
+    });
+
     after(async () => {
         await driver.quit();
     });

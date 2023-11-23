@@ -80,6 +80,44 @@ describe('Contact Us Page Load Time and Content Tests', function() {
         await driver.get('http://localhost:3000/quotes');
     });
 
+    //Form Testing
+
+    it('should accept input in the Last Name field', async () => {
+        let lastNameInput = await driver.findElement(By.css('#last-name'));
+        await lastNameInput.clear();
+        await lastNameInput.sendKeys('Doe');
+    
+        let inputValue = await lastNameInput.getAttribute('value');
+        assert.strictEqual(inputValue, 'Doe');
+    });
+    
+    it('should accept input in the First Name field', async () => {
+        let firstNameInput = await driver.findElement(By.css('#first-name'));
+        await firstNameInput.clear();
+        await firstNameInput.sendKeys('John');
+    
+        let inputValue = await firstNameInput.getAttribute('value');
+        assert.strictEqual(inputValue, 'John');
+    });
+
+    it('should accept input in the email field', async () => {
+        let emailInput = await driver.findElement(By.css('#company-email'));
+        await emailInput.clear();
+        await emailInput.sendKeys('qa_test@gmail.com');
+    
+        let inputValue = await emailInput.getAttribute('value');
+        assert.strictEqual(inputValue, 'qa_test@gmail.com');
+    });
+
+    it('should accept input in the contact number field', async () => {
+        let numberInput = await driver.findElement(By.css('#company-email'));
+        await numberInput.clear();
+        await numberInput.sendKeys('09123456789');
+    
+        let inputValue = await numberInput.getAttribute('value');
+        assert.strictEqual(inputValue, '09123456789');
+    });
+    
     after(async () => {
         await driver.quit();
     });

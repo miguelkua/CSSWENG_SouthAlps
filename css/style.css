@@ -123,27 +123,47 @@
     
     .container {
         display: flex;
-        flex-direction: column; /* Stack children vertically */
         align-items: center; /* Center children horizontally */
-        justify-content: center; /* Center children vertically */
-        margin: 0;
-        padding: 0;
-        width: 100%; /* Ensure the container takes the full width of its parent */
-        position: relative; /* Position relative for absolute children positioning */
-        overflow: hidden; /* Prevents content from overflowing */
+        justify-content: center;
+        width: auto;
+        height: 100vh;
     }
-    
-    
+
     .video-container {
-        width: 100%; /* Take up all available width from the parent */
-        position: relative; /* Relative to its normal position */
-        overflow: hidden; /* Hide any overflow */
+        max-width: 100%; /* Take up all available width from the parent */
+    }
+
+    .video-container .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Transparent layer color */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 10;
     }
     
+    .video-container .overlay h1 {
+        color: white; /* Title text color */
+    }
+    
+    .video-container .overlay p {
+        color: white; /* Description text color */
+    }
+
     .video-container video {
         width: 100%; /* Fill the width of .video-container */
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Ensures the video is treated as a block element */
+        height: 100%; /* Maintain aspect ratio */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        object-fit: cover;
     }
 
     .container2 {
@@ -226,7 +246,7 @@
     .container-faci .card-1 p {
         font-weight: 700;
         text-align: center;
-        font-size: 25px; /* Adjust font size to ensure it fits well */
+        font-size: 3rem; /* Adjust font size to ensure it fits well */
         margin-top: 0.5rem; /* Adds space above the title */
         margin-bottom: 0; /* Removes any default bottom margin */
         width: 100%; /* Ensures the title takes up the full width of its container */
@@ -352,7 +372,7 @@
     }
     
     h1 {
-        font-size: 28px;
+        font-size: 7rem;
         margin: 20px 0;
     }
     
@@ -704,19 +724,19 @@
     }
     
     .container11 {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden; /* Crop the image that overflows */
-        height: 1080px; /* Specify the desired height for the container */
+        display: flex;
+        align-items: center; /* Center children horizontally */
+        justify-content: center;
+        width: auto;
+        height: 100vh;
     }
     
     .container11 img {
         width: 100%; /* Adjust the width as needed */
-        height: auto; /* Maintain the image's aspect ratio */
+        z-index: 5;
     }
     
-    .overlay {
+    .container .overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -865,16 +885,21 @@
 }
 
 .container11 {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* Crop the image that overflows */
-    height: 400px; /* Specify the desired height for the container */
+    display: flex;
+    align-items: center; /* Center children horizontally */
+    justify-content: center;
+    width: auto;
+    height: 100vh;
 }
 
 .container11 img {
-    width: 100%; /* Adjust the width as needed */
-    height: auto; /* Maintain the image's aspect ratio */
+    width: 100%; /* Fill the width of .video-container */
+    height: 100%; /* Maintain aspect ratio */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    object-fit: cover;
 }
 
 .overlay {
@@ -889,14 +914,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 10;
 }
 
 .overlay h1 {
     color: white; /* Title text color */
+    font-size: 4rem;
 }
 
 .overlay p {
-    color: white; /* Description text color */
+    color: white; 
+    font-size: 1.5rem;/* Description text color */
 }
 
 .login-center {

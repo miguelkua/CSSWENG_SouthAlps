@@ -251,43 +251,38 @@
     }
 
     /* facilities */
-
     .container-faci {
         margin: 4%;
-        display: flex; /* Set display to flex */
-        align-items: flex-start;
-        justify-content: center;
-        gap: 1rem; /* Ensures there is a gap between the images */
-        flex-wrap: wrap; /* Ensures that the images can wrap onto the next line on smaller screens */
-    
-        /* Set flex-basis to 48% to make two images per row */
-        flex-basis: 48%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjusted for consistent spacing */
+        align-items: stretch; /* Ensures cards stretch to the same height */
     }
     
     .container-faci .card-1 {
-        flex: 1; /* Allows the cards to grow and shrink with flexbox */
-        margin: 1rem; /* Adds some space around the cards */
-        box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
+        flex: 1 1 calc(50% - 2rem); /* Adjusted calculation to account for margin */
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
         background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         overflow: hidden;
     }
     
     .container-faci .card-1 img {
-        width: 100%; /* Make the image take up the full width of its container */
-        height: 500px; /* Fixed height for all images */
-        object-fit: cover; /* This will cover the area of the container without stretching the image */
+        width: 100%;
+        height: 400px; /* Set a fixed height for all images */
+        object-fit: cover; /* Ensures the image covers the fixed height area, may crop the image */
     }
     
     .container-faci .card-1 p {
         font-weight: 700;
         text-align: center;
-        font-size: 1.5rem; /* Adjust font size to ensure it fits well */
-        margin: 5%;/* Removes any default bottom margin */
-        display: flex; /* Enables flexbox for vertical centering */
-        align-items: center; /* Centers the text vertically */
-        justify-content: center; /* Centers the text horizontally */
-        overflow: hidden; /* Hides any text that overflows its container */
+        font-size: 1.5rem;
+        margin: 0 5%; /* Adjusted margin to be only horizontal */
+        padding: 10px 0; /* Gives some space above and below the text */
     }
+    
 
     .container3 {
         display: flex;

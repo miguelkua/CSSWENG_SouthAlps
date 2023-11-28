@@ -2,6 +2,7 @@
 <div class="admin-hotbar">
     <button class="edit-text" id="edit-text">Edit Text</button>
     <button class="edit-img" id="edit-img">Edit Images</button>
+    <button class="log-out" id="log-out">Log Out</button>
     <button class="add-acr" id="add-acr" style="display: none;">Add Accreditations</button>
     <button class="del-acr" id="del-acr" style="display: none;">Delete Accreditations</button>
     <button id="add" style="display: none;">Add Service</button>
@@ -14,8 +15,8 @@
 <div class="modal" id="text-space">
     <div class="modal-content" id="text-box">
         <textarea id="text-area" rows="4" cols="50"></textarea>
-        <button class="admin" id="text-change">Change</button>
-        <button class="admin" id="text-cancel">Cancel</button>
+        <button class="button1" id="text-change">Change</button>
+        <button class="button1" id="text-cancel">Cancel</button>
     </div>
 </div>
 
@@ -23,9 +24,9 @@
     <div class="modal-content" id="image-box">
         <input type="file" id="image-upload" name="image-upload" style="display: none;" accept="image/*">
         <label for="image-upload" id="image-label">Edit Image</label>
-        <img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
-        <button class="admin" id="image-change">Change</button>
-        <button class="admin" id="image-cancel">Cancel</button>
+        <img class="button1" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
+        <button class="button1" id="image-change">Change</button>
+        <button class="button1" id="image-cancel">Cancel</button>
     </div>
 </div>
 
@@ -33,17 +34,17 @@
     <div class="modal-content" id="acr-box">
         <input type="file" id="acr-upload" name="acr-upload" style="display: none;" accept="image/*">
         <label for="acr-upload" id="acr-label">Upload Image</label>
-        <img class="admin" id="acr-uploaded-image" style="max-width: 50%;">
-        <button class="admin" id="acr-submit" style="display: none;">Submit</button>
-        <button class="admin" id="acr-submit-cancel">Cancel</button>
+        <img class="button1" id="acr-uploaded-image" style="max-width: 50%;">
+        <button class="button1" id="acr-submit" style="display: none;">Submit</button>
+        <button class="button1" id="acr-submit-cancel">Cancel</button>
     </div>
 </div>
 
 <div class="modal" id="acrdel-space">
     <div class="modal-content" id="text-box">
-        <h1 class="admin">Delete Accreditation?</h1>
-        <button class="admin" id="acr-del">Proceed</button>
-        <button class="admin" id="acr-del-cancel">Cancel</button>
+        <h1 class="button1">Delete Accreditation?</h1>
+        <button class="button1" id="acr-del">Proceed</button>
+        <button class="button1" id="acr-del-cancel">Cancel</button>
     </div>
 </div>
 {{/if}}
@@ -121,11 +122,22 @@
 }
 
 .modal-content {
-    background-color: #962f2f;
+    background-color: lightblue;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
     max-width: 30%; 
     max-height: 70%;
+}
+
+.button1 {
+    background-color: #1B6DAF;
+    color: black;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 30px; /* Adjust the padding to make it shorter */
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block; /* Make it inline-block to adjust its width */
 }
 </style>

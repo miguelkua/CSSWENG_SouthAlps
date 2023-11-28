@@ -1,0 +1,49 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800&family=Montserrat:ital,wght@0,200;0,600;1,100;1,500&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* Home new */
+
+.container2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    margin: 0;
+}
+
+.image-card {
+    margin: 20px; /* Add space between image cards */
+    flex: 1 1 47.5%; /* Set a width for each image card */
+    overflow: hidden;
+    background: white;
+    box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.image{
+    padding-top: 40px;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    width: 100%;
+    display: block; /* NEW - treat the image as a block-level element */
+    margin-left: auto; /* NEW - center image horizontally */
+    margin-right: auto; /* NEW - center image horizontally */
+}
+
+.image-card h2 {
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+.container3{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.container3 .heading-text{
+    padding-top: 2%;
+}

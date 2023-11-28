@@ -218,23 +218,90 @@
         text-align: center; 
         margin-top: 2%;
     }
+
+    .content-2-services {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        width: 100%;
+        margin-bottom: 4%;
+        justify-content: space-between;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .card-1 {
+        flex: 1; /* Allows the cards to grow and shrink with flexbox */
+        margin: 1rem; /* Adds some space around the cards */
+        box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
+        border-radius: 60px;
+        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
+        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-1 p {
+        padding-left: 3%;
+        padding-right: 3%;
+        margin-top: 2%;
+        
+    }
+
+    .card-11 {
+        margin: 1rem; /* Adds some space around the cards */
+        box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
+        border-radius: 60px;
+        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
+        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        height: 300px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .card-11 p{
+        font-size: 30px;
+        font-weight: 700;
+        width: auto;
+    }
+
+    .container-careers {
+        display: flex; /* Set display to flex */
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem; /* Ensures there is a gap between the images */
+        flex-wrap: wrap; /* Ensures that the images can wrap onto the next line on smaller screens */
     
+        /* Set flex-basis to 48% to make two images per row */
+        flex-basis: 48%;
+    }
+
+    .img-careers {
+        height: 200px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 100%;
+    }
 
     /* facilities */
 
     .container-faci {
         padding: 3rem;
-        display: flex;
+        display: flex; /* Set display to flex */
         align-items: flex-start;
         justify-content: center;
         gap: 1rem; /* Ensures there is a gap between the images */
         flex-wrap: wrap; /* Ensures that the images can wrap onto the next line on smaller screens */
+    
+        /* Set flex-basis to 48% to make two images per row */
+        flex-basis: 48%;
     }
     
     .container-faci .card-1 {
         flex: 1; /* Allows the cards to grow and shrink with flexbox */
         margin: 1rem; /* Adds some space around the cards */
         box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
+        border-radius: 60px;
+        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
+        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
     }
     
     .container-faci .card-1 img {
@@ -1009,6 +1076,13 @@ input[type="password"] {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+  }
+
+  .postForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
 

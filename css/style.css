@@ -1,6 +1,7 @@
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800&family=Montserrat:ital,wght@0,200;0,600;1,100;1,500&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
+
 @media (min-width: 426px) {
     .bg{
         background: linear-gradient(to bottom, #ffffff 0%, #1b6daf 100%);
@@ -54,21 +55,13 @@
         transition: 0.4s;
     }
     
-    html, body {
+    body {
+        background: linear-gradient(to bottom, #ffffff 0%, #1b6daf 100%);
         margin: 0;
         padding: 0;
-        overflow-x: hidden; /* This will prevent any horizontal overflow */
-    }
-    @media (max-width: 1280px) {
-        .custom-navbar ul li{
-            display: none; /* Hide the ul containing the navigation links */
-        }
-    
-        /* Optional: display a menu button or icon here when the links are hidden */
-        .custom-navbar .menu-icon {
-            display: block; /* Show menu icon */
-            /* Additional styles for the menu icon */
-        }
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+        height: 100%; /* Ensures the gradient covers the whole page even if there is little content */
+        min-height: 100vh; /* Minimum height to cover the full viewport height */
     }
     .page-header{
         height: 400px;
@@ -169,55 +162,46 @@
     .container2 {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between; 
-        margin-left: 4%;
-        margin-right: 4%;
-        margin-top: 5%;
+        justify-content: space-between;
+        margin: 4%; /* Combined margins for top, right, bottom, left */
     }
     
     .image-card {
-        margin: 20px; /* Add space between image cards */
-        flex: 1 1 47.5%; /* Set a width for each image card */
-        overflow: hidden;
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        margin: 20px; /* Space between cards */
+        flex: 1 1 calc(50% - 40px); /* Subtract the total margin from the 50% width to prevent wrapping issues */
+        display: flex; /* Use flex to allow interior elements to lay out in a column */
         flex-direction: column;
-        justify-content: space-between;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
     }
     
     .image-card img {
-        padding-top: 40px;
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-        max-width: 100%;
-        height: 45%;
-        display: block; /* NEW - treat the image as a block-level element */
-        margin-left: auto; /* NEW - center image horizontally */
-        margin-right: auto; /* NEW - center image horizontally */
-        border-radius: 60px;
-    }
-    
-    .image-card h2 {
-        font-size: 18px;
-        margin-top: 10px;
-    }
-    
-    .image {
         width: 100%;
+        height: auto; /* Height is automatic to maintain aspect ratio */
+        object-fit: cover; /* Cover the area, may crop the image */
     }
     
-    .image-desc-1 .subtext{
-        width: 100%;
+    .image-card .heading-text {
+        font-size: 1.5rem;
+        margin-top: 1.5%; 
+        margin-bottom: 1.5%;/* Remove top margin and add a small bottom margin */
+    }
+    
+    .image-card .image-desc-1 {
+        flex-grow: 1; /* Allow this div to grow and contain the text */
+    }
+    
+    .image-desc-1 .subtext {
         text-align: justify;
-        padding-left: 12.5%;
-        padding-right: 12.5%;
+        padding: 0 12.5%; /* Keep padding consistent */
+        margin-top: 10px; /* Add some space above the text */
     }
-    .image-desc-1 .heading-text{
-        width: 100%;
-        text-align: center; 
-        margin-top: 2%;
+    
+    .image-desc-1 .heading-text {
+        text-align: center;
+        padding: 0 12.5%; /* Align padding with subtext */
     }
+    
 
     .content-2-services {
         display: grid;
@@ -230,29 +214,14 @@
         padding-right: 10%;
     }
 
-    .card-1 {
-        flex: 1; /* Allows the cards to grow and shrink with flexbox */
-        margin: 1rem; /* Adds some space around the cards */
-        box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
-    }
-
-    .card-1 p {
-        padding-left: 3%;
-        padding-right: 3%;
-        margin-top: 2%;
-        
-    }
-
     .card-11 {
-        margin: 1rem; /* Adds some space around the cards */
+        margin: 5rem; /* Adds some space around the cards */
         box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
         border-radius: 60px;
         background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
         box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
         height: 300px;
+        max-width: 500px;
         text-align: center;
         justify-items: center;
     }
@@ -284,7 +253,7 @@
     /* facilities */
 
     .container-faci {
-        padding: 3rem;
+        margin: 4%;
         display: flex; /* Set display to flex */
         align-items: flex-start;
         justify-content: center;
@@ -299,9 +268,8 @@
         flex: 1; /* Allows the cards to grow and shrink with flexbox */
         margin: 1rem; /* Adds some space around the cards */
         box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        background: white;
+        overflow: hidden;
     }
     
     .container-faci .card-1 img {
@@ -313,11 +281,8 @@
     .container-faci .card-1 p {
         font-weight: 700;
         text-align: center;
-        font-size: 3rem; /* Adjust font size to ensure it fits well */
-        margin-top: 0.5rem; /* Adds space above the title */
-        margin-bottom: 0; /* Removes any default bottom margin */
-        width: 100%; /* Ensures the title takes up the full width of its container */
-        padding: 0 1rem; /* Adds horizontal padding *//* Fixed height for all text containers */
+        font-size: 1.5rem; /* Adjust font size to ensure it fits well */
+        margin: 5%;/* Removes any default bottom margin */
         display: flex; /* Enables flexbox for vertical centering */
         align-items: center; /* Centers the text vertically */
         justify-content: center; /* Centers the text horizontally */
@@ -329,12 +294,8 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        margin-top: 10px;
-        margin-left: 4.5%;
-        margin-right: 4.5%;
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        margin: 5%;
+        background: white;
     }
     
     .container3 .heading-text{
@@ -377,10 +338,8 @@
     .container5 {
         display: flex;
         align-items: center;
-        margin: 3.8%;
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        margin: 5%;
+        background: white;
     }
     
     .container5 .content{
@@ -435,7 +394,15 @@
     .container6 {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
+        margin: 5%;
+        background: white;
+    }
+
+    .container6 .heading-text{
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
     
     h1 {
@@ -465,6 +432,10 @@
     .line {
         border-top: 1px solid black;
         height: 10px
+    }
+
+    .container6 .line{
+        width: 75%;
     }
     
     .navilink {
@@ -610,12 +581,11 @@
     }
     
     .social-links {
+        margin: 5%;
         display: flex;
         flex-direction: column; /* Stack children vertically */
         align-items: center; /* Center children horizontally */
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
-        box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
+        background: white;
     }
     
     .contact-us {
@@ -771,12 +741,6 @@
         margin: 10px 0;
     }
     
-    
-    .social-links{
-        display: flex;
-        margin: 4%;
-    }
-    
 
     .icon-contact-email{
         vertical-align: middle;
@@ -797,19 +761,26 @@
         width: auto;
         height: 100vh;
     }
+
+    .container11 .line{
+        border-top: 1px solid white;
+        height: 20px;
+        width: 30%;
+        margin: 2%;
+    }
     
     .container11 img {
         width: 100%; /* Adjust the width as needed */
         z-index: 5;
     }
     
-    .container .overlay {
+    .container11 .overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Transparent layer color */
+        background: rgba(0, 0, 0, 0.7); /* Transparent layer color */
         display: flex;
         flex-direction: column;
         justify-content: center;

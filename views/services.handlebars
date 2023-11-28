@@ -26,7 +26,6 @@
             <img src="../assets/{{imageMappings.image4}}" alt="{{imageMappings.image1}}" id="image4">
             <div class="overlay">
                 <h1 id="text25">{{textMappings.text25}}</h1>
-                <div class="line"></div>
                 <p id="text26">{{textMappings.text26}}</p>
             </div>
         </div>
@@ -39,6 +38,9 @@
                 <div class="card-1">
                     <p id="{{this._id}}" class="heading-text serviceName">{{this.name}}</p>
                     <p id="{{this._id}}" class="subtext-2 serviceDesc">{{this.description}}</p>
+                    {{#if ../isAdminMode}}
+                    <button id="{{this._id}}" name="delete-service" class="delete-service">Delete</button>
+                    {{/if}}
                 </div>
                 {{/each}}
             </div>

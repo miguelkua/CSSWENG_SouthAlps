@@ -21,6 +21,15 @@ router.post('/', checkNotAuthenticated, passport.authenticate('local',
     failureFlash: false
 }));
 
+router.get('/logout', (req, res) => 
+{
+    req.logOut((err) => 
+    {
+        if (err) { return next(err) }
+        res.redirect('/home');
+    })
+});
+
 // Middleware for checking User authentication
 function checkAuthenticated(req, res, next) 
 {

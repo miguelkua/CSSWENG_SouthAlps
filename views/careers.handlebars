@@ -20,7 +20,7 @@
 
         <!---Picture and Title of Page-->
         <div class="container11">
-            <img src="../assets/{{imageMappings.image5}}" alt="{{imageMappings.image1}}" id="image5">
+            <img src="../assets/{{imageMappings.image5}}" alt="{{imageMappings.image5}}" id="image5">
             <div class="overlay">
                 <h1 id="text38">{{textMappings.text38}}</h1>
                 <div class="line"></div>
@@ -29,6 +29,24 @@
         </div>
 
         <!--Listings of Careers -->
+        <div class ="container-careers">
+        {{#each careers}}
+            <div class="card-11">
+                <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="img-careers">
+                <p id="{{this._id}}">{{this.name}}</p>
+            </div>
+        {{/each}}
+        </div>
+
+         <div id="form-overlay" class="form-overlay">
+            <div class="form-container" style="background-color: lightblue;">
+                <form id="postForm" name="postForm" class="postForm" style="background-color: lightblue;">
+                    <textarea id="nameInput" name="name" class="form-text-input" rows="4" cols="50" placeholder="Name of Career?"></textarea>
+                    <button id="submit-item" class="submit-button" type="submit" style="margin-top: 20px;">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!--
         <div class="container-careers">
             <div class="card-11">
                 <img src="../assets/person1.jpg" alt="{{imageMappings.image1a}}" id="image1a" class="img-careers">
@@ -58,6 +76,7 @@
                 <p id="text1c">{{textMappings.text1c}}</p>
             </div>
         </div>
+        -->
 
 
 
@@ -90,6 +109,7 @@
 
         {{> accreditations}}
         {{> adminhotbar}}
+        <script src="/javascript/careers.js"></script>
         <script src="/javascript/adminhotbar.js"></script>
     </body>
 </html>

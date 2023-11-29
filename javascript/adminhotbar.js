@@ -647,7 +647,6 @@ function selectEntry(event) {
 
             else if(classes.includes('careerName') == true){
                 isCareerName = true;
-                alert("Test")
             }
 
             else if(classes.includes('facilityDesc') == true){

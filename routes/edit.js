@@ -124,7 +124,7 @@ router.post('/editFacilities', async (req, res) => {
         }
 
         if(isFacilityDesc == true){
-            existingEntry.name = updatedContent;
+            existingEntry.description = updatedContent;
         }
 
         await existingEntry.save();

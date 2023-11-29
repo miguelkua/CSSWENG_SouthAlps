@@ -37,7 +37,7 @@
         {{#each facilities}}
             <div class="card-1">
                  <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}">
-                 <p id="{{this._id}}">{{this.description}}</p>
+                 <p id="{{this._id}}" class="facilityDesc">{{this.description}}</p>
                  {{#if ../isAdminMode}}
                     <button id="{{this._id}}" name="delete-facility" class="delete-facility">Delete</button>
                 {{/if}}

@@ -6,6 +6,7 @@
     <button class="del-acr" id="del-acr" style="display: none;">Delete Accreditations</button>
     <button id="add-service" style="display: none;">Add Service</button>
     <button id="add-career" style="display: none;">Add Career</button>
+    <button id="add-facility" style="display: none;">Add Facility</button>
     <button class="log-out" id="log-out" onclick="window.location.href='http://localhost:3000/admin/logout';">Log Out</button>
     {{!-- <button id="add">Add</button> --}}
     {{!-- <button id="delete">Delete</button> --}}
@@ -64,6 +65,12 @@
          document.addEventListener('DOMContentLoaded', function () {
             // Show the "Add" button
             document.getElementById('add-career').style.display = 'block';
+        });
+    } 
+    if(currentURL == "http://localhost:3000/facility"){
+         document.addEventListener('DOMContentLoaded', function () {
+            // Show the "Add" button
+            document.getElementById('add-facility').style.display = 'block';
         });
     }    
 </script>

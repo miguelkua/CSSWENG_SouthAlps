@@ -67,7 +67,6 @@ router.post('/delete', async (req, res) => {
     try {
         const serviceId = req.body._id;
 
-        // Assuming you have a function in your controller to delete a document by ID
         await controller.deleteDocumentByID('services', serviceId);
 
         res.sendStatus(200);

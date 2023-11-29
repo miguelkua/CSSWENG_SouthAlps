@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded",() =>
 
   document.querySelectorAll(".delete-service").forEach(button => 
   {
-    var serviceID = button.id;
+    var ID = button.id;
     button?.addEventListener("click", function(e)
     {
       e.preventDefault();  // Prevents page refresh
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded",() =>
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify
         ({
-          _id: serviceID
+          _id: ID
         })
       })
       .then((res) => 
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded",() =>
             hideOverlay(); 
             window.location.href = url; 
           }
-          else { console.log("Error in service registration"); }
+          else { console.log("Error in service deletion"); }
       });
 
     })

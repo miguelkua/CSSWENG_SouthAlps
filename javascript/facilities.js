@@ -1,6 +1,6 @@
 // import { log } from "handlebars/runtime";
 
-const addButton = document.getElementById('add-career');
+const addButton = document.getElementById('add-facility');
 const overlay = document.getElementById('form-overlay');
 const addItem = document.getElementById('add-item');
 const postForm = document.forms.postForm;
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded",() =>
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify
       ({
-        name:  postForm.name.value,
+        description:  postForm.description.value,
       })
     })
     .then((res) => 
@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded",() =>
           hideOverlay(); 
           window.location.href = url; 
         }
-        else { console.log("Error in career registration"); }
+        else { console.log("Error in facility registration"); }
     });
 
   });
 
-  document.querySelectorAll(".delete-career").forEach(button => 
+  document.querySelectorAll(".delete-facility").forEach(button => 
     {
       var ID = button.id;
 
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded",() =>
               hideOverlay(); 
               window.location.href = url; 
             }
-            else { console.log("Error in career deletion"); }
+            else { console.log("Error in facility deletion"); }
         });
 
       }

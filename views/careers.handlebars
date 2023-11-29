@@ -34,6 +34,9 @@
             <div class="card-11">
                 <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="img-careers">
                 <p id="{{this._id}}">{{this.name}}</p>
+                {{#if ../isAdminMode}}
+                    <button id="{{this._id}}" name="delete-career" class="delete-career">Delete</button>
+                {{/if}}
             </div>
         {{/each}}
         </div>

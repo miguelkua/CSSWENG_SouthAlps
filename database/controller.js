@@ -2,6 +2,7 @@ const TextEntry = require('./schemas/textEntry.js');
 const ImageEntry = require('./schemas/imageEntry.js');
 const Services = require('./schemas/services.js');
 const Careers = require('./schemas/careers.js');
+const Facilities = require('./schemas/facilities.js');
 const Accreditations = require('./schemas/accreditations.js');
 
 
@@ -62,6 +63,7 @@ const controller =
         {
             case 'accreditations': return Accreditations.find({});
             case 'careers': return Careers.find({});
+            case 'facilities': return Facilities.find({});
             case 'services': return Services.find({});
             case 'text': return TextEntry.find({});
             case 'images': return ImageEntry.find({});
@@ -89,6 +91,12 @@ const controller =
                     imageName: doc.imageName
                 });
                 return Careers.create(career);
+            case 'facilities':
+                let facility = new Facilities({
+                    description: doc.description,
+                    imageName: doc.imageName
+                });
+                return Facilities.create(facility);
             case 'services': 
                 let service = new Services({
                     name: doc.name,
@@ -110,6 +118,7 @@ const controller =
         {
             case 'accreditations': return Accreditations.deleteOne({ _id: id});
             case 'careers': return Careers.deleteOne({ _id: id});
+            case 'facilities': return Facilities.deleteOne({ _id: id});
             case 'services': return Services.deleteOne({ _id: id});
             default: return null;
         }

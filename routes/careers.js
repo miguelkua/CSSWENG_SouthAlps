@@ -62,4 +62,17 @@ router.post('/add', async function(req,res)
     }
 });
 
+router.post('/delete', async (req, res) => {
+    try {
+        const careerId = req.body._id;
+
+        await controller.deleteDocumentByID('careers', careerId);
+
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 module.exports = router;

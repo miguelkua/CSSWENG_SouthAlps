@@ -7,6 +7,8 @@ const controller = require('../database/controller.js');
 const TextEntry = require('../database/schemas/textEntry.js');
 const ImageEntry = require('../database/schemas/imageEntry.js');
 const Services = require('../database/schemas/services.js');
+const Careers = require('../database/schemas/careers.js')
+const Facilities = require('../database/schemas/facilities.js')
 const Accreditations = require('../database/schemas/accreditations.js');
 
 //needed multer stuff
@@ -86,6 +88,53 @@ router.post('/editServices', async (req, res) => {
     }
 });
 
+router.post('/editCareers', async (req, res) => {
+    const { updatedContent, elementID, isCareerName} = req.body;
+    console.log('Request Data:', { updatedContent, elementID, isCareerName});
+
+    try {
+        const existingEntry = await Careers.findOne({ _id: elementID });
+        
+        if (!existingEntry) {
+            return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
+        }
+
+        if(isCareerName == true){
+            existingEntry.name = updatedContent;
+        }
+
+        await existingEntry.save();
+        console.log('Entry Updated Successfully.');
+        res.json({ message: 'Entry update successful' });
+    } catch (error) {
+        console.error('Error updating entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.post('/editFacilities', async (req, res) => {
+    const { updatedContent, elementID, isFacilityDesc} = req.body;
+    console.log('Request Data:', { updatedContent, elementID, isFacilityDesc});
+
+    try {
+        const existingEntry = await Facilities.findOne({ _id: elementID });
+        
+        if (!existingEntry) {
+            return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
+        }
+
+        if(isFacilityDesc == true){
+            existingEntry.name = updatedContent;
+        }
+
+        await existingEntry.save();
+        console.log('Entry Updated Successfully.');
+        res.json({ message: 'Entry update successful' });
+    } catch (error) {
+        console.error('Error updating entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 router.post('/editImage', edit.single('image-upload'), async function (req, res) {
     const { updatedContent, elementID } = req.body;
     console.log('Request Data:', { updatedContent, elementID });

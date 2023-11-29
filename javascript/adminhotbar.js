@@ -35,6 +35,12 @@ const uploadedImage = document.getElementById('uploaded-image');
 let isServiceName = '';
 let isServiceDesc = '';
 
+//career edit
+let isCareerName = '';
+
+//facility edit
+let isFacilityDesc = '';
+
 //acredditation edit
 let isAcrImage = '';
 
@@ -108,6 +114,50 @@ document.addEventListener('DOMContentLoaded', function () {
                             location.reload();
                         } else {
                             console.error('Update service request failed:', response.status, response.statusText);
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error during updating services:', error);
+                }
+            }
+
+            if(isCareerName == true){
+                try {
+                    fetch('/editCareers', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ updatedContent, elementID, isCareerName}),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Reload the page if the fetch operation is successful
+                            location.reload();
+                        } else {
+                            console.error('Update career request failed:', response.status, response.statusText);
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error during updating services:', error);
+                }
+            }
+
+            if(isFacilityDesc == true){
+                try {
+                    fetch('/editFacilities', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ updatedContent, elementID, isFacilityDesc}),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Reload the page if the fetch operation is successful
+                            location.reload();
+                        } else {
+                            console.error('Update facility request failed:', response.status, response.statusText);
                         }
                     });
                 } catch (error) {
@@ -572,6 +622,8 @@ function selectEntry(event) {
     const clickedElement = event.target;
     isServiceName = false;
     isServiceDesc = false;
+    isCareerName = false;
+    isFacilityDesc = true;
     isAcrImage = false;
 
     if(isEditText == true){
@@ -591,6 +643,14 @@ function selectEntry(event) {
 
             else if(classes.includes('serviceDesc') == true){
                 isServiceDesc = true;
+            }
+
+            else if(classes.includes('careerName') == true){
+                isCareerName = true;
+            }
+
+            else if(classes.includes('facilityDesc') == true){
+                isFacilityDesc = true;
             }
         }
     }

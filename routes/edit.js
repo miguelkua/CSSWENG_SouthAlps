@@ -82,7 +82,7 @@ router.post('/editServices', async (req, res) => {
         res.json({ message: 'Entry update successful' });
     } catch (error) {
         console.error('Error updating entry:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -109,10 +109,13 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
 
         //only deletes when there a new image name is introduced and that there is only 1 existing entry using it
         if(oldImage != updatedContent && possibleEntries.length == 1){
-            console.log('Old Image Name:', oldImage);
-            fs.unlinkSync(path.join('./assets', oldImage));
+            try{
+                console.log('Old Image Name:', oldImage);
+                fs.unlinkSync(path.join('./assets', oldImage));
+            } catch (error) {
+                console.error('Error deleting image:', error);
+            }
         }
-
         existingEntry.imageName = updatedContent;
         await existingEntry.save();
         console.log('Entry Updated Successfully.');
@@ -121,7 +124,7 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
         console.error('Error updating entry:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
 
 const acr_storage = multer.diskStorage({

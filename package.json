@@ -10,12 +10,15 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.7",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "selenium-webdriver": "^4.15.0"
   },
   "devDependencies": {
+    "mocha": "^10.2.0",
     "nodemon": "^3.0.1"
   },
   "scripts": {
-    "devStart": "nodemon server"
+    "devStart": "nodemon server",
+    "test": "mocha"
   }
 }

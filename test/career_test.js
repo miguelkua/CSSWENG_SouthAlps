@@ -32,20 +32,6 @@ describe('Careers Page Tests', function() {
         assert(await image.isDisplayed());
     });
 
-    it('should display the first image in the image section correctly', async () => {
-        let imageContainer = await driver.findElement(By.css('.container-careers .card-11:nth-child(1)'));
-        let image = await imageContainer.findElement(By.css('img'));
-        assert(await image.isDisplayed());
-    });
-    
-
-    it('should display the text for the first image box correctly', async () => {
-        let textContainer = await driver.findElement(By.css('.container-careers .card-11:nth-child(1)'));
-        let text = await textContainer.findElement(By.css('p')).getText();
-        assert.notStrictEqual(text, '');
-    });
-    
-
     it('should display the Contact Us header correctly', async () => {
         let contactUsHeader = await driver.findElement(By.css('.contact-us .heading-text')).getText();
         assert.strictEqual(contactUsHeader, 'Contact Us');

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../database/controller.js');
-const { collection } = require('../database/schemas/admin.js');
+// const { collection } = require('../database/schemas/admin.js');
 
 
 router.get('/', async (req, res) => 
@@ -60,6 +60,19 @@ router.post('/add', async function(req, res) {
     } catch (error) {
         console.error(error);
         res.sendStatus(500); // Internal Server Error
+    }
+});
+
+router.post('/delete', async (req, res) => {
+    try {
+        const serviceId = req.body._id;
+
+        await controller.deleteDocumentByID('services', serviceId);
+
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
     }
 });
 

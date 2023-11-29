@@ -245,6 +245,26 @@
 },
 {
   "page": "services",
+  "id": "text1a",
+  "text": "Blast Freezing "
+},
+{
+  "page": "services",
+  "id": "text1b",
+  "text": "Cold Storage"
+},
+{
+  "page": "services",
+  "id": "text1c",
+  "text": "Real Time Inventory Management"
+},
+{
+  "page": "services",
+  "id": "text1d",
+  "text": "Office Rental"
+},
+{
+  "page": "services",
   "id": "text15",
   "text": "Contact Us"
 },

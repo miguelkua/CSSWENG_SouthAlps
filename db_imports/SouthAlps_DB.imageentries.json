@@ -71,6 +71,30 @@
 
 },
 {
+    "page": "services",
+    "id": "image1a",
+    "imageName": "blast.jpg"
+
+},
+{
+    "page": "services",
+    "id": "image1b",
+    "imageName": "coldstorage.jpg"
+
+},
+{
+    "page": "services",
+    "id": "image1c",
+    "imageName": "inventory.jpg"
+
+},
+{
+    "page": "services",
+    "id": "image1d",
+    "imageName": "officerental.jpg"
+
+},
+{
     "page": "careers",
     "id": "image5",
     "imageName": "careersmain.jpg"

@@ -18,6 +18,10 @@
         z-index: 1000;
     }
     
+    .custom-navbar ul li.login-link a{
+        margin-left: auto; /* Pushes the login link to the right */
+    }
+
     .company-logo{
         order: -1;
         width: 200px;
@@ -42,7 +46,6 @@
         margin-top: 15px;
     
     }
-    
     
     .custom-navbar ul li a{
         padding: 0;
@@ -203,50 +206,38 @@
     }
     
 
-    .content-2-services {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 30px;
-        width: 100%;
-        margin-bottom: 4%;
-        justify-content: space-between;
-        padding-left: 10%;
-        padding-right: 10%;
-    }
-
     .card-11 {
-        margin: 5rem; /* Adds some space around the cards */
-        box-sizing: border-box; /* Makes sure padding and borders are included in the total width and height */
-        border-radius: 60px;
-        background: linear-gradient(180deg, #F5F5F5 0%, rgba(24, 160, 251, 0.34) 100%);
+        padding: 2.5%; /* Adjust margin to ensure three cards fit in a row */
+        box-sizing: border-box;
+        background-color: white;
         box-shadow: 15px 13px 8.8px 2px rgba(0, 0, 0, 0.25);
-        height: 300px;
-        max-width: 500px;
+        height: auto; /* Fixed height for all cards */
+        max-width: calc(33.333% - 2rem); /* Adjust width for three cards per row */
         text-align: center;
-        justify-items: center;
     }
-
-    .card-11 p{
+    
+    .card-11 p {
         font-size: 30px;
         font-weight: 700;
-        width: auto;
+        padding-top: 5%;
+        padding-bottom: 2.5%;
     }
-
-    .container-careers {
-        display: flex; /* Set display to flex */
-        align-items: flex-start;
-        justify-content: center;
-        gap: 1rem; /* Ensures there is a gap between the images */
-        flex-wrap: wrap; /* Ensures that the images can wrap onto the next line on smaller screens */
     
-        /* Set flex-basis to 48% to make two images per row */
-        flex-basis: 48%;
+    .container-careers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* This will space out the cards evenly */
+        gap: 3rem; /* This gap is added to the space between the cards */
+        margin: 5%;
     }
+    
+    /* Additional styles may be needed to make sure that the content inside the cards is aligned properly */
+    
 
     .img-careers {
-        height: 200px;
-        width: 200px;
-        padding: 10px;
+        height: 300px;
+        width: 300px;
+        padding: 2.5%;
         border-radius: 100%;
     }
 
@@ -696,6 +687,41 @@
         cursor: pointer;
     }
     
+    /* services */
+
+    .container-mainserv {
+        margin: 4%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjusted for consistent spacing */
+        align-items: stretch; /* Ensures cards stretch to the same height */
+    }
+    
+    .container-mainserv .card-1 {
+        flex: 1 1 calc(50% - 2rem); /* Adjusted calculation to account for margin */
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    
+    .container-mainserv .card-1 img {
+        width: 100%;
+        height: 400px; /* Set a fixed height for all images */
+        object-fit: cover; /* Ensures the image covers the fixed height area, may crop the image */
+    }
+    
+    .container-mainserv .card-1 p {
+        font-weight: 700;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0 5%; /* Adjusted margin to be only horizontal */
+        padding: 10px 0; /* Gives some space above and below the text */
+    }
+    
+
     .container9 {
         display: flex;
         flex-direction: column;

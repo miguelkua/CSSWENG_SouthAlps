@@ -623,7 +623,7 @@ function selectEntry(event) {
     isServiceName = false;
     isServiceDesc = false;
     isCareerName = false;
-    isFacilityDesc = true;
+    isFacilityDesc = false;
     isAcrImage = false;
 
     if(isEditText == true){

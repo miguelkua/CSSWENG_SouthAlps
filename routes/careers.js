@@ -1,7 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../database/controller.js');
+const path = require("path");
+const fs = require('fs'); // files
+const multer = require('multer'); // for the image URLs
 
+//needed multer stuff
+const career_storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './assets'); // directory where the images will be stored
+    },
+    filename: function (req, file, cb) {
+      const originalFilename = file.originalname;
+      cb(null, originalFilename); // names the image after the inputted image name
+    }
+});
+
+const add = multer({storage: career_storage});
 
 router.get('/', async (req, res) => 
 {
@@ -44,12 +59,13 @@ router.get('/', async (req, res) =>
     }
 });
 
-router.post('/add', async function(req,res)
+router.post('/add', add.single('career-upload'), async function(req,res)
 {
     try
     {
         let career = {
-            name: req.body.name
+            name: req.body.name,
+            imageName: req.body.imageName? req.file.filename : 'default-image.jpg', // Set imageName to the uploaded file name or a default value
             // imageName: req.body.imageName [NOT WORKING YET]
         }
         await controller.addDocument('careers', career);

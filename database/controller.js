@@ -32,7 +32,7 @@ const controller =
          * Retrieves single text entry based on the given ID.
          * @id -- identifier
          */
-        return TextEntry.findById(id).exec();
+        return TextEntry.findOne({ id: id}).exec();
     },
 
     findImageByID: function (id)
@@ -41,7 +41,7 @@ const controller =
          * Retrieves single image entry based on the given ID.
          * @id -- identifier
          */
-        return ImageEntry.findById(id).exec();
+        return ImageEntry.findOne({ id: id}).exec();
     },
 
     findAccreditationByID: function (id)
@@ -50,7 +50,7 @@ const controller =
          * Retrieves single accreditation based on the given ID.
          * @id -- identifier
          */
-        return Accreditations.findById(id).exec();
+        return Accreditations.findOne({ id: id}).exec();
     },
 
     getAll: function (db)

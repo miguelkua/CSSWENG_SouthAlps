@@ -26,32 +26,18 @@ const edit = multer({ storage: storage });
 
 router.post('/editText', async (req, res) => {
     const { updatedContent, elementID } = req.body;
-    console.log('Request Data:', { updatedContent, elementID });
-
+    console.log(elementID);
     try {
-        const existingEntry = await controller.findTextByID(elementID);
-        
+        // Use findOne with the custom 'id' field
+        const existingEntry = await TextEntry.findOne({ id: elementID });
+
         if (!existingEntry) {
             return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
         }
 
         existingEntry.text = updatedContent;
         await existingEntry.save();
-
-        // this is for the partial stuff that share the same id, but different page values
-        const possibleEntries = await TextEntry.find({ id: elementID });
-
-        if (possibleEntries.length > 1) {
-            for (const entry of possibleEntries) {
-                entry.text = updatedContent;
-                await entry.save();
-            }
-            console.log('All Entries Updated Successfully.');
-        }
-
-        else{
-            console.log('Entry Updated Successfully.');
-        }
+        console.log('Entry Updated Successfully.');
 
         res.json({ message: 'Entry update successful' });
     } catch (error) {

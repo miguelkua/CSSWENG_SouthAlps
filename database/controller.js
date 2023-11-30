@@ -1,9 +1,9 @@
 const TextEntry = require('./schemas/textEntry.js');
 const ImageEntry = require('./schemas/imageEntry.js');
 const Services = require('./schemas/services.js');
+const Accreditations = require('./schemas/accreditations.js');
 const Careers = require('./schemas/careers.js');
 const Facilities = require('./schemas/facilities.js');
-const Accreditations = require('./schemas/accreditations.js');
 
 
 const controller = 
@@ -32,7 +32,7 @@ const controller =
          * Retrieves single text entry based on the given ID.
          * @id -- identifier
          */
-        return TextEntry.findById(id).exec();
+        return TextEntry.findOne({ id: id}).exec();
     },
 
     findImageByID: function (id)
@@ -41,19 +41,10 @@ const controller =
          * Retrieves single image entry based on the given ID.
          * @id -- identifier
          */
-        return ImageEntry.findById(id).exec();
+        return ImageEntry.findOne({ id: id}).exec();
     },
 
-    findAccreditationByID: function (id)
-    {
-        /**
-         * Retrieves single accreditation based on the given ID.
-         * @id -- identifier
-         */
-        return Accreditations.findById(id).exec();
-    },
-
-    getAll: function (db)
+    getAll: function(db)
     {
         /**
          * Fetches all documents in a collection.
@@ -61,9 +52,9 @@ const controller =
          */
         switch (db) 
         {
-            case 'accreditations': return Accreditations.find({});
-            case 'careers': return Careers.find({});
             case 'facilities': return Facilities.find({});
+            case 'careers': return Careers.find({});
+            case 'accreditations': return Accreditations.find({});
             case 'services': return Services.find({});
             case 'text': return TextEntry.find({});
             case 'images': return ImageEntry.find({});
@@ -71,55 +62,25 @@ const controller =
         }
     },
 
-    addDocument: function (db, doc)
+    addDocument: function(db, doc)
     {
         /**
          * Inserts a document into a collection.
          * @db  -- name of an insertable collection (services)
-         * @doc -- document to be inserted in JSON format
+         * @doc -- document to be inserted
          */
         switch (db) 
         {
-            case 'accreditations': 
-                let accreditation = new Accreditations({
-                    imageName: doc.imageName
-                });
-                return Accreditations.create(accreditation);
-            case 'careers':
-                let career = new Careers({
-                    name: doc.name,
-                    imageName: doc.imageName
-                });
-                return Careers.create(career);
-            case 'facilities':
-                let facility = new Facilities({
-                    description: doc.description,
-                    imageName: doc.imageName
-                });
-                return Facilities.create(facility);
+            case 'facilities': return Facilities.create(doc);
+            case 'careers': return Careers.create(doc);
+            case 'accreditations': return Accreditations.create(doc);
             case 'services': 
                 let service = new Services({
                     name: doc.name,
                     description: doc.description
                 });
-                return Services.create(service);
-            default: return null;
-        }
-    },
-
-    deleteDocumentByID: function (db, id)
-    {
-        /**
-         * Deletes a document from a specified collection.
-         * @db  -- name of a collection
-         * @id  -- identifier
-         */
-        switch (db) 
-        {
-            case 'accreditations': return Accreditations.deleteOne({ _id: id});
-            case 'careers': return Careers.deleteOne({ _id: id});
-            case 'facilities': return Facilities.deleteOne({ _id: id});
-            case 'services': return Services.deleteOne({ _id: id});
+                Services.create(service); 
+                break;
             default: return null;
         }
     }

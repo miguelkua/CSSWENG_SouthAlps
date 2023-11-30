@@ -4,10 +4,9 @@
     <button class="edit-img" id="edit-img">Edit Images</button>
     <button class="add-acr" id="add-acr" style="display: none;">Add Accreditations</button>
     <button class="del-acr" id="del-acr" style="display: none;">Delete Accreditations</button>
-    <button id="add-service" style="display: none;">Add Service</button>
-    <button id="add-career" style="display: none;">Add Career</button>
-    <button id="add-facility" style="display: none;">Add Facility</button>
-    <button class="log-out" id="log-out" onclick="window.location.href='http://localhost:3000/admin/logout';">Log Out</button>
+    <button id="add" style="display: none;">Add Service</button>
+    <button class="add-car" id="add-car" style="display: none;">Add Career</button>
+    <button class="add-fac" id="add-fac" style="display: none;">Add Facility</button>
     {{!-- <button id="add">Add</button> --}}
     {{!-- <button id="delete">Delete</button> --}}
 </div>
@@ -16,9 +15,9 @@
 {{!-- class admin removes it from being selected by the edit --}}
 <div class="modal" id="text-space">
     <div class="modal-content" id="text-box">
-        <textarea id="text-area" rows="4" cols="50"></textarea>
-        <button class="button1" id="text-change">Change</button>
-        <button class="button1" id="text-cancel">Cancel</button>
+        <textarea id="text-area" rows="4" cols="50" maxlength="600"></textarea>
+        <button class="admin" id="text-change">Change</button>
+        <button class="admin" id="text-cancel">Cancel</button>
     </div>
 </div>
 
@@ -26,9 +25,9 @@
     <div class="modal-content" id="image-box">
         <input type="file" id="image-upload" name="image-upload" style="display: none;" accept="image/*">
         <label for="image-upload" id="image-label">Edit Image</label>
-        <img class="button1" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
-        <button class="button1" id="image-change">Change</button>
-        <button class="button1" id="image-cancel">Cancel</button>
+        <img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;">
+        <button class="admin" id="image-change">Change</button>
+        <button class="admin" id="image-cancel">Cancel</button>
     </div>
 </div>
 
@@ -36,17 +35,56 @@
     <div class="modal-content" id="acr-box">
         <input type="file" id="acr-upload" name="acr-upload" style="display: none;" accept="image/*">
         <label for="acr-upload" id="acr-label">Upload Image</label>
-        <img class="button1" id="acr-uploaded-image" style="max-width: 50%;">
-        <button class="button1" id="acr-submit" style="display: none;">Submit</button>
-        <button class="button1" id="acr-submit-cancel">Cancel</button>
+        <img class="admin" id="acr-uploaded-image" style="max-width: 50%;">
+        <button class="admin" id="acr-submit" style="display: none;">Submit</button>
+        <button class="admin" id="acr-submit-cancel">Cancel</button>
     </div>
 </div>
 
 <div class="modal" id="acrdel-space">
     <div class="modal-content" id="text-box">
-        <h1 class="button1">Delete Accreditation?</h1>
-        <button class="button1" id="acr-del">Proceed</button>
-        <button class="button1" id="acr-del-cancel">Cancel</button>
+        <h1 class="admin">Delete Accreditation?</h1>
+        <button class="admin" id="acr-del">Proceed</button>
+        <button class="admin" id="acr-del-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="car-space">
+    <div class="modal-content" id="text-box">
+        <h1 class="admin">Job Title</h1>
+        <textarea id="car-title-area" rows="4" cols="50" maxlength="40"></textarea>
+        <h1 class="admin">Job Description</h1>
+        <textarea id="car-desc-area" rows="4" cols="50" maxlength="600"></textarea>
+        <button class="admin" id="car-submit" style="display: none;">Submit</button>
+        <button class="admin" id="car-submit-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="cardel-space">
+    <div class="modal-content" id="text-box">
+        <h1 class="admin">Delete Career?</h1>
+        <button class="admin" id="car-del">Proceed</button>
+        <button class="admin" id="car-del-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="fac-space">
+    <div class="modal-content" id="fac-box">
+        <input type="file" id="fac-upload" name="fac-upload" style="display: none;" accept="image/*">
+        <label for="fac-upload" id="fac-label">Upload Image</label>
+        <img class="admin" id="fac-uploaded-image" style="max-width: 50%;">
+        <h1 class="admin">Facility Description</h1>
+        <textarea id="fac-desc-area" rows="4" cols="50" maxlength="600"></textarea>
+        <button class="admin" id="fac-submit" style="display: none;">Submit</button>
+        <button class="admin" id="fac-submit-cancel">Cancel</button>
+    </div>
+</div>
+
+<div class="modal" id="facdel-space">
+    <div class="modal-content" id="text-box">
+        <h1 class="admin">Delete Facility?</h1>
+        <button class="admin" id="fac-del">Proceed</button>
+        <button class="admin" id="fac-del-cancel">Cancel</button>
     </div>
 </div>
 {{/if}}
@@ -55,24 +93,24 @@
     const currentURL = window.location.href;
     console.log(currentURL);
 
-    if(currentURL == "http://localhost:3000/services"){
+    if(currentURL.includes("/services")){
          document.addEventListener('DOMContentLoaded', function () {
             // Show the "Add" button
-            document.getElementById('add-service').style.display = 'block';
+            document.getElementById('add').style.display = 'block';
         });
-    }    
-    if(currentURL == "http://localhost:3000/careers"){
-         document.addEventListener('DOMContentLoaded', function () {
-            // Show the "Add" button
-            document.getElementById('add-career').style.display = 'block';
-        });
-    } 
-    if(currentURL == "http://localhost:3000/facility"){
-         document.addEventListener('DOMContentLoaded', function () {
-            // Show the "Add" button
-            document.getElementById('add-facility').style.display = 'block';
-        });
-    }    
+    }
+    
+    if(currentURL.includes("/careers")){
+        document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('add-car').style.display = 'block';
+    })
+    }
+
+    if(currentURL.includes("/facility")){
+        document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('add-fac').style.display = 'block';
+    });
+    }     
 </script>
 
 <style>
@@ -118,6 +156,14 @@
     background-color: gray;
 }
 
+.add-car.active{
+    background-color: gray;
+}
+
+.add-fac.active{
+    background-color: gray;
+}
+
 .admin-hotbar button:hover {
     background-color: #2980b9;
 }
@@ -136,22 +182,11 @@
 }
 
 .modal-content {
-    background-color: lightblue;
+    background-color: #962f2f;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
     max-width: 30%; 
     max-height: 70%;
-}
-
-.button1 {
-    background-color: #1B6DAF;
-    color: black;
-    border: none;
-    margin-top: 10px;
-    padding: 10px 30px; /* Adjust the padding to make it shorter */
-    border-radius: 10px;
-    cursor: pointer;
-    display: inline-block; /* Make it inline-block to adjust its width */
 }
 </style>

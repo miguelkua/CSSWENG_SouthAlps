@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>South Alps Cold Storage: Careers</title>
+        <title>South Alps Cold Storage: Home</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/style.css" type="text/css">
-        <link rel="stylesheet" href="../css/style2.css" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="../assets/icons/salps_icon.png" type="image/icon type">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -20,75 +20,72 @@
 
         <!---Picture and Title of Page-->
         <div class="container11">
-            <img src="../assets/{{imageMappings.image5}}" alt="{{imageMappings.image5}}" id="image5">
+            <img src="../assets/{{imageMappings.image5}}" alt="{{imageMappings.image1}}" id="image5">
             <div class="overlay">
                 <h1 id="text38">{{textMappings.text38}}</h1>
-                <div class="line"></div>
                 <p id="text39">{{textMappings.text39}}</p>
             </div>
         </div>
 
-        <!--Listings of Careers -->
+        <h1>Number of Careers: {{careers.length}}</h1>
+
         <div class ="container-careers">
         {{#each careers}}
             <div class="card-11">
-                <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="img-careers">
-                <p id="{{this._id}}">{{this.name}}</p>
+                <p id="{{this._id}}" class="careerTitle">{{this.jobtitle}}</p>
+                <p id="{{this._id}}" class="careerDesc">{{this.jobdesc}}</p>
                 {{#if ../isAdminMode}}
-                    <button id="{{this._id}}" name="delete-career" class="delete-career">Delete</button>
+                    <button id="{{this._id}}" class="car-del-button">Delete</button>
                 {{/if}}
             </div>
         {{/each}}
         </div>
 
-         <div id="form-overlay" class="form-overlay">
-            <div class="form-container" style="background-color: lightblue;">
-                <form id="postForm" name="postForm" class="postForm" style="background-color: lightblue;">
-                    <textarea id="nameInput" name="name" class="form-text-input" rows="4" cols="50" placeholder="Name of Career?"></textarea>
-                    <button id="submit-item" class="submit-button" type="submit" style="margin-top: 20px;">Submit</button>
-                </form>
+        <div class="container11">
+            <div class="image-section">
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image6}}" alt="{{imageMappings.image1}}" id="image6">
+                    <h2 id="text40">{{textMappings.text40}}</h2>
+                    <p id="text41">{{textMappings.text41}}</p>
+                </div>
+        
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image7}}" alt="{{imageMappings.image1}}" id="image7">
+                    <h2 id="text42">{{textMappings.text42}}</h2>
+                    <p id="text43">{{textMappings.text43}}</p>
+                </div>
+        
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image8}}"alt="{{imageMappings.image1}}" id="image8">
+                    <h2 id="text44">{{textMappings.text44}}</h2>
+                    <p id="text45">{{textMappings.text45}}</p>
+                </div>
+            </div>
+
+            <div class="image-section">
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image9}}" alt="{{imageMappings.image1}}" id="image9">
+                    <h2 id="text46">{{textMappings.text46}}</h2>
+                    <p id="text47">{{textMappings.text47}}</p>
+                </div>
+        
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image10}}" alt="{{imageMappings.image1}}" id="image10">
+                    <h2 id="text48">{{textMappings.text48}}</h2>
+                    <p id="text49">{{textMappings.text49}}</p>
+                </div>
+        
+                <div class="image-box">
+                    <img src="../assets/{{imageMappings.image11}}" alt="{{imageMappings.image1}}" id="image11">
+                    <h2 id="text50">{{textMappings.text50}}</h2>
+                    <p id="text51">{{textMappings.text51}}</p>
+                </div>
             </div>
         </div>
-        <!--
-        <div class="container-careers">
-            <div class="card-11">
-                <img src="../assets/person1.jpg" alt="{{imageMappings.image1a}}" id="image1a" class="img-careers">
-                <p id="text1a">HR Director</p>
-            </div>
-            <div class="card-11">
-                <img src="../assets/person1.jpg" alt="{{imageMappings.image1a}}" id="image1a" class="img-careers">
-                <p id="text1b">Doppio Dropscytheeeeeeeee</p>
-            </div>
-            <div class="card-11">
-                <p id="text1c">{{textMappings.text1c}}</p>
-                <img src="{{imageMappings.image1b}}" alt="{{imageMappings.image1a}}" id="image1a" class="img-careers">
-            </div>
-        </div>
 
-        <div class="container-careers">
-            <div class="card-11">
-                <img src="../assets/{{imageMappings.image1a}}" alt="{{imageMappings.image1a}}" id="image1a" class="img-careers">
-                <p id="text1b">{{textMappings.text1b}}</p>
-            </div>
-            <div class="card-11">
-                <img src="../assets/{{imageMappings.image1b}}" alt="{{imageMappings.image1b}}" id="image1b" class="img-careers">
-                <p id="text1b">{{textMappings.text1b}}</p>
-            </div>
-            <div class="card-11">
-                <img src=". ./assets/{{imageMappings.image1c}}" alt="{{imageMappings.image1c}}" id="image1c" class="img-careers">
-                <p id="text1c">{{textMappings.text1c}}</p>
-            </div>
-        </div>
-        -->
-
-
-
-        <!--Contact Us-->
         {{> contactus}}
-
         {{> accreditations}}
         {{> adminhotbar}}
-        <script src="/javascript/careers.js"></script>
         <script src="/javascript/adminhotbar.js"></script>
     </body>
 </html>

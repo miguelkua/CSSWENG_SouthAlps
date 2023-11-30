@@ -7,11 +7,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>South Alps Cold Storage: Facility</title>
+        <title>South Alps Cold Storage: Home</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/style.css" type="text/css">
-        <link rel="stylesheet" href="../css/style2.css" type="text/css">
         <link rel="icon" href="../assets/icons/salps_icon.png" type="image/icon type">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -27,7 +26,6 @@
             <img src="../assets/{{imageMappings.image3}}" alt="{{imageMappings.image1}}" id="image3">
             <div class="overlay">
                 <h1 id="text13">{{textMappings.text13}}</h1>
-                <div class="line"></div>
                 <p id="text14">{{textMappings.text14}}</p>
             </div>
         </div>
@@ -36,87 +34,21 @@
         <div class="container-faci">
         {{#each facilities}}
             <div class="card-1">
-                 <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}">
-                 <p id="{{this._id}}">{{this.description}}</p>
+                 <img src="../assets/facilities/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="facilityImage">
+                 <p id="{{this._id}}" class="facilityDesc">{{this.facDesc}}</p>
                  {{#if ../isAdminMode}}
-                    <button id="{{this._id}}" name="delete-facility" class="delete-facility">Delete</button>
+                    <button id="{{this._id}}" class="fac-del-button">Delete</button>
                 {{/if}}
             </div>
         {{/each}}
         </div>
 
-        <div id="form-overlay" class="form-overlay">
-            <div class="form-container" style="background-color: lightblue;">
-                <form id="postForm" name="postForm" class="postForm" style="background-color: lightblue;">
-                    <textarea id="descriptionInput" name="description" class="form-text-input" rows="4" cols="50" placeholder="Description of Facility?"></textarea>
-                    <button id="submit-item" class="submit-button" type="submit" style="margin-top: 20px;">Submit</button>
-                </form>
-            </div>
-        </div>
-
-        <!--
-        <div class="container-faci">
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1a}}" alt="{{imageMappings.image1a}}" id="image1a">
-                <p id="text1a">{{textMappings.text1a}}</p>
-            </div>
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1b}}" alt="{{imageMappings.image1b}}" id="image1b">
-                <p id="text1b">{{textMappings.text1b}}</p>
-            </div>
-        </div>
-
-        <div class="container-faci">
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1c}}" alt="{{imageMappings.image1c}}" id="image1c">
-                <p id="text1c">{{textMappings.text1c}}</p>
-            </div>
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1d}}" alt="{{imageMappings.image1d}}" id="image1d">
-                <p id="text1d">{{textMappings.text1d}}</p>
-            </div>
-        </div>
-
-        <div class="container-faci">
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1e}}" alt="{{imageMappings.image1e}}" id="image1e">
-                <p id="text1e">{{textMappings.text1e}}</p>
-            </div>
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1f}}" alt="{{imageMappings.image1f}}" id="image1f">
-                <p id="text1f">{{textMappings.text1f}}</p>
-            </div>
-        </div>
-
-        <div class="container-faci">
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1g}}" alt="{{imageMappings.image1g}}" id="image1g">
-                <p id="text1g">{{textMappings.text1g}}</p>
-            </div>
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1h}}" alt="{{imageMappings.image1h}}" id="image1h">
-                <p id="text1h">{{textMappings.text1h}}</p>
-            </div>
-        </div>
-
-        <div class="container-faci">
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1i}}" alt="{{imageMappings.image1i}}" id="image1i">
-                <p id="text1i">{{textMappings.text1i}}</p>
-            </div>
-            <div class="card-1">
-                <img src="../assets/{{imageMappings.image1j}}" alt="{{imageMappings.image1j}}" id="image1i">
-                <p id="text1i">{{textMappings.text1j}}</p>
-            </div>
-        </div>
-        -->
-
 
         <!--Map and Location-->
         <div class="container5">
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15464.175525302959!2d121.0354923!3d14.3088832!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d77215481a29%3A0x451e1ac49df52f99!2sSouth%20Alps%20Cold%20Storage%20and%20Logistics%20Inc.!5e0!3m2!1sen!2sph!4v1699194634848!5m2!1sen!2sph"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15464.175525302959!2d121.0354923!3d14.3088832!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d77215481a29%3A0x451e1ac49df52f99!2sSouth%20Alps%20Cold%20Storage%20and%20Logistics%20Inc.!5e0!3m2!1sen!2sph!4v1699194634848!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="content">
-                <p class="heading-text" id="text10">Map and Locations</p>
+                <p class="heading-text" id="text10">{{textMappings.text10}}</p>
                 <p class="subtext" id="text11">{{textMappings.text11}}</p>
                 <div class="line"></div>
                 <p class="subtext-2" id="text12">{{textMappings.text12}}</p>
@@ -131,7 +63,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 
         {{> adminhotbar}}
-        <script src="/javascript/facilities.js"></script>
         <script src="/javascript/adminhotbar.js"></script>
     </body>
 </html>

@@ -6,7 +6,8 @@ describe('Services Page Load Time and Content Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
     });
 
     it('should load the Services page within acceptable time', async () => {
@@ -34,6 +35,8 @@ describe('Services Page Load Time and Content Tests', function() {
         let valueAddedServices = await driver.findElement(By.css('.container9'));
         assert(await valueAddedServices.isDisplayed());
     });
+
+    // Add tests for other elements like contact details, social links, etc.
 
     after(async () => {
         await driver.quit();

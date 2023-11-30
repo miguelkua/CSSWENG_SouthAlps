@@ -7,6 +7,7 @@ const controller = require('../database/controller.js');
 const TextEntry = require('../database/schemas/textEntry.js');
 const ImageEntry = require('../database/schemas/imageEntry.js');
 const Services = require('../database/schemas/services.js');
+const Accreditations = require('../database/schemas/accreditations.js');
 
 //needed multer stuff
 const storage = multer.diskStorage({
@@ -14,10 +15,8 @@ const storage = multer.diskStorage({
       cb(null, './assets'); // directory where the images will be stored
     },
     filename: function (req, file, cb) {
-      // if it already has a timestamp, it removes it
       const originalFilename = file.originalname;
-
-      cb(null, originalFilename); // naming the image file with a timestamp 
+      cb(null, originalFilename); // names the image after the inputted image name
     }
 });
   
@@ -83,7 +82,7 @@ router.post('/editServices', async (req, res) => {
         res.json({ message: 'Entry update successful' });
     } catch (error) {
         console.error('Error updating entry:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -110,8 +109,61 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
 
         //only deletes when there a new image name is introduced and that there is only 1 existing entry using it
         if(oldImage != updatedContent && possibleEntries.length == 1){
+            try{
+                console.log('Old Image Name:', oldImage);
+                fs.unlinkSync(path.join('./assets', oldImage));
+            } catch (error) {
+                console.error('Error deleting image:', error);
+            }
+        }
+        existingEntry.imageName = updatedContent;
+        await existingEntry.save();
+        console.log('Entry Updated Successfully.');
+        res.json({ message: 'Entry update successful' });
+    } catch (error) {
+        console.error('Error updating entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+const acr_storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './assets/logo'); // directory where the images will be stored
+    },
+    filename: function (req, file, cb) {
+      const originalFilename = file.originalname;
+      cb(null, originalFilename); // names the image after the inputted image name
+    }
+});
+  
+const editAcr = multer({ storage: acr_storage });
+  
+router.post('/editAcr', editAcr.single('image-upload'), async function (req, res) {
+    const { updatedContent, elementID } = req.body;
+    console.log('Request Data:', { updatedContent, elementID });
+
+    try {
+        const existingEntry = await Accreditations.findOne({ _id: elementID });
+
+        if (!existingEntry) {
+            return res.status(404).json({ error: `Entry with ID ${elementID} not found` });
+        }
+
+        if (req.file) {
+            console.log('Received Image File:', req.file.originalname);
+        } else {
+            console.log('No Image File Received');
+        }
+
+        const oldImage = existingEntry.imageName
+        const possibleEntries = await Accreditations.find({ imageName: oldImage });
+        console.log('Number of Entries:', possibleEntries);
+
+        //only deletes when there a new image name is introduced and that there is only 1 existing entry using it
+        if(oldImage != updatedContent && possibleEntries.length == 1){
             console.log('Old Image Name:', oldImage);
-            fs.unlinkSync(path.join('./assets', oldImage));
+            fs.unlinkSync(path.join('./assets/logo', oldImage));
         }
 
         existingEntry.imageName = updatedContent;
@@ -123,5 +175,8 @@ router.post('/editImage', edit.single('image-upload'), async function (req, res)
         res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+
+
 
 module.exports = router

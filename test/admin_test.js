@@ -6,7 +6,8 @@ describe('Admin/Login Page Load Time and Content Tests', function() {
     let driver;
 
     before(async () => {
-        driver = await new Builder().forBrowser('safari').build();
+        //driver = await new Builder().forBrowser('safari').build();
+        driver = await new Builder().forBrowser('chrome').build();
     });
 
     it('should load the Admin/Login page within acceptable time', async () => {
@@ -37,7 +38,69 @@ describe('Admin/Login Page Load Time and Content Tests', function() {
         assert(await loginButton.isDisplayed());
     });
 
-    // Add tests for other elements like accreditation, footer links, etc.
+    it('should clear inputs and stay on login page for invalid credentials', async () => {
+        await driver.get('http://localhost:3000/admin');
+        await driver.findElement(By.css('input[type="text"]')).sendKeys('wrongUsername');
+        await driver.findElement(By.css('input[type="password"]')).sendKeys('wrongPassword');
+        await driver.findElement(By.css('.login-button')).click();
+    
+        await driver.sleep(1000);
+    
+        let usernameInput = await driver.findElement(By.css('input[type="text"]')).getAttribute('value');
+        let passwordInput = await driver.findElement(By.css('input[type="password"]')).getAttribute('value');
+        assert.strictEqual(usernameInput, '');
+        assert.strictEqual(passwordInput, '');
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/admin');
+    });
+    
+    it('should clear inputs and stay on login page for invalid username', async () => {
+        await driver.get('http://localhost:3000/admin');
+        await driver.findElement(By.css('input[type="text"]')).sendKeys('wrongUsername');
+        await driver.findElement(By.css('input[type="password"]')).sendKeys('admin');
+        await driver.findElement(By.css('.login-button')).click();
+    
+        await driver.sleep(1000);
+    
+        let usernameInput = await driver.findElement(By.css('input[type="text"]')).getAttribute('value');
+        let passwordInput = await driver.findElement(By.css('input[type="password"]')).getAttribute('value');
+        assert.strictEqual(usernameInput, '');
+        assert.strictEqual(passwordInput, '');
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/admin');
+    });
+
+    it('should clear inputs and stay on login page for invalid password', async () => {
+        await driver.get('http://localhost:3000/admin');
+        await driver.findElement(By.css('input[type="text"]')).sendKeys('admin');
+        await driver.findElement(By.css('input[type="password"]')).sendKeys('wrongUsername');
+        await driver.findElement(By.css('.login-button')).click();
+    
+        await driver.sleep(1000);
+    
+        let usernameInput = await driver.findElement(By.css('input[type="text"]')).getAttribute('value');
+        let passwordInput = await driver.findElement(By.css('input[type="password"]')).getAttribute('value');
+        assert.strictEqual(usernameInput, '');
+        assert.strictEqual(passwordInput, '');
+    
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/admin');
+    });
+
+    it('should login successfully with valid credentials', async () => {
+        await driver.get('http://localhost:3000/admin');
+        await driver.findElement(By.css('input[type="text"]')).sendKeys('admin');
+        await driver.findElement(By.css('input[type="password"]')).sendKeys('admin');
+        await driver.findElement(By.css('.login-button')).click();
+    
+        await driver.wait(until.urlIs('http://localhost:3000/home'), 10000);
+        const currentUrl = await driver.getCurrentUrl();
+        assert.strictEqual(currentUrl, 'http://localhost:3000/home');
+    });
+    
+    
 
     after(async () => {
         await driver.quit();

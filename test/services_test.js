@@ -12,9 +12,8 @@ describe('Services Page Load Time and Content Tests', function() {
     it('should load the Services page within acceptable time', async () => {
         const startTime = new Date();
 
-        await driver.get('http://localhost:3000/services'); // Update URL as needed
-        await driver.wait(until.elementLocated(By.css('.container11')), 10000); // Wait for the main container
-
+        await driver.get('http://localhost:3000/services');
+        await driver.wait(until.elementLocated(By.css('.container11')), 10000);
         const endTime = new Date();
         const loadTime = endTime - startTime;
         console.log(`Load time: ${loadTime} ms`);
@@ -35,8 +34,6 @@ describe('Services Page Load Time and Content Tests', function() {
         let valueAddedServices = await driver.findElement(By.css('.container9'));
         assert(await valueAddedServices.isDisplayed());
     });
-
-    // Add tests for other elements like contact details, social links, etc.
 
     after(async () => {
         await driver.quit();

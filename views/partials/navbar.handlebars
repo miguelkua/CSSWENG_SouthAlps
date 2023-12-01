@@ -7,7 +7,9 @@
         <li><a href="/careers">Careers</a></li>
         <li><a href="/quotes">Contact Us</a></li>
         {{#if isAdminMode}}
-            <li class="login=link" onclick="window.location.href='http://localhost:3000/admin/logout';">Logout</li>
+            <li class="login=link"><a href='/logout' style="color: #44E5E7; cursor: pointer;">Logout</a></li>
+        {{else}}
+            <li class="login=link"><a href="/admin" style="color: #44E5E7; cursor: pointer;">Login</a></li>
         {{/if}}
     </ul>
 </div>

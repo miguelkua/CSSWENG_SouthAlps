@@ -36,10 +36,10 @@
         <div class="container-faci">
         {{#each facilities}}
             <div class="card-1">
-                 <img src="../assets/facilities/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="facilityImage">
-                 <p id="{{this._id}}" class="facilityDesc">{{this.facDesc}}</p>
+                 <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}">
+                 <p id="{{this._id}}">{{this.description}}</p>
                  {{#if ../isAdminMode}}
-                    <button id="{{this._id}}" class="fac-del-button">Delete</button>
+                    <button id="{{this._id}}" name="delete-facility" class="delete-facility">Delete</button>
                 {{/if}}
             </div>
         {{/each}}

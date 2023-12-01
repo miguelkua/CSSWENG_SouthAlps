@@ -34,7 +34,13 @@ The following are landing pages requested by the client: <br>
 <br>
 
 > Database Schemas
++ ### imageentries - image entries for the website
++ accreditations - accreditations for the website
++ textentries - texts used in the website
++ services - available services of the website
++ admin - admin credentials
 
+  
 <br>
 
 ## Installation Guide

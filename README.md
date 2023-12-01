@@ -1,7 +1,7 @@
 
 # Services Showcase Website 
 
-This project is being developed by DJCA4M in fulfillment of the Major Course Outputs for CSSWENG. 
+This project is being developed by DJCA4M in fulfillment of the Major Course Outputs for CSSWENG in De La Salle University. 
 The client of this software solution is **South Alps Cold Storage and Logistics**, and they have provided
 the team with a web development plan. The client is asking for a company website that showcases the company’s 
 facility and services. They also want to boost the company’s presence in the online world. 

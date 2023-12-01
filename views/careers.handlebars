@@ -33,7 +33,7 @@
         {{#each careers}}
             <div class="card-11">
                 <p id="{{this._id}}" class="careerTitle">{{this.jobtitle}}</p>
-                <p id="{{this._id}}" class="careerDesc">{{this.jobdesc}}</p>
+                <p id="{{this._id}}" class="careerDesc" style="font-weight: normal;">{{this.jobdesc}}</p>
                 {{#if ../isAdminMode}}
                     <button id="{{this._id}}" class="car-del-button">Delete</button>
                 {{/if}}

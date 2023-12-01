@@ -59,11 +59,6 @@
   "text": "The company caters blast freezing, cold storage warehousing, temperature controlled transportation, inventory management, and other value added services."
 },
 {
-  "page": "facility",
-  "id": "text10",
-  "text": "Map and Locations"
-},
-{
   "page": "getQuote",
   "id": "text10",
   "text": "Map and Locations"
@@ -115,58 +110,8 @@
 },
 {
   "page": "getQuote",
-  "id": "text22a",
+  "id": "text22",
   "text": "Facebook: South Alps Cold Storage"
-},
-{
-  "page": "getQuote",
-  "id": "text22b",
-  "text": "LinkedIn: South Alps Cold Storage"
-},
-{
-  "page": "facility",
-  "id": "text1a",
-  "text": "Spacious Open Parking Area "
-},
-{
-  "page": "facility",
-  "id": "text1b",
-  "text": "Blast Freezer"
-},
-{
-  "page": "facility",
-  "id": "text1c",
-  "text": "Loading Docks"
-},
-{
-  "page": "facility",
-  "id": "text1d",
-  "text": "5MT Blast Freezer"
-},
-{
-  "page": "facility",
-  "id": "text1e",
-  "text": "Processing Room"
-},
-{
-  "page": "facility",
-  "id": "text1f",
-  "text": "Ante Room"
-},
-{
-  "page": "facility",
-  "id": "text1g",
-  "text": "16 Cold Storage Rooms with combined capacity of 7,680 pallet positions"
-},
-{
-  "page": "facility",
-  "id": "text1h",
-  "text": "2 Standby Generators"
-},
-{
-  "page": "facility",
-  "id": "text1i",
-  "text": "Ammonia Refrigeration System with Ammonia Leak Detection System paired with European PIR Insulated Panels"
 },
 {
   "page": "facility",
@@ -186,7 +131,7 @@
 {
   "page": "facility",
   "id": "text14",
-  "text": "South Alps Cold Storage offers the state of the line facilities in storing food storages."
+  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
 },
 {
   "page": "facility",
@@ -225,13 +170,8 @@
 },
 {
   "page": "facility",
-  "id": "text22a",
-  "text": "Facebook: South Alps Cold Storage"
-},
-{
-  "page": "facility",
-  "id": "text22b",
-  "text": "LinkedIn: South Alps Cold Storage"
+  "id": "text22",
+  "text": "Facebook: South Alps Cold Storage\\nLinkedIn:South Alps Cold Storage"
 },
 {
   "page": "getQuote",
@@ -245,26 +185,6 @@
 },
 {
   "page": "services",
-  "id": "text1a",
-  "text": "Blast Freezing "
-},
-{
-  "page": "services",
-  "id": "text1b",
-  "text": "Cold Storage"
-},
-{
-  "page": "services",
-  "id": "text1c",
-  "text": "Real Time Inventory Management"
-},
-{
-  "page": "services",
-  "id": "text1d",
-  "text": "Office Rental"
-},
-{
-  "page": "services",
   "id": "text15",
   "text": "Contact Us"
 },
@@ -300,13 +220,8 @@
 },
 {
   "page": "services",
-  "id": "text22a",
+  "id": "text22",
   "text": "Facebook: South Alps Cold Storage"
-},
-{
-  "page": "services",
-  "id": "text22b",
-  "text": "LinkedIn: South Alps Cold Storage"
 },
 {
   "page": "careers",
@@ -345,23 +260,18 @@
 },
 {
   "page": "careers",
-  "id": "text22a",
+  "id": "text22",
   "text": "Facebook: South Alps Cold Storage"
-},
-{
-  "page": "careers",
-  "id": "text22b",
-  "text": "LinkedIn: South Alps Cold Storage"
 },
 {
   "page": "services",
   "id": "text25",
-  "text": "Services"
+  "text": "Main Services"
 },
 {
   "page": "services",
   "id": "text26",
-  "text": "South Alps Cold Storage and Logistics Inc. also provides quality services that provides the maximum quality for our chilled products."
+  "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est."
 },
 {
   "page": "services",

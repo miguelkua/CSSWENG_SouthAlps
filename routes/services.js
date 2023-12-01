@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../database/controller.js');
-// const { collection } = require('../database/schemas/admin.js');
+const { collection } = require('../database/schemas/admin.js');
 
 
 router.get('/', async (req, res) => 
@@ -45,21 +45,21 @@ router.get('/', async (req, res) =>
     }
 });
 
-router.post('/add', async function(req, res) {
-    const { name, description } = req.body;
-
-    // Input Validation
-    if (!name || !description) {
-        // Respond with a 400 Bad Request if either field is missing
-        return res.status(400).json({ error: 'Both name and description are required.' });
-    }
-    try {
-        let service = { name, description };
+router.post('/add', async function(req,res)
+{
+    try
+    {
+        let service = {
+            name: req.body.name,
+            description: req.body.description
+        }
         await controller.addDocument('services', service);
-        res.sendStatus(200); // OK
-    } catch (error) {
-        console.error(error);
-        res.sendStatus(500); // Internal Server Error
+        res.sendStatus(200);
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.sendStatus(500);
     }
 });
 
@@ -75,5 +75,4 @@ router.post('/delete', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 module.exports = router;

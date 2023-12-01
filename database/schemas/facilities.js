@@ -1,16 +1,18 @@
-const mongoose = require('mongoose')
+const {Schema, model } = require('mongoose');
 
-const FacilitySchema = new mongoose.Schema({
-  description: {
+const facilitySchema = new Schema({
+
+  imageName:{
     type: String,
-    required: true
+    required: true,
   },
-  imageName: {
-    type: String,
-    required: false,
-    default: "facilitymain.jpg"
-  }
-})
 
-const Facilities = mongoose.model('facilities', FacilitySchema)
+  facDesc:{
+    type: String,
+    required: true,
+}
+});
+
+const Facilities = model("Facilities", facilitySchema); 
+
 module.exports = Facilities;

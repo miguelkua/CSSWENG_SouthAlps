@@ -11,7 +11,9 @@ const serviceRouter = require('./services.js');
 const facilityRouter = require('./facility.js');
 const careerRouter = require('./careers.js');
 const acrRouter = require('./accreditations.js');
+const adddelRouter = require('./add-del.js');
 
+router.use(adddelRouter);
 router.use(acrRouter); 
 router.use(editRouter); 
 router.use('/admin', adminRouter);

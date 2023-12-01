@@ -34,10 +34,10 @@ The following are landing pages requested by the client: <br>
 
 ## For Admin View
 
-## Login
+Login
 + Input of admin credentials
 
-## Admin Functionalities
+Admin Functionalities
 + Log Out
 + Add Image/Text
 + Edit Image/Text

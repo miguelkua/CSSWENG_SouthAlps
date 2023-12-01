@@ -42,6 +42,9 @@ Admin Functionalities
 + Add Image/Text
 + Edit Image/Text
 + Delete Entry
++ Add Services
++ Add Careers
++ Add Facitilies
 
 ## Database Schemas
 + imageentries- image entries for the website

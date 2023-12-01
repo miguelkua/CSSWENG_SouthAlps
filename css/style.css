@@ -897,14 +897,14 @@
     }
     
     .text-highlight {
-        border: 2px solid #E8AA14; 
-        box-shadow: 0 0 5px #E8AA14; 
+        border: 2px solid yellow; 
+        box-shadow: 0 0 5px yellow; 
         outline: none;
     }
     
     .img-highlight {
-        border: 2px solid #ff5714; 
-        box-shadow: 0 0 5px #ff5714; 
+        border: 2px solid purple; 
+        box-shadow: 0 0 5px purple; 
         outline: none;
     }
     
@@ -1066,14 +1066,14 @@ input[type="password"] {
 }
 
 .text-highlight {
-    border: 2px solid #E8AA14; 
-    box-shadow: 0 0 5px #E8AA14; 
+    border: 2px solid yellow; 
+    box-shadow: 0 0 5px yellow; 
     outline: none;
 }
 
 .img-highlight {
-    border: 2px solid #ff5714; 
-    box-shadow: 0 0 5px #ff5714; 
+    border: 2px solid purple; 
+    box-shadow: 0 0 5px purple; 
     outline: none;
 }
 

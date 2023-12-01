@@ -1,24 +1,24 @@
 [{
     "page": "home",
     "id": "image1",
-    "imageName": "Loading Bays.jpg"
+    "imageName": "image1.jpg"
 },
 {
     "page": "home",
     "id": "image2",
-    "imageName": "Loading Docks.jpg"
+    "imageName": "image2.jpg"
 
 },
 {
     "page": "facility",
     "id": "image3",
-    "imageName": "Entrance.jpg"
+    "imageName": "facilitymain.jpg"
 
 },
 {
     "page": "services",
     "id": "image4",
-    "imageName": "Small Loading Bays.jpg"
+    "imageName": "servicesmain.jpg"
 
 },
 {

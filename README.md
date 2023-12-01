@@ -53,12 +53,14 @@ Admin Functionalities
 <br>
 
 ## Installation Guide
-> To ensure the website is working, remove node_modules and package_lock.json
->
-> Once the node modules folder and package_lock.json is uninstalled, run the terminal on the directory.
+To ensure the website is working, remove ```node_modules``` and ```package_lock.json```
+<br><br>
+Once the node modules folder and package_lock.json is uninstalled, run the terminal on the directory.
 ``` npm i ```
-> After the necessary node modules have been installed, to ensure the "admin" credentials are working, run this command line in the terminal:
+<br><br>
+After the necessary node modules have been installed, to ensure the "admin" credentials are working, run this command line in the terminal:
 ``` node temp ```
-> Once the admin access has been initiated, to open the website, run the command line in the terminal:
+<br><br>
+Once the admin access has been initiated, to open the website, run the command line in the terminal:
 ``` node server ```
-> After all steps has been done, open the website on your browser and go to  ``` localhost:3000 ```
+<br>After all steps has been done, open the website on your browser and go to  ``` localhost:3000 ```

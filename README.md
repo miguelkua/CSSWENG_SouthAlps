@@ -33,14 +33,11 @@ The following are landing pages requested by the client: <br>
 
 <br>
 
-> Folder Structure
+> Database Schemas
 
 <br>
 
-> Database Schemas
-
-
-> Installation Guide
+## Installation Guide
 > To ensure the website is working, remove node_modules and package_lock.json
 >
 > Once the node modules folder and package_lock.json is uninstalled, run the terminal on the directory.

@@ -15,7 +15,7 @@
 {{!-- class admin removes it from being selected by the edit --}}
 <div class="modal" id="text-space">
     <div class="modal-content" id="text-box">
-        <textarea id="text-area" rows="4" cols="50" maxlength="600"></textarea>
+        <textarea id="text-area" rows="3" cols="50" maxlength="600" placeholder="Max of 600 characters"></textarea>
         <button class="admin button1" id="text-change">Change</button>
         <button class="admin button1" id="text-cancel">Cancel</button>
     </div>
@@ -24,7 +24,7 @@
 <div class="modal" id="image-space">
     <div class="modal-content" id="image-box">
         <input type="file" id="image-upload" name="image-upload" style="display: none;" accept="image/*">
-        <label for="image-upload" id="image-label">Edit Image</label>
+        <label for="image-upload" id="image-label" style="padding-top: 1rem;">Edit Image</label>
         <center><img class="admin" id="uploaded-image" src="" alt="Uploaded Image" style="max-width: 50%;"></center>
         <button class="admin button1" id="image-change">Change</button>
         <button class="admin button1" id="image-cancel">Cancel</button>
@@ -50,10 +50,10 @@
 </div>
 <div class="modal" id="car-space">
     <div class="modal-content" id="text-box">
-        <h1 class="admin">Job Title</h1>
-        <textarea id="car-title-area" rows="4" cols="50" maxlength="40" placeholder="Max length of 40 characters"></textarea>
-        <h1 class="admin">Job Description</h1>
-        <textarea id="car-desc-area" rows="4" cols="50" maxlength="600" placeholder="Max length of 600 characters"></textarea>
+        <h1 class="admin" style="padding-top: 1rem;">Job Title</h1>
+        <textarea id="car-title-area" rows="1" cols="50" maxlength="40" placeholder="Max length of 40 characters"></textarea>
+        <h1 class="admin" style="padding-top: 1rem;">Job Description</h1>
+        <textarea id="car-desc-area" rows="3" cols="50" maxlength="600" placeholder="Max length of 600 characters"></textarea>
         <button class="admin button1" id="car-submit" style="display: none;">Submit</button>
         <button class="admin button1" id="car-submit-cancel">Cancel</button>
     </div>

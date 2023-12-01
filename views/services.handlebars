@@ -57,7 +57,7 @@
             <div class="content-2-services">
                 {{#each services}}
                 <div class="card-11">
-                    <h1 id="{{this._id}}" class="heading-text serviceName">{{this.name}}</p>
+                    <h1 id="{{this._id}}" class="heading-text serviceName">{{this.name}}</h1>
                     <p id="{{this._id}}" class="subtext-2 serviceDesc">{{this.description}}</p>
                     {{#if ../isAdminMode}}
                     <button id="{{this._id}}" name="delete-service" class="delete-service">Delete</button>

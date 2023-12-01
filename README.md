@@ -33,7 +33,7 @@ The following are landing pages requested by the client: <br>
 + Contact Information
 
 <br>
-# For Admin View
+## For Admin View
 
 ## Login
 + Input of admin credentials

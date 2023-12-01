@@ -44,4 +44,35 @@ router.get('/', async (req, res) =>
     }
 });
 
+router.post('/add', async function(req,res)
+{
+    try
+    {
+        let career = {
+            name: req.body.name
+            // imageName: req.body.imageName [NOT WORKING YET]
+        }
+        await controller.addDocument('careers', career);
+        res.sendStatus(200);
+    }
+    catch(error)
+    {
+        console.log(error);
+        res.sendStatus(500);
+    }
+});
+
+router.post('/delete', async (req, res) => {
+    try {
+        const careerId = req.body._id;
+
+        await controller.deleteDocumentByID('careers', careerId);
+
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 module.exports = router;

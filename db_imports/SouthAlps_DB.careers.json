@@ -1,0 +1,32 @@
+[{
+  "name": "Secretary",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "HR Manager",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "Human Resources",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "Assistant Treasurer",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "Janitor",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "Foreman",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "Maintenance",
+  "imageName": "person1.jpg" 
+},
+{
+  "name": "General Manager",
+  "imageName": "person1.jpg" 
+}]

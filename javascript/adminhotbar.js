@@ -11,8 +11,8 @@ const editTextButton = document.getElementById('edit-text');
 const editImgButton = document.getElementById('edit-img');
 const addAcrButton = document.getElementById('add-acr');
 const delAcrButton = document.getElementById('del-acr');
-const addCarButton = document.getElementById('add-car');
-const addFacButton = document.getElementById('add-fac');
+// const addButton = document.getElementById('add');
+// const deleteButton = document.getElementById('delete');
 
 let elementID = '';
 let fileName = '';
@@ -51,42 +51,6 @@ const acrDelSpace = document.getElementById('acrdel-space');
 const acrDel = document.getElementById('acr-del'); 
 const acrDelCancel = document.getElementById('acr-del-cancel');
 
-//careers add
-const carSpace = document.getElementById('car-space'); 
-const carTitle = document.getElementById('car-title-area'); 
-const carDesc = document.getElementById('car-desc-area'); 
-const carAdd = document.getElementById('car-submit'); 
-const carCancel = document.getElementById('car-submit-cancel');
-
-//careers edit
-let isCarTitle = '';
-let isCarDesc = '';
-
-//careers delete
-const carDelButton = document.querySelectorAll('.car-del-button'); 
-const carDelSpace = document.getElementById('cardel-space');
-const carDel = document.getElementById('car-del'); 
-const carDelCancel = document.getElementById('car-del-cancel');
-
-//facility add
-const facSpace = document.getElementById('fac-space'); 
-const facUpload = document.getElementById('fac-upload');
-const facLabel = document.getElementById('fac-label');
-const facDesc = document.getElementById('fac-desc-area');  
-const facAdd = document.getElementById('fac-submit'); 
-const facCancel = document.getElementById('fac-submit-cancel');
-const facImage = document.getElementById('fac-uploaded-image');
-
-//facility edit
-let isFacDesc = '';
-let isFacImage = '';
-
-//facilities delete
-const facDelButton = document.querySelectorAll('.fac-del-button'); 
-const facDelSpace = document.getElementById('facdel-space');
-const facDel = document.getElementById('fac-del'); 
-const facDelCancel = document.getElementById('fac-del-cancel');
-
 document.addEventListener('DOMContentLoaded', function () {
     editTextButton.addEventListener('click', function () {
         toggleMode('edit-text');
@@ -102,14 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     delAcrButton.addEventListener('click', function () {
         toggleMode('del-acr');
-    });
-
-    addCarButton.addEventListener('click', function () {
-        toggleMode('add-car');
-    });
-
-    addFacButton.addEventListener('click', function () {
-        toggleMode('add-fac');
     });
 
     textCancel.addEventListener('click', function () {
@@ -145,50 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({ updatedContent, elementID, isServiceName, isServiceDesc }),
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Reload the page if the fetch operation is successful
-                            location.reload();
-                        } else {
-                            console.error('Update service request failed:', response.status, response.statusText);
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error during updating services:', error);
-                }
-            }
-
-            else if(isCarTitle == true || isCarDesc == true){
-                try {
-                    fetch('/editCareers', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ updatedContent, elementID, isCarTitle, isCarDesc }),
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Reload the page if the fetch operation is successful
-                            location.reload();
-                        } else {
-                            console.error('Update service request failed:', response.status, response.statusText);
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error during updating services:', error);
-                }
-            }
-
-            else if(isFacDesc == true){
-                try {
-                    fetch('/editFacilities', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ updatedContent, elementID, isFacDesc }),
                     })
                     .then(response => {
                         if (response.ok) {
@@ -286,23 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if(isAcrImage == true){
                 try {
                     const response = await fetch('/editAcr', {
-                        method: 'POST',
-                        body: formData,
-                    });
-            
-                    if (response.ok) {
-                        location.reload();
-                    } else {
-                        console.error('Update request failed:', response.status, response.statusText);
-                    }
-                } catch (error) {
-                    console.error('Error during update:', error);
-                }
-            }
-
-            else if(isFacImage == true){
-                try {
-                    const response = await fetch('/editFac', {
                         method: 'POST',
                         body: formData,
                     });
@@ -470,299 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelClick = false;
         }
     });
-
-    carTitle.addEventListener('input', () => {
-        if (carTitle.value !== '' && carDesc.value !== '') {
-          carAdd.style.display = 'block';
-        } 
-        
-        else {
-            carAdd.style.display = 'none';
-        }
-      });
-      
-    carDesc.addEventListener('input', () => {
-        if (carTitle.value !== '' && carDesc.value !== '') {
-            carAdd.style.display = 'block';
-        } 
-        
-        else {
-            carAdd.style.display = 'none';
-        }
-    });
-
-    carCancel.addEventListener('click', function () { 
-        if (!cancelClick) {
-            carCancel.textContent = 'Are you sure you want to Cancel?';
-            cancelClick = true;
-        } else {
-            //place actions here
-            carSpace.style.visibility = 'hidden';
-            addCarButton.classList.remove('active');
-
-            //reset button text and confirmation state
-            carCancel.textContent = 'Cancel';
-            cancelClick = false;
-
-            carAdd.textContent = 'Submit';
-            manipulateClick = false;
-        }
-    });
-
-    carAdd.addEventListener('click', async function () {
-
-        if (!manipulateClick) {
-            carAdd.textContent = 'Are you sure you want to Submit?';
-            manipulateClick = true;
-        } else {
-            //place actions here
-            const jobTitle = carTitle.value;
-            const jobDesc = carDesc.value;
-            
-            try {
-                fetch('/addCar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ jobTitle, jobDesc }),
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Reload the page if the fetch operation is successful
-                        location.reload();
-                    } else {
-                        console.error('Upload request failed:', response.status, response.statusText);
-                    }
-                });
-            } catch (error) {
-                console.error('Error during upload:', error);
-            }
-
-            //reset button text and confirmation state
-            carAdd.textContent = 'Submit';
-            manipulateClick = false;
-
-            carCancel.textContent = 'Cancel';
-            cancelClick = false;
-        }
-    });
     
-    facUpload.addEventListener('change', (event) => {
-
-        const file = facUpload.files[0];
-        if (file) {
-            fileName = file.name;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                facImage.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        facLabel.textContent = file.name;
-        //displays the submit button
-
-        if (facDesc.value !== '' && facLabel.value !== '') {
-            facAdd.style.display = 'block';
-        } 
-        
-        else {
-            facAdd.style.display = 'none';
-        }
-    });
-
-    facDesc.addEventListener('input', () => {
-        if (facDesc.value !== '' && facLabel.value !== '') {
-            facAdd.style.display = 'block';
-        } 
-        
-        else {
-            facAdd.style.display = 'none';
-        }
-    });
-
-    facCancel.addEventListener('click', function () { 
-        if (!cancelClick) {
-            facCancel.textContent = 'Are you sure you want to Cancel?';
-            cancelClick = true;
-        } else {
-            //place actions here
-            facSpace.style.visibility = 'hidden';
-            addFacButton.classList.remove('active');
-
-            //reset button text and confirmation state
-            facCancel.textContent = 'Cancel';
-            cancelClick = false;
-
-            facAdd.textContent = 'Submit';
-            manipulateClick = false;
-        }
-    });
-
-    facAdd.addEventListener('click', async function () {
-
-        if (!manipulateClick) {
-            facAdd.textContent = 'Are you sure you want to Submit?';
-            manipulateClick = true;
-        } else {
-            //place actions here
-            const updatedContent = fileName;
-            const facValue = facDesc.value;
-        
-            const imageUploadInput = document.getElementById('fac-upload');
-            const imageFile = imageUploadInput.files[0]; // get the selected file
-            const formData = new FormData();
-            formData.append('updatedContent', updatedContent);
-            formData.append('facValue', facValue);
-            formData.append('fac-upload', imageFile); // use the actual file, not a URL
-            
-            try {
-                const response = await fetch('/addFac', {
-                    method: 'POST',
-                    body: formData,
-                });
-        
-                if (response.ok) {
-                    location.reload();
-                } else {
-                    console.error('Submit request failed:', response.status, response.statusText);
-                }
-            } catch (error) {
-                console.error('Error during submission:', error);
-            }
-
-            //reset button text and confirmation state
-            facAdd.textContent = 'Submit';
-            manipulateClick = false;
-
-            facCancel.textContent = 'Cancel';
-            cancelClick = false;
-        }
-    });
-
-    //delete buttons for careers and facilities
-
-    carDelCancel.addEventListener('click', function () { 
-        if (!cancelClick) {
-            carDelCancel.textContent = 'Are you sure you want to Cancel?';
-            cancelClick = true;
-        } else {
-            //place actions here
-            carDelSpace.style.visibility = 'hidden';
-
-            //reset button text and confirmation state
-            carDelCancel.textContent = 'Cancel';
-            cancelClick = false;
-
-            carDel.textContent = 'Submit';
-            manipulateClick = false;
-        }
-    });
-
-    carDel.addEventListener('click', async function () {
-
-        if (!manipulateClick) {
-            carDel.textContent = 'Are you sure you want to Proceed?';
-            manipulateClick = true;
-        } else {
-            try {
-                fetch('/delCar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ elementID }),
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Reload the page if the fetch operation is successful
-                        location.reload();
-                    } else {
-                        console.error('Delete request failed:', response.status, response.statusText);
-                    }
-                });
-            } catch (error) {
-                console.error('Error during deletion:', error);
-            }
-            
-            //reset button text and confirmation state
-            carDel.textContent = 'Proceed';
-            manipulateClick = false;
-
-            carDelCancel.textContent = 'Cancel';
-            cancelClick = false;
-        }
-    });
-
-
-    carDelButton.forEach((button) => {
-        button.addEventListener('click', async function () {
-          carDelSpace.style.visibility = 'visible';
-          elementID = button.id; 
-        });
-    });
-
-    facDelCancel.addEventListener('click', function () { 
-        if (!cancelClick) {
-            facDelCancel.textContent = 'Are you sure you want to Cancel?';
-            cancelClick = true;
-        } else {
-            //place actions here
-            facDelSpace.style.visibility = 'hidden';
-
-            //reset button text and confirmation state
-            facDelCancel.textContent = 'Cancel';
-            cancelClick = false;
-
-            facDel.textContent = 'Submit';
-            manipulateClick = false;
-        }
-    });
-
-    facDel.addEventListener('click', async function () {
-
-        if (!manipulateClick) {
-            facDel.textContent = 'Are you sure you want to Proceed?';
-            manipulateClick = true;
-        } else {
-            try {
-                fetch('/delFac', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ elementID }),
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Reload the page if the fetch operation is successful
-                        location.reload();
-                    } else {
-                        console.error('Delete request failed:', response.status, response.statusText);
-                    }
-                });
-            } catch (error) {
-                console.error('Error during deletion:', error);
-            }
-            
-            //reset button text and confirmation state
-            facDel.textContent = 'Proceed';
-            manipulateClick = false;
-
-            facDelCancel.textContent = 'Cancel';
-            cancelClick = false;
-        }
-    });
-
-    facDelButton.forEach((button) => {
-        button.addEventListener('click', async function () {
-          facDelSpace.style.visibility = 'visible';
-          elementID = button.id; 
-        });
-    });
-    
-
     window.addEventListener('scroll', function() {
         //checks position relative to viewport
         const acrSection = document.getElementById('acrDiv');
@@ -813,8 +416,6 @@ function toggleMode(action){
         editImgButton.classList.remove('active');
         addAcrButton.classList.remove('active');
         delAcrButton.classList.remove('active');
-        addCarButton.classList.remove('active');
-        addFacButton.classList.remove('active');
 
         imageEntries.forEach((entry) => {
             entry.classList.remove('img-highlight');
@@ -859,8 +460,6 @@ function toggleMode(action){
         editTextButton.classList.remove('active');
         addAcrButton.classList.remove('active');
         delAcrButton.classList.remove('active');
-        addCarButton.classList.remove('active');
-        addFacButton.classList.remove('active');
 
         textEntries.forEach((entry) => {
             entry.classList.remove('text-highlight');
@@ -904,8 +503,6 @@ function toggleMode(action){
         editTextButton.classList.remove('active');
         editImgButton.classList.remove('active');
         delAcrButton.classList.remove('active');
-        addCarButton.classList.remove('active');
-        addFacButton.classList.remove('active');
 
         textEntries.forEach((entry) => {
             entry.classList.remove('text-highlight');
@@ -934,12 +531,9 @@ function toggleMode(action){
     else if(action === 'del-acr'){ 
         isEditText = false;
         isEditImage = false;
-
         editTextButton.classList.remove('active');
         editImgButton.classList.remove('active');
         addAcrButton.classList.remove('active');
-        addCarButton.classList.remove('active');
-        addFacButton.classList.remove('active');
 
         textEntries.forEach((entry) => {
             entry.classList.remove('text-highlight');
@@ -972,70 +566,6 @@ function toggleMode(action){
         }
     }
 
-    else if(action === 'add-car'){ 
-        isEditText = false;
-        isEditImage = false;
-        isDelAcr = false;
-
-        editTextButton.classList.remove('active');
-        editImgButton.classList.remove('active');
-        delAcrButton.classList.remove('active');
-        addAcrButton.classList.remove('active');
-        addFacButton.classList.remove('active');
-
-        textEntries.forEach((entry) => {
-            entry.classList.remove('text-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        imageEntries.forEach((entry) => {
-            entry.classList.remove('img-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        accreditationsEntries.forEach((entry) => {
-            entry.classList.remove('del-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        addCarButton.classList.add('active');
-        carSpace.style.visibility = 'visible';
-    }
-
-    else if(action === 'add-fac'){ 
-        isEditText = false;
-        isEditImage = false;
-        isDelAcr = false;
-
-        editTextButton.classList.remove('active');
-        editImgButton.classList.remove('active');
-        delAcrButton.classList.remove('active');
-        addAcrButton.classList.remove('active');
-        addCarButton.classList.remove('active');
-
-        textEntries.forEach((entry) => {
-            entry.classList.remove('text-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        imageEntries.forEach((entry) => {
-            entry.classList.remove('img-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        accreditationsEntries.forEach((entry) => {
-            entry.classList.remove('del-highlight');
-            entry.removeEventListener('click', selectEntry);
-        });
-
-        addFacButton.classList.add('active');
-        facSpace.style.visibility = 'visible';
-
-        facAdd.style.display = 'none';
-        facLabel.textContent = "Upload Image";
-        facImage.src = ''; 
-    }
-
 }
 
 function selectEntry(event) {
@@ -1043,10 +573,6 @@ function selectEntry(event) {
     isServiceName = false;
     isServiceDesc = false;
     isAcrImage = false;
-    isCarTitle = false;
-    isCarDesc = false;
-    isFacDesc = false;
-    isFacImage = false;
 
     if(isEditText == true){
         //if its not one of the admin buttons
@@ -1066,18 +592,6 @@ function selectEntry(event) {
             else if(classes.includes('serviceDesc') == true){
                 isServiceDesc = true;
             }
-
-            else if (classes.includes('careerTitle') == true) {
-                isCarTitle = true;
-            }
-
-            else if(classes.includes('careerDesc') == true){
-                isCarDesc = true;
-            }
-
-            else if(classes.includes('facilityDesc') == true){
-                isFacDesc = true;
-            }
         }
     }
 
@@ -1094,10 +608,6 @@ function selectEntry(event) {
 
             if(classes.includes('acrImage') == true){
                 isAcrImage = true;
-            }
-
-            if(classes.includes('facilityImage') == true){
-                isFacImage = true;
             }
         }
     }

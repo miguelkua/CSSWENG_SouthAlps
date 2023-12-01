@@ -4,7 +4,7 @@ const path = require("path");
 const multer = require('multer'); // for the image URLs
 const fs = require('fs'); // files
 const controller = require('../database/controller.js');
-const Accreditations = require('../database/schemas/accreditations.js');
+// const Accreditations = require('../database/schemas/accreditations.js');
 
 //needed multer stuff
 const acr_storage = multer.diskStorage({
@@ -24,9 +24,9 @@ router.post('/addAcr', add.single('acr-upload'), async function (req, res) {
     console.log('Request Data:', { updatedContent });
 
     try {
-        let accreditation = new Accreditations({
+        let accreditation = {
             imageName: updatedContent
-        });
+        };
     
         if (req.file) {
             console.log('Received Image File:', req.file.originalname);
@@ -49,7 +49,7 @@ router.post('/delAcr', async (req, res) => {
     console.log('Request Data:', { elementID });
 
     try {
-        const existingEntry = await Accreditations.findOne({ _id: elementID });
+        const existingEntry = await controller.findAccreditationByID(elementID);
         
         if (!existingEntry) {
             return res.status(404).json({ error: `Entry with ID ${elementID} not found` });

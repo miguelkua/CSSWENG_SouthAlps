@@ -1,18 +1,16 @@
-const {Schema, model } = require('mongoose');
+const mongoose = require('mongoose')
 
-const careerSchema = new Schema({
-
-  jobtitle:{
-      type: String,
-      required: true,
-  },
-
-  jobdesc:{
+const CareerSchema = new mongoose.Schema({
+  name: {
     type: String,
-    required: true,
-}
-});
+    required: true
+  },
+  imageName: {
+    type: String,
+    required: false,
+    default: "person1.jpg"
+  }
+})
 
-const Careers = model("Careers", careerSchema); 
-
+const Careers = mongoose.model('careers', CareerSchema)
 module.exports = Careers;

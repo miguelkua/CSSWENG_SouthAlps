@@ -32,7 +32,6 @@ The following are landing pages requested by the client: <br>
 + Map with site location
 + Contact Information
 
-<br>
 ## For Admin View
 
 ## Login

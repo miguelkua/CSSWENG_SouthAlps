@@ -8,13 +8,14 @@ facility and services. They also want to boost the company’s presence in the o
 The following are landing pages requested by the client: <br>
 
 ## Homepage
++ Hero video of the company
 + About the Company
 + Map with site location
 + Accreditations
 + Member Organizations
 
 ## Facilities
-+ Carousel view 
++ Gallery View of Facilities
 + Map with site location
 + Contact Us (with business hours)
 
@@ -23,7 +24,7 @@ The following are landing pages requested by the client: <br>
 + Contact Us (with contact information)
 
 ## Careers
-+ Job Vacancies
++ Job Openings/Positions
 + Contact Us (with HR information)
 
 ## Contact Us
@@ -31,7 +32,19 @@ The following are landing pages requested by the client: <br>
 + Map with site location
 + Contact Information
 
-<br>
+## For Admin View
+
+Login
++ Input of admin credentials
+
+Admin Functionalities
++ Log Out
++ Add Image/Text
++ Edit Image/Text
++ Delete Entry
++ Add Services
++ Add Careers
++ Add Facitilies
 
 ## Database Schemas
 + imageentries- image entries for the website
@@ -43,12 +56,14 @@ The following are landing pages requested by the client: <br>
 <br>
 
 ## Installation Guide
-> To ensure the website is working, remove node_modules and package_lock.json
->
-> Once the node modules folder and package_lock.json is uninstalled, run the terminal on the directory.
+To ensure the website is working, remove ```node_modules``` and ```package_lock.json```
+<br><br>
+Once the node modules folder and package_lock.json is uninstalled, run the terminal on the directory.
 ``` npm i ```
-> After the necessary node modules have been installed, to ensure the "admin" credentials are working, run this command line in the terminal:
+<br><br>
+After the necessary node modules have been installed, to ensure the "admin" credentials are working, run this command line in the terminal:
 ``` node temp ```
-> Once the admin access has been initiated, to open the website, run the command line in the terminal:
+<br><br>
+Once the admin access has been initiated, to open the website, run the command line in the terminal:
 ``` node server ```
-> After all steps has been done, open the website on your browser and go to  ``` localhost:3000 ```
+<br>After all steps has been done, open the website on your browser and go to  ``` localhost:3000 ```

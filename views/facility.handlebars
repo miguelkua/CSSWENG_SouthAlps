@@ -36,14 +36,83 @@
         <div class="container-faci">
         {{#each facilities}}
             <div class="card-1">
-                 <img src="../assets/facilities/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}" class="facilityImage">
-                 <p id="{{this._id}}" class="facilityDesc">{{this.facDesc}}</p>
+                 <img src="../assets/{{this.imageName}}" alt="{{this.imageName}}" id="{{this._id}}">
+                 <p id="{{this._id}}">{{this.description}}</p>
                  {{#if ../isAdminMode}}
-                    <button id="{{this._id}}" class="fac-del-button">Delete</button>
+                    <button id="{{this._id}}" name="delete-facility" class="delete-facility">Delete</button>
                 {{/if}}
             </div>
         {{/each}}
         </div>
+
+        <div id="form-overlay" class="form-overlay">
+            <div class="form-container" style="background-color: lightblue;">
+                <form id="postForm" name="postForm" class="postForm" style="background-color: lightblue;">
+                    <button id="submit-item" class="submit-button" type="submit" style="margin-bottom: 20px; margin-top: 10px;">Upload Image</button>
+                    <p class="heading-text">Facility Description</p>
+                    <textarea id="descriptionInput" name="description" class="form-text-input" rows="4" cols="50"></textarea>
+                    <button id="submit-item" class="submit-button" type="submit" style="margin-top: 20px;">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!--
+        <div class="container-faci">
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1a}}" alt="{{imageMappings.image1a}}" id="image1a">
+                <p id="text1a">{{textMappings.text1a}}</p>
+            </div>
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1b}}" alt="{{imageMappings.image1b}}" id="image1b">
+                <p id="text1b">{{textMappings.text1b}}</p>
+            </div>
+        </div>
+
+        <div class="container-faci">
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1c}}" alt="{{imageMappings.image1c}}" id="image1c">
+                <p id="text1c">{{textMappings.text1c}}</p>
+            </div>
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1d}}" alt="{{imageMappings.image1d}}" id="image1d">
+                <p id="text1d">{{textMappings.text1d}}</p>
+            </div>
+        </div>
+
+        <div class="container-faci">
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1e}}" alt="{{imageMappings.image1e}}" id="image1e">
+                <p id="text1e">{{textMappings.text1e}}</p>
+            </div>
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1f}}" alt="{{imageMappings.image1f}}" id="image1f">
+                <p id="text1f">{{textMappings.text1f}}</p>
+            </div>
+        </div>
+
+        <div class="container-faci">
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1g}}" alt="{{imageMappings.image1g}}" id="image1g">
+                <p id="text1g">{{textMappings.text1g}}</p>
+            </div>
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1h}}" alt="{{imageMappings.image1h}}" id="image1h">
+                <p id="text1h">{{textMappings.text1h}}</p>
+            </div>
+        </div>
+
+        <div class="container-faci">
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1i}}" alt="{{imageMappings.image1i}}" id="image1i">
+                <p id="text1i">{{textMappings.text1i}}</p>
+            </div>
+            <div class="card-1">
+                <img src="../assets/{{imageMappings.image1j}}" alt="{{imageMappings.image1j}}" id="image1i">
+                <p id="text1i">{{textMappings.text1j}}</p>
+            </div>
+        </div>
+        -->
+
 
         <!--Map and Location-->
         <div class="container5">
